@@ -1,11 +1,11 @@
 import React from 'react'
-import Forms from "./components/Form";
+import Comp from "./components/Complimentary";
 
 
 export default function home () {
   return (
     <div>
-      <Forms/>
+      <Comp/>
     </div>
   )
 }
