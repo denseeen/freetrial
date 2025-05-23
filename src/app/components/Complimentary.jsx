@@ -24,9 +24,9 @@ export default function Home() {
           <div className="flex items-center justify-center w-full md:w-auto space-x-4">
             <div className="w-24 md:w-64 border-t border-black"></div>
             <img
-              src="/images/logo.png"
+              src="/images/final-logo.png"
               alt="i-NEO Logo"
-              className="h-16 border border-black mx-4 rounded-full"
+              className="h-16 border border-black mx-4"
             />
             <div className="w-24 md:w-64 border-t border-black"></div>
           </div>
@@ -36,8 +36,9 @@ export default function Home() {
       {/* Main Content */}
       <div className="flex-grow flex items-center justify-center px-4 py-10">
         <div className="bg-white shadow-xl rounded-xl p-8 w-full max-w-md text-center">
-        <h1 className="text-4xl font-bold text-black mb-4">Welcome to I-Neo</h1>
-          <p className="text-gray-600 mb-6">
+        <h1 className="text-4xl text-black">Welcome to</h1>
+        <h1 className="text-3xl text-[#03acff] font-bold -mt-1 mb-4">Desknet's NEO by Inspire</h1>
+          <p className="text-black mb-2">
             Start your free trial and experience the benefits.
           </p>
           <button

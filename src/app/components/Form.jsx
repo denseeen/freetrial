@@ -1,5 +1,7 @@
 "use client";
 
+import { collection, addDoc, doc, setDoc } from "firebase/firestore";
+import { auth, db } from "../../../script/firebaseConfig"; // Import Firestore
 import emailjs from '@emailjs/browser';
 import { useState, useRef } from "react";
 import * as XLSX from "xlsx";
@@ -21,11 +23,13 @@ export default function FreeTrialForm() {
 
   const router = useRouter();
 
+  const [isLoading, setIsLoading] = useState(false);
+
   const [formFields, setFormFields] = useState({
     companyName: "",
     email: "",
     contactNumber: "",
-    personInCharge: "",
+    personinCharge: "",
     domainName: "",
   });
   const [error, setError] = useState("");
@@ -83,7 +87,7 @@ export default function FreeTrialForm() {
     );
   };
 
-  const handleStartFreeTrial = () => {
+  const handleStartFreeTrial = async () => {
   if (!isFormValid()) {
     setError(
       "Please fill out all required fields and ensure at least 5 complete user entries."
@@ -91,35 +95,59 @@ export default function FreeTrialForm() {
     return;
   }
 
-  setError("");
+  try {
+    setError("");
+    setIsLoading(true); // Start loading here
 
-  const templateParams = {
-  company_name: formFields.companyName,
-  to_email: formFields.email,  // use the key your EmailJS template expects for recipient
-  contact_number: formFields.contactNumber,
-  person_in_charge: formFields.personInCharge,
-  domain_name: formFields.domainName,
-};
+    // 1. Add the main trial document
+    const trialRef = await addDoc(collection(db, "trial"), {
+      companyName: formFields.companyName,
+      email: formFields.email,
+      contact: formFields.contactNumber,
+      personinCharge: formFields.personinCharge,
+      domainName: formFields.domainName,
+      createdAt: new Date()
+    });
 
-  emailjs
-    .send(
-       'service_df18cj1',     // e.g. 'service_abc123'
-      'template_sr5q1os',    // e.g. 'template_xyz456'
-      templateParams,
-      '8nV8GppQ82RWajpEo'       // e.g. 'user_abc123'
-    )
-    .then(
-      (result) => {
-        console.log('Email sent:', result.text);
-        router.push("/success");
-      },
-      (error) => {
-        console.error('Email failed:', error.text);
-        setError("Failed to send email. Please try again.");
-      }
+    // 2. Add userDetails subcollection
+    const userDetailsPromises = rows.map((user) =>
+      addDoc(collection(db, `trial/${trialRef.id}/userDetails`), {
+        fullName: user.fullName,
+        email: user.email,
+        department: user.department,
+        position: user.position
+      })
     );
-};
 
+    await Promise.all(userDetailsPromises);
+
+    // 3. Optionally send email
+    const templateParams = {
+      company_name: formFields.companyName,
+      to_email: formFields.email,
+      contact_number: formFields.contactNumber,
+      person_in_charge: formFields.personinCharge,
+      domain_name: formFields.domainName
+    };
+
+    await emailjs.send(
+      'service_ni86v39',
+      'template_ifezn7h',
+      templateParams,
+      '8nV8GppQ82RWajpEo'
+    );
+
+    // 4. Optional delay before redirect (e.g., to show loading spinner)
+    setTimeout(() => {
+      router.push("/success");
+    }); // Delay for 3 seconds
+
+  } catch (err) {
+    console.error("Submission failed:", err?.message || err);
+    setError("Something went wrong. Please try again.");
+    setIsLoading(false); // Stop loading on error
+  }
+};
 
   const handleExport = () => {
     const headers = ["Full Name", "Email", "Department", "Position"];
@@ -175,16 +203,16 @@ export default function FreeTrialForm() {
   };
 
   return (
-    <div className="h-screen overflow-hidden bg-gradient-to-br from-blue-100 to-white flex items-center justify-center">
-      <div className="bg-white shadow-lg rounded-xl p-3 w-full max-w-xl flex flex-col items-center">
+    <div className="min-h-screen py-5 bg-gradient-to-br from-blue-100 to-white flex items-center justify-center px-4 sm:px-6 lg:px-8">
+      <div className="bg-white shadow-lg rounded-xl p-4 w-full max-w-4xl md:p-6 lg:p-8">
         {/* <h1 className="text-4xl font-bold text-center text-blue-400 mb-3">i-NEO</h1> */}
 
         <div className="flex items-center mb-6 w-full">
           <div className="flex-grow border-t border-black"></div>
           <img
-            src="/images/logo.png"
+            src="/images/final-logo.png"
             alt="Logo"
-            className="h-16 border border-black rounded-full mx-4"
+            className="h-16 border border-black mx-4"
           />
           <div className="flex-grow border-t border-black"></div>
         </div>
@@ -192,94 +220,26 @@ export default function FreeTrialForm() {
         <form className="space-y-3 w-full">
           {error && <p className="text-red-500 text-xs">{error}</p>}
           {/* Domain Name & Company Name */}
-          <div className="flex justify-end -mt-7">
-            <button
-              type="button"
-              onClick={() => (window.location.href = "/")}
-              className="text-xs flex items-center space-x-1"
-              title="Go back"
-            >
-              <span className="text-black">🡠</span>
-              <span className="text-blue-500 hover:text-blue-700">Back</span>
-            </button>
-          </div>
-
-          {/* ... existing input fields ... */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-            <div>
-              <label className="block mb-1 text-xs font-medium text-gray-700">
-                Company Name
-              </label>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {Object.entries({
+            companyName: "Company Name",
+            email: "Email",
+            contactNumber: "Contact Number",
+            personinCharge: "Person in Charge",
+            domainName: "Preferred Domain Name",
+          }).map(([key, label]) => (
+            <div key={key} className="text-gray-700">
+              <label className="block text-sm font-medium text-black mb-1">{label}</label>
               <input
                 type="text"
-                placeholder="Your company name"
-                value={formFields.companyName}
-                onChange={(e) =>
-                  handleFieldChange("companyName", e.target.value)
-                }
-                className="w-full px-2 py-1 text-xs text-black border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                placeholder={label}
+                value={formFields[key]}
+                onChange={(e) => handleFieldChange(key, e.target.value)}
+                className="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
               />
             </div>
-            <div>
-              <label className="block mb-1 text-xs font-medium text-gray-700">
-                Email
-              </label>
-              <input
-                type="text"
-                placeholder="Email"
-                value={formFields.email}
-                onChange={(e) => handleFieldChange("email", e.target.value)}
-                className="w-full px-2 py-1 text-xs text-black border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-400"
-              />
-            </div>
-            <div>
-              <label className="block mb-1 text-xs font-medium text-gray-700">
-                Contact Number
-              </label>
-              <input
-                type="tel"
-                placeholder="0912 345 6789"
-                value={formFields.contactNumber}
-                onChange={(e) =>
-                  handleFieldChange("contactNumber", e.target.value)
-                }
-                className="w-full px-2 py-1 text-xs text-black border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-400"
-              />
-            </div>
-          </div>
-
-          {/* Person in Charge & Contact Number */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            {/* ... existing input fields ... */}
-            <div>
-              <label className="block mb-1 text-xs font-medium text-gray-700">
-                Person in Charge
-              </label>
-              <input
-                type="text"
-                placeholder="Full name"
-                value={formFields.personInCharge}
-                onChange={(e) =>
-                  handleFieldChange("personInCharge", e.target.value)
-                }
-                className="w-full px-2 py-1 text-xs text-black border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-400"
-              />
-            </div>
-            <div>
-              <label className="block mb-1 text-xs font-medium text-gray-700">
-                Preferred Domain Name
-              </label>
-              <input
-                type="text"
-                placeholder="e.g. yourdomain.dneoph.com"
-                value={formFields.domainName}
-                onChange={(e) =>
-                  handleFieldChange("domainName", e.target.value)
-                }
-                className="w-full px-2 py-1 text-xs text-black border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-400"
-              />
-            </div>
-          </div>
+          ))}
+        </div>
 
           {/* User Details Table */}
           <div>
@@ -294,75 +254,45 @@ export default function FreeTrialForm() {
                   rows.length > 5 ? "max-h-50 overflow-y-auto" : ""
                 } border border-gray-300 rounded-md`}
               >
-                <table className="table-fixed w-full text-xs text-left text-gray-700 border-collapse">
-                  <thead className="bg-blue-100 text-gray-700 sticky top-0">
-                    <tr>
-                      <th className="w-1/4 px-2 py-1 border border-gray-300">
-                        Full Name
-                      </th>
-                      <th className="w-1/4 px-2 py-1 border border-gray-300">
-                        Email
-                      </th>
-                      <th className="w-1/4 px-2 py-1 border border-gray-300">
-                        Department
-                      </th>
-                      <th className="w-1/4 px-2 py-1 border border-gray-300">
-                        Position
-                      </th>
-                    </tr>
-                  </thead>
+                <div className="overflow-x-auto">
+          <table className="min-w-full text-sm border">
+            <thead>
+              <tr className="bg-blue-300">
+                <th className="px-2 py-1 border">Full Name</th>
+                <th className="px-2 py-1 border">Email</th>
+                <th className="px-2 py-1 border">Department</th>
+                <th className="px-2 py-1 border">Position</th>
+              </tr>
+            </thead>
+            <tbody>
+              {rows.map((row, index) => (
+                <tr key={index}>
+                  {['fullName', 'email', 'department', 'position'].map((field) => (
+                    <td key={field} className="px-2 py-1 border">
+                      <input
+  type="text"
+  placeholder={
+    field === 'fullName'
+      ? 'Full Name'
+      : field === 'email'
+      ? 'Email'
+      : field === 'department'
+      ? 'Department'
+      : 'Position'
+  }
+  value={row[field]}
+  onChange={(e) => handleInputChange(index, field, e.target.value)}
+  className="w-full px-1 py-1 text-xs text-gray-700 border border-gray-300 rounded"
+/>
 
-                  <tbody>
-                    {rows.map((row, i) => (
-                      <tr key={i} className="bg-white">
-                        <td className="px-2 py-1 border border-gray-300">
-                          <input
-                            type="text"
-                            placeholder="Full Name"
-                            className="w-full border-none px-2 py-1 focus:outline-none focus:ring-1 focus:ring-blue-400"
-                            value={row.fullName}
-                            onChange={(e) =>
-                              handleInputChange(i, "fullName", e.target.value)
-                            }
-                          />
-                        </td>
-                        <td className="px-2 py-1 border border-gray-300">
-                          <input
-                            type="email"
-                            placeholder="Email"
-                            className="w-full border-none px-2 py-1 focus:outline-none focus:ring-1 focus:ring-blue-400"
-                            value={row.email}
-                            onChange={(e) =>
-                              handleInputChange(i, "email", e.target.value)
-                            }
-                          />
-                        </td>
-                        <td className="px-2 py-1 border border-gray-300">
-                          <input
-                            type="text"
-                            placeholder="Department"
-                            className="w-full border-none px-2 py-1 focus:outline-none focus:ring-1 focus:ring-blue-400"
-                            value={row.department}
-                            onChange={(e) =>
-                              handleInputChange(i, "department", e.target.value)
-                            }
-                          />
-                        </td>
-                        <td className="px-2 py-1 border border-gray-300">
-                          <input
-                            type="text"
-                            placeholder="Position"
-                            className="w-full border-none px-2 py-1 focus:outline-none focus:ring-1 focus:ring-blue-400"
-                            value={row.position}
-                            onChange={(e) =>
-                              handleInputChange(i, "position", e.target.value)
-                            }
-                          />
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          </div>
+                
               </div>
               {/* <div className="flex gap-3 mt-2 text-xs">
           <button
@@ -388,20 +318,20 @@ export default function FreeTrialForm() {
 
         </div> */}
 
-              <div className="flex items-center justify-between mt-2">
-                <label className="text-xs text-gray-400">
-                  (Download the Excel file and fill it out if you have more than
-                  5 users.)
-                </label>
-                <button
-                  type="button"
-                  onClick={() => setShowConfirm(true)}
-                  className="text-indigo-700 font-medium hover:underline text-xs mt-1"
-                >
-                  ✕ Clear All Fields
-                </button>
-              </div>
-              <div className="flex gap-2 text-xs">
+              <div className="flex flex-wrap md:flex-nowrap items-center justify-between mt-2 gap-2">
+  <label className="text-xs text-gray-400">
+    (Download the Excel file and fill it out if you have more than 5 users.)
+  </label>
+  <button
+    type="button"
+    onClick={() => setShowConfirm(true)}
+    className="text-indigo-700 hover:underline text-xs"
+  >
+    ✕ Clear All Fields
+  </button>
+</div>
+
+              <div className="flex gap-2 text-xs mt-2">
                 <button
                   onClick={handleExport}
                   type="button"
@@ -467,6 +397,15 @@ export default function FreeTrialForm() {
           </button>
         </form>
       </div>
+      {/* Loading Modal */}
+      {isLoading && (
+        <div className="fixed inset-0 z-50 bg-black/70 bg-opacity-50 flex items-center justify-center">
+          <div className="bg-white p-8 rounded-xl shadow-lg flex flex-col items-center">
+            <div className="w-12 h-12 border-4 border-blue-400 border-t-transparent rounded-full animate-spin mb-4"></div>
+            <p className="text-lg font-semibold text-blue-400">Redirecting to form...</p>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
