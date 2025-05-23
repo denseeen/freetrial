@@ -7,9 +7,9 @@ export default function FreeTrialSuccess() {
           <div className="flex items-center mb-6 w-full">
             <div className="flex-grow border-t border-black"></div>
             <img
-              src="/images/logo.png"
+              src="/images/final-logo.png"
               alt="Logo"
-              className="h-16 border border-black rounded-full mx-4"
+              className="h-16 border border-black mx-4"
             />
             <div className="flex-grow border-t border-black"></div>
           </div>
