@@ -1,11 +1,14 @@
 import React from 'react'
-import Forms from "./components/Form";
+import Comp from "./components/Complimentary";
 
+export const metadata = {
+  title: 'Welcome to Desknets NEO by Inspire',
+};
 
 export default function home () {
   return (
     <div>
-      <Forms/>
+      <Comp/>
     </div>
   )
 }
