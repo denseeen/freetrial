@@ -402,7 +402,7 @@ export default function FreeTrialForm() {
         <div className="fixed inset-0 z-50 bg-black/70 bg-opacity-50 flex items-center justify-center">
           <div className="bg-white p-8 rounded-xl shadow-lg flex flex-col items-center">
             <div className="w-12 h-12 border-4 border-blue-400 border-t-transparent rounded-full animate-spin mb-4"></div>
-            <p className="text-lg font-semibold text-blue-400">Redirecting to form...</p>
+            <p className="text-lg font-semibold text-blue-400">Please wait..</p>
           </div>
         </div>
       )}
