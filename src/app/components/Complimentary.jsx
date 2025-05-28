@@ -51,9 +51,18 @@ export default function Home() {
       </div>
 
       {/* Footer */}
-      <div className="w-full bg-black text-white py-4 flex flex-col md:flex-row justify-center gap-2 md:gap-10 items-center border-t text-sm px-4 text-center">
-        <span>adminINEO@gmail.com</span>
-        <span>🌐 https://inspirenextglobal.com</span>
+      <div className="w-full bg-black/10 text-white py-4 flex flex-col md:flex-row justify-center  md:gap-2 items-center border-t text-sm px-4 text-center">
+        
+        <svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 48 48"
+  className="w-6 h-6 fill-current text-red-500"
+>
+  <path d="M44 10.5v27c0 1.9-1.6 3.5-3.5 3.5h-33C5.6 41 4 39.4 4 37.5v-27C4 8.6 5.6 7 7.5 7h33c1.9 0 3.5 1.6 3.5 3.5zM24 26L7.5 14v23.5H24V26zm0 0l16.5 11.5V14L24 26zm16.5-16H7.5L24 23l16.5-13z" />
+</svg>
+
+<span>inspireneo2025@gmail.com</span>
+
       </div>
 
       {/* Loading Modal */}
