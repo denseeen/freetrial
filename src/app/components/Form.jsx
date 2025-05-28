@@ -1,6 +1,7 @@
 "use client";
 
 import { collection, addDoc, doc, setDoc } from "firebase/firestore";
+import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { auth, db } from "../../../script/firebaseConfig"; // Import Firestore
 import emailjs from '@emailjs/browser';
 import { useState, useRef } from "react";
@@ -20,6 +21,8 @@ export default function FreeTrialForm() {
   );
 
   const fileInputRef = useRef(null);
+
+  const storage = getStorage();
 
   const router = useRouter();
 
@@ -97,57 +100,82 @@ export default function FreeTrialForm() {
 
   try {
     setError("");
-    setIsLoading(true); // Start loading here
+    setIsLoading(true);
 
-    // 1. Add the main trial document
+    let fileUrl = null;
+
+    if (fileInputRef.current?.files?.length > 0) {
+      const file = fileInputRef.current.files[0];
+
+      // Sanitize companyName for safe filename
+      const sanitizedCompanyName = formFields.companyName
+        .trim()
+        .replace(/\s+/g, "_")
+        .replace(/[^\w_-]/g, "");
+
+      // Use the sanitized name for file path
+      const storageRef = ref(storage, `trial/${sanitizedCompanyName}_userList.csv`);
+
+      // Upload the file
+      await uploadBytes(storageRef, file);
+
+      // Get the file's download URL
+      fileUrl = await getDownloadURL(storageRef);
+    }
+
+    // Add main trial document in Firestore
     const trialRef = await addDoc(collection(db, "trial"), {
       companyName: formFields.companyName,
       email: formFields.email,
       contact: formFields.contactNumber,
       personinCharge: formFields.personinCharge,
       domainName: formFields.domainName,
-      createdAt: new Date()
+      fileUrl, // null if no file uploaded
+      createdAt: new Date(),
     });
 
-    // 2. Add userDetails subcollection
+    // Add userDetails subcollection documents concurrently
     const userDetailsPromises = rows.map((user) =>
       addDoc(collection(db, `trial/${trialRef.id}/userDetails`), {
         fullName: user.fullName,
         email: user.email,
         department: user.department,
-        position: user.position
+        position: user.position,
       })
     );
 
     await Promise.all(userDetailsPromises);
 
-    // 3. Optionally send email
+    // Prepare email parameters for EmailJS
     const templateParams = {
       company_name: formFields.companyName,
       to_email: formFields.email,
       contact_number: formFields.contactNumber,
       person_in_charge: formFields.personinCharge,
-      domain_name: formFields.domainName
+      domain_name: formFields.domainName,
+      file_url: fileUrl || "No file uploaded",
     };
 
+    // Send email notification
     await emailjs.send(
-      'service_ni86v39',
-      'template_ifezn7h',
+      "service_ni86v39",
+      "template_ifezn7h",
       templateParams,
-      '8nV8GppQ82RWajpEo'
+      "8nV8GppQ82RWajpEo"
     );
 
-    // 4. Optional delay before redirect (e.g., to show loading spinner)
+    // Redirect after a small delay (to show success message etc.)
     setTimeout(() => {
       router.push("/success");
-    }); // Delay for 3 seconds
-
+    }, 3000);
   } catch (err) {
     console.error("Submission failed:", err?.message || err);
     setError("Something went wrong. Please try again.");
-    setIsLoading(false); // Stop loading on error
+  } finally {
+    setIsLoading(false);
   }
 };
+
 
   const handleExport = () => {
     const headers = ["Full Name", "Email", "Department", "Position"];
@@ -402,7 +430,7 @@ export default function FreeTrialForm() {
         <div className="fixed inset-0 z-50 bg-black/70 bg-opacity-50 flex items-center justify-center">
           <div className="bg-white p-8 rounded-xl shadow-lg flex flex-col items-center">
             <div className="w-12 h-12 border-4 border-blue-400 border-t-transparent rounded-full animate-spin mb-4"></div>
-            <p className="text-lg font-semibold text-blue-400">Please wait ...</p>
+            <p className="text-lg font-semibold text-blue-400">Please wait...</p>
           </div>
         </div>
       )}
