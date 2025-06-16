@@ -3,7 +3,7 @@
 import { collection, addDoc, doc, setDoc } from "firebase/firestore";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { auth, db } from "../../../script/firebaseConfig"; // Import Firestore
-import emailjs from '@emailjs/browser';
+import emailjs from "@emailjs/browser";
 import { useState, useRef } from "react";
 import * as XLSX from "xlsx";
 import { useRouter } from "next/navigation";
@@ -15,6 +15,9 @@ export default function FreeTrialForm() {
     department: "",
     position: "",
   });
+
+  const [showConfirm, setShowConfirm] = useState(false);
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
 
   const [rows, setRows] = useState(
     Array.from({ length: 5 }, () => createEmptyRow())
@@ -44,7 +47,7 @@ export default function FreeTrialForm() {
     ]);
   };
 
-  const [showConfirm, setShowConfirm] = useState(false);
+
 
   const deleteRow = (index) => {
     setRows(rows.filter((_, i) => i !== index));
@@ -91,91 +94,93 @@ export default function FreeTrialForm() {
   };
 
   const handleStartFreeTrial = async () => {
-  if (!isFormValid()) {
-    setError(
-      "Please fill out all required fields and ensure at least 5 complete user entries."
-    );
-    return;
-  }
-
-  try {
-    setError("");
-    setIsLoading(true);
-
-    let fileUrl = null;
-
-    if (fileInputRef.current?.files?.length > 0) {
-      const file = fileInputRef.current.files[0];
-
-      // Sanitize companyName for safe filename
-      const sanitizedCompanyName = formFields.companyName
-        .trim()
-        .replace(/\s+/g, "_")
-        .replace(/[^\w_-]/g, "");
-
-      // Use the sanitized name for file path
-      const storageRef = ref(storage, `trial/${sanitizedCompanyName}_userList.csv`);
-
-      // Upload the file
-      await uploadBytes(storageRef, file);
-
-      // Get the file's download URL
-      fileUrl = await getDownloadURL(storageRef);
+    if (!isFormValid()) {
+      setError(
+        "Please fill out all required fields and ensure at least 5 complete user entries."
+      );
+      return;
     }
 
-    // Add main trial document in Firestore
-    const trialRef = await addDoc(collection(db, "trial"), {
-      companyName: formFields.companyName,
-      email: formFields.email,
-      contact: formFields.contactNumber,
-      personinCharge: formFields.personinCharge,
-      domainName: formFields.domainName,
-      fileUrl, // null if no file uploaded
-      createdAt: new Date(),
-    });
+    try {
+      setError("");
+      setIsLoading(true);
 
-    // Add userDetails subcollection documents concurrently
-    const userDetailsPromises = rows.map((user) =>
-      addDoc(collection(db, `trial/${trialRef.id}/userDetails`), {
-        fullName: user.fullName,
-        email: user.email,
-        department: user.department,
-        position: user.position,
-      })
-    );
+      let fileUrl = null;
 
-    await Promise.all(userDetailsPromises);
+      if (fileInputRef.current?.files?.length > 0) {
+        const file = fileInputRef.current.files[0];
 
-    // Prepare email parameters for EmailJS
-    const templateParams = {
-      company_name: formFields.companyName,
-      to_email: formFields.email,
-      contact_number: formFields.contactNumber,
-      person_in_charge: formFields.personinCharge,
-      domain_name: formFields.domainName,
-      file_url: fileUrl || "No file uploaded",
-    };
+        // Sanitize companyName for safe filename
+        const sanitizedCompanyName = formFields.companyName
+          .trim()
+          .replace(/\s+/g, "_")
+          .replace(/[^\w_-]/g, "");
 
-    // Send email notification
-    await emailjs.send(
-      "service_ni86v39",
-      "template_ifezn7h",
-      templateParams,
-      "8nV8GppQ82RWajpEo"
-    );
+        // Use the sanitized name for file path
+        const storageRef = ref(
+          storage,
+          `trial/${sanitizedCompanyName}_userList.csv`
+        );
 
-    // Redirect after a small delay (to show success message etc.)
-    setTimeout(() => {
-      router.push("/success");
-    }, 3000);
-  } catch (err) {
-    console.error("Submission failed:", err?.message || err);
-    setError("Something went wrong. Please try again.");
-  } finally {
-    setIsLoading(false);
-  }
-};
+        // Upload the file
+        await uploadBytes(storageRef, file);
 
+        // Get the file's download URL
+        fileUrl = await getDownloadURL(storageRef);
+      }
+
+      // Add main trial document in Firestore
+      const trialRef = await addDoc(collection(db, "trial"), {
+        companyName: formFields.companyName,
+        email: formFields.email,
+        contact: formFields.contactNumber,
+        personinCharge: formFields.personinCharge,
+        domainName: formFields.domainName,
+        fileUrl, // null if no file uploaded
+        createdAt: new Date(),
+      });
+
+      // Add userDetails subcollection documents concurrently
+      const userDetailsPromises = rows.map((user) =>
+        addDoc(collection(db, `trial/${trialRef.id}/userDetails`), {
+          fullName: user.fullName,
+          email: user.email,
+          department: user.department,
+          position: user.position,
+        })
+      );
+
+      await Promise.all(userDetailsPromises);
+
+      // Prepare email parameters for EmailJS
+      const templateParams = {
+        company_name: formFields.companyName,
+        to_email: formFields.email,
+        contact_number: formFields.contactNumber,
+        person_in_charge: formFields.personinCharge,
+        domain_name: formFields.domainName,
+        file_url: fileUrl || "No file uploaded",
+      };
+
+      // Send email notification
+      await emailjs.send(
+        "service_ni86v39",
+        "template_ifezn7h",
+        templateParams,
+        "8nV8GppQ82RWajpEo"
+      );
+
+      // Redirect after a small delay (to show success message etc.)
+      setTimeout(() => {
+        router.push("/success");
+      }, 3000);
+    } catch (err) {
+      console.error("Submission failed:", err?.message || err);
+      setError("Something went wrong. Please try again.");
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   const handleExport = () => {
     const headers = ["Full Name", "Email", "Department", "Position"];
@@ -192,35 +197,38 @@ export default function FreeTrialForm() {
   };
 
   const handleImport = (event) => {
-    const file = event.target.files[0];
-    if (!file) return;
+  const file = event.target.files[0];
+  if (!file) return;
 
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      const data = new Uint8Array(e.target.result);
-      const workbook = XLSX.read(data, { type: "array" });
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    const data = new Uint8Array(e.target.result);
+    const workbook = XLSX.read(data, { type: "array" });
 
-      const sheetName = workbook.SheetNames[0];
-      const worksheet = workbook.Sheets[sheetName];
-      const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
+    const sheetName = workbook.SheetNames[0];
+    const worksheet = workbook.Sheets[sheetName];
+    const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
 
-      const [, ...dataRows] = jsonData; // skip header row
-      const newRows = dataRows.map(
-        ([fullName, email, department, position]) => ({
-          fullName: fullName || "",
-          email: email || "",
-          department: department || "",
-          position: position || "",
-        })
-      );
+    const [, ...dataRows] = jsonData; // skip header row
+    const newRows = dataRows.map(
+      ([fullName, email, department, position]) => ({
+        fullName: fullName || "",
+        email: email || "",
+        department: department || "",
+        position: position || "",
+      })
+    );
 
-      if (newRows.length > 0) {
-        setRows(newRows);
-      }
-    };
-
-    reader.readAsArrayBuffer(file);
+    if (newRows.length > 0) {
+      setRows(newRows);
+      setShowSuccessModal(true); // ✅ Show modal after successful import
+      setTimeout(() => setShowSuccessModal(false), 3000); // optional auto-close
+    }
   };
+
+  reader.readAsArrayBuffer(file);
+};
+
 
   const handleClearForm = () => {
     setRows(Array.from({ length: 5 }, () => createEmptyRow()));
@@ -249,25 +257,27 @@ export default function FreeTrialForm() {
           {error && <p className="text-red-500 text-xs">{error}</p>}
           {/* Domain Name & Company Name */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {Object.entries({
-            companyName: "Company Name",
-            email: "Email",
-            contactNumber: "Contact Number",
-            personinCharge: "Person in Charge",
-            domainName: "Preferred Domain Name",
-          }).map(([key, label]) => (
-            <div key={key} className="text-gray-700">
-              <label className="block text-sm font-medium text-black mb-1">{label}</label>
-              <input
-                type="text"
-                placeholder={label}
-                value={formFields[key]}
-                onChange={(e) => handleFieldChange(key, e.target.value)}
-                className="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
-              />
-            </div>
-          ))}
-        </div>
+            {Object.entries({
+              companyName: "Company Name",
+              email: "Email",
+              contactNumber: "Contact Number",
+              personinCharge: "Person in Charge",
+              domainName: "Preferred Domain Name",
+            }).map(([key, label]) => (
+              <div key={key} className="text-gray-700">
+                <label className="block text-sm font-medium text-black mb-1">
+                  {label}
+                </label>
+                <input
+                  type="text"
+                  placeholder={label}
+                  value={formFields[key]}
+                  onChange={(e) => handleFieldChange(key, e.target.value)}
+                  className="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+                />
+              </div>
+            ))}
+          </div>
 
           {/* User Details Table */}
           <div>
@@ -283,44 +293,50 @@ export default function FreeTrialForm() {
                 } border border-gray-300 rounded-md`}
               >
                 <div className="overflow-x-auto">
-          <table className="min-w-full text-sm border">
-            <thead>
-              <tr className="bg-blue-300">
-                <th className="px-2 py-1 border">Full Name</th>
-                <th className="px-2 py-1 border">Email</th>
-                <th className="px-2 py-1 border">Department</th>
-                <th className="px-2 py-1 border">Position</th>
-              </tr>
-            </thead>
-            <tbody>
-              {rows.map((row, index) => (
-                <tr key={index}>
-                  {['fullName', 'email', 'department', 'position'].map((field) => (
-                    <td key={field} className="px-2 py-1 border">
-                      <input
-  type="text"
-  placeholder={
-    field === 'fullName'
-      ? 'Full Name'
-      : field === 'email'
-      ? 'Email'
-      : field === 'department'
-      ? 'Department'
-      : 'Position'
-  }
-  value={row[field]}
-  onChange={(e) => handleInputChange(index, field, e.target.value)}
-  className="w-full px-1 py-1 text-xs text-gray-700 border border-gray-300 rounded"
-/>
-
-                    </td>
-                  ))}
-                </tr>
-              ))}
-            </tbody>
-          </table>
-          </div>
-                
+                  <table className="min-w-full text-sm border">
+                    <thead>
+                      <tr className="bg-blue-300">
+                        <th className="px-2 py-1 border">Full Name</th>
+                        <th className="px-2 py-1 border">Email</th>
+                        <th className="px-2 py-1 border">Department</th>
+                        <th className="px-2 py-1 border">Position</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {rows.map((row, index) => (
+                        <tr key={index}>
+                          {["fullName", "email", "department", "position"].map(
+                            (field) => (
+                              <td key={field} className="px-2 py-1 border">
+                                <input
+                                  type="text"
+                                  placeholder={
+                                    field === "fullName"
+                                      ? "Full Name"
+                                      : field === "email"
+                                      ? "Email"
+                                      : field === "department"
+                                      ? "Department"
+                                      : "Position"
+                                  }
+                                  value={row[field]}
+                                  onChange={(e) =>
+                                    handleInputChange(
+                                      index,
+                                      field,
+                                      e.target.value
+                                    )
+                                  }
+                                  className="w-full px-1 py-1 text-xs text-gray-700 border border-gray-300 rounded"
+                                />
+                              </td>
+                            )
+                          )}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
               </div>
               {/* <div className="flex gap-3 mt-2 text-xs">
           <button
@@ -347,17 +363,18 @@ export default function FreeTrialForm() {
         </div> */}
 
               <div className="flex flex-wrap md:flex-nowrap items-center justify-between mt-2 gap-2">
-  <label className="text-xs text-gray-400">
-    (Download the Excel file and fill it out if you have more than 5 users.)
-  </label>
-  <button
-    type="button"
-    onClick={() => setShowConfirm(true)}
-    className="text-indigo-700 hover:underline text-xs"
-  >
-    ✕ Clear All Fields
-  </button>
-</div>
+                <label className="text-xs text-gray-400">
+                  (Download the Excel file and fill it out if you have more than
+                  5 users.)
+                </label>
+                <button
+                  type="button"
+                  onClick={() => setShowConfirm(true)}
+                  className="text-indigo-700 hover:underline text-xs"
+                >
+                  ✕ Clear All Fields
+                </button>
+              </div>
 
               <div className="flex gap-2 text-xs mt-2">
                 <button
@@ -430,10 +447,35 @@ export default function FreeTrialForm() {
         <div className="fixed inset-0 z-50 bg-black/70 bg-opacity-50 flex items-center justify-center">
           <div className="bg-white p-8 rounded-xl shadow-lg flex flex-col items-center">
             <div className="w-12 h-12 border-4 border-blue-400 border-t-transparent rounded-full animate-spin mb-4"></div>
-            <p className="text-lg font-semibold text-blue-400">Please wait...</p>
+            <p className="text-lg font-semibold text-blue-400">
+              Please wait...
+            </p>
           </div>
         </div>
       )}
+
+      {showSuccessModal && (
+  <div className="fixed inset-0 z-50 bg-black/70 bg-opacity-50 flex items-center justify-center">
+    <div className="bg-white p-8 rounded-xl shadow-xl flex flex-col items-center space-y-4 animate-fade-in">
+      {/* Check Icon */}
+      <div className="bg-green-100 rounded-full p-4">
+        <svg
+          className="w-12 h-12 text-green-500"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          viewBox="0 0 24 24"
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+        </svg>
+      </div>
+      <h2 className="text-xl font-bold text-green-600">Uploaded!</h2>
+      <p className="text-sm text-gray-600 text-center">Your Excel file and data were successfully uploaded.</p>
+    </div>
+  </div>
+)}
+
+
     </div>
   );
 }
