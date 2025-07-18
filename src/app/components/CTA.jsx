@@ -5,7 +5,7 @@ import React from 'react'; // Corrected import to 'React'
 export default function CTA() {
   return (
     // Outer div to control the full screen background and centering
-    <div className="flex items-center justify-center bg-white">
+    <div className="flex items-center justify-center bg-white font-[ubuntu]">
       <section className="w-full max-w-4xl mx-auto my-5"> {/* Added mx-auto for horizontal centering */}
         <div className="bg-blue-50 rounded-2xl shadow-xl overflow-hidden border border-blue-200">
           <div className="p-12 text-center">
