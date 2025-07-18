@@ -1,152 +1,187 @@
+"use client";
+
 import React from 'react';
 import { Star, Award, Users, Trophy, Heart, Globe } from 'lucide-react';
+import { Ubuntu } from "next/font/google";
+
+const ubuntu = Ubuntu({
+  weight: ["300", "400", "500", "700"],
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-ubuntu",
+});
 
 const App = () => {
   return (
-    <div className="min-h-screen bg-white font-inter text-gray-800 flex flex-col items-center justify-center p-4 sm:p-8">
+    <div className={`min-h-screen bg-gradient-to-br from-[#F8FAFC] to-[#EFF6FF] ${ubuntu.variable} font-sans text-gray-900 flex flex-col items-center py-16 px-4 sm:px-8`}>
       {/* Header */}
-      <header className="w-full flex flex-col items-center text-center mb-12">
-        <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-black mb-4 animate-fade-in">
-          Our Achievements
+      <header className="w-full max-w-6xl text-center mb-16">
+        <div className="inline-flex items-center justify-center px-4 py-2 bg-[#03acff]/10 rounded-full mb-6">
+          <span className="text-sm font-medium text-[#341bca] tracking-wider">OUR ACHIEVEMENTS</span>
+        </div>
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-4 leading-tight">
+          Recognized <span className="text-[#03acff]">Excellence</span> in Innovation
         </h1>
-        <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto animate-fade-in delay-200">
-          Celebrating milestones and recognition that drive our innovation and commitment to excellence.
+        <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          Celebrating the milestones and recognition that drive our commitment to delivering exceptional business solutions.
         </p>
       </header>
 
-      {/* Achievements Section */}
-      <section className="w-full max-w-6xl flex flex-col items-center space-y-12 mx-auto">
-
-        {/* Ribbon Card */}
-        <div className="bg-white flex flex-col items-center pt-8 pb-8 px-8 rounded-2xl shadow-md hover:scale-[1.02] transition-transform duration-300 ease-in-out w-full max-w-3xl text-center border-t-4 border-blue-500 animate-slide-in-top">
-          <div className="w-16 h-16 bg-blue-500 rounded-full shadow-lg flex items-center justify-center mb-4">
-            <Trophy className="w-7 h-7 text-white" />
-          </div>
-          <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mt-4 mb-3">
-            BestSoftware 2025 Top 100
-          </h2>
-          <p className="text-lg text-gray-600">
-            Recognized as a Leading Innovator in business software solutions
-          </p>
-        </div>
-
-        {/* Award Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-6xl mx-auto">
-          {/* Customer Satisfaction */}
-          <div className="bg-white flex flex-col items-center pt-8 pb-6 px-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 text-center border-t-4 border-blue-400 animate-slide-in-left">
-            <div className="w-16 h-16 bg-blue-400 rounded-full shadow-lg flex items-center justify-center mb-4">
-              <Heart className="w-7 h-7 text-white" />
+      {/* Featured Achievement - Hero Card */}
+      <div className="w-full max-w-6xl mb-16">
+        <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100 hover:shadow-2xl transition-all duration-300">
+          <div className="md:flex">
+            <div className="md:w-1/3 bg-gradient-to-br from-[#03acff] to-[#341bca] p-8 flex flex-col items-center justify-center">
+              <Trophy className="w-12 h-12 text-white mb-4" />
+              <h3 className="text-white text-xl font-medium mb-2 tracking-wide">Top 100</h3>
+              <p className="text-white text-center tracking-wider">BestSoftware 2025</p>
             </div>
-            <h2 className="text-2xl font-bold text-gray-800 mt-4 mb-3">
-              Rank No.1
-            </h2>
-            <p className="text-md text-gray-600 mb-4 flex-grow">
+            <div className="md:w-2/3 p-8">
+              <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4 tracking-tight">
+                Recognized as a Leading Innovator
+              </h2>
+              <p className="text-gray-600 mb-6 leading-relaxed">
+                Desknet's NEO has been selected as one of the top 100 business software solutions for 2025, recognized for our innovative approach to workplace productivity and collaboration.
+              </p>
+              <div className="flex flex-wrap gap-2">
+                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-[#03acff]/10 text-[#341bca] tracking-wide">
+                  Enterprise Software
+                </span>
+                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-[#03acff]/10 text-[#341bca] tracking-wide">
+                  Groupware Solutions
+                </span>
+                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-[#03acff]/10 text-[#341bca] tracking-wide">
+                  Business Innovation
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Achievement Cards Grid */}
+      <div className="w-full max-w-6xl grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+        {/* Customer Satisfaction */}
+        <div className="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100 hover:shadow-xl transition-all duration-300">
+          <div className="p-6">
+            <div className="w-12 h-12 bg-[#03acff]/10 rounded-lg flex items-center justify-center mb-4">
+              <Heart className="w-6 h-6 text-[#341bca]" />
+            </div>
+            <h3 className="text-xl font-bold text-gray-900 mb-2 tracking-tight">Rank No.1</h3>
+            <p className="text-gray-600 mb-4 leading-relaxed">
               in Customer Satisfaction in the groupware and business chat category (2018-2023)
             </p>
-            <div className="text-blue-500 text-sm font-medium">Nikkei Computer</div>
-          </div>
-
-          {/* Users Worldwide */}
-          <div className="bg-white flex flex-col items-center pt-8 pb-6 px-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 text-center border-t-4 border-blue-500 animate-slide-in-top">
-            <div className="w-16 h-16 bg-blue-500 rounded-full shadow-lg flex items-center justify-center mb-4">
-              <Users className="w-7 h-7 text-white" />
+            <div className="text-sm font-medium text-[#03acff] flex items-center tracking-wide">
+              <span>Nikkei Computer</span>
             </div>
-            <h2 className="text-2xl font-bold text-gray-800 mt-4 mb-3">
-              5 Million+ Users
-            </h2>
-            <p className="text-md text-gray-600 mb-4 flex-grow">
+          </div>
+        </div>
+
+        {/* Global Users */}
+        <div className="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100 hover:shadow-xl transition-all duration-300">
+          <div className="p-6">
+            <div className="w-12 h-12 bg-[#03acff]/10 rounded-lg flex items-center justify-center mb-4">
+              <Users className="w-6 h-6 text-[#341bca]" />
+            </div>
+            <h3 className="text-xl font-bold text-gray-900 mb-2 tracking-tight">5 Million+ Users</h3>
+            <p className="text-gray-600 mb-4 leading-relaxed">
               Worldwide adoption across SMEs, enterprises, and government agencies
             </p>
-            <div className="text-blue-500 text-sm font-medium">Global Reach</div>
-          </div>
-
-          {/* Best in Japan */}
-          <div className="bg-white flex flex-col items-center pt-8 pb-6 px-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 text-center border-t-4 border-blue-600 animate-slide-in-right">
-            <div className="w-16 h-16 bg-blue-600 rounded-full shadow-lg flex items-center justify-center mb-4">
-              <Award className="w-7 h-7 text-white" />
+            <div className="text-sm font-medium text-[#03acff] flex items-center tracking-wide">
+              <span>Global Reach</span>
             </div>
-            <h2 className="text-2xl font-bold text-gray-800 mt-4 mb-3">
-              Best in Japan 2025
-            </h2>
-            <p className="text-md text-gray-600 mb-4 flex-grow">
+          </div>
+        </div>
+
+        {/* Best in Japan */}
+        <div className="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100 hover:shadow-xl transition-all duration-300">
+          <div className="p-6">
+            <div className="w-12 h-12 bg-[#03acff]/10 rounded-lg flex items-center justify-center mb-4">
+              <Award className="w-6 h-6 text-[#341bca]" />
+            </div>
+            <h3 className="text-xl font-bold text-gray-900 mb-2 tracking-tight">Best in Japan 2025</h3>
+            <p className="text-gray-600 mb-4 leading-relaxed">
               Recognized as top business software with excellence in innovation
             </p>
-            <div className="text-blue-600 text-sm font-medium">Tokyo Stock Exchange</div>
+            <div className="text-sm font-medium text-[#03acff] flex items-center tracking-wide">
+              <span>Tokyo Stock Exchange</span>
+            </div>
           </div>
         </div>
-      </section>
+      </div>
 
-      {/* Our Journey Section */}
-      <section className="mt-16 text-center max-w-4xl mx-auto p-8 animate-fade-in delay-500 bg-gray-50 rounded-xl">
-        <h2 className="text-3xl sm:text-4xl font-bold text-gray-800 mb-8">
+      {/* Milestones Section */}
+      <div className="w-full max-w-4xl bg-white rounded-xl shadow-lg p-8 mb-16">
+        <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-8 text-center tracking-tight">
           Our Journey to Excellence
         </h2>
-        <div className="space-y-6 text-left">
-          <div className="flex items-start">
-            <div className="flex-shrink-0 mt-1 mr-4 text-blue-500">
-              <Star className="w-5 h-5" />
+        
+        <div className="space-y-8">
+          {/* Milestone 1 */}
+          <div className="flex">
+            <div className="flex-shrink-0 mr-4">
+              <div className="flex items-center justify-center w-10 h-10 rounded-full bg-[#03acff]/10 text-[#341bca]">
+                <Star className="w-5 h-5" />
+              </div>
             </div>
-            <p className="text-lg text-gray-600 leading-relaxed">
-              Ranked No. 1 in Customer Satisfaction in the groupware and business chat category by Nikkei Computer for six consecutive years (2018–2023).
-            </p>
+            <div>
+              <h3 className="text-lg font-semibold text-gray-900 mb-1 tracking-tight">
+                Customer Satisfaction Leader
+              </h3>
+              <p className="text-gray-600 leading-relaxed">
+                Ranked No. 1 in Customer Satisfaction in the groupware and business chat category by Nikkei Computer for six consecutive years (2018–2023).
+              </p>
+            </div>
           </div>
-          <div className="flex items-start">
-            <div className="flex-shrink-0 mt-1 mr-4 text-blue-500">
-              <Globe className="w-5 h-5" />
+
+          {/* Milestone 2 */}
+          <div className="flex">
+            <div className="flex-shrink-0 mr-4">
+              <div className="flex items-center justify-center w-10 h-10 rounded-full bg-[#03acff]/10 text-[#341bca]">
+                <Globe className="w-5 h-5" />
+              </div>
             </div>
-            <p className="text-lg text-gray-600 leading-relaxed">
-              Over 5 million users worldwide as of May 2025, spanning SMEs, large enterprises, government agencies, educational institutions, and local governments.
-            </p>
+            <div>
+              <h3 className="text-lg font-semibold text-gray-900 mb-1 tracking-tight">
+                Global Adoption
+              </h3>
+              <p className="text-gray-600 leading-relaxed">
+                Over 5 million users worldwide as of May 2025, spanning SMEs, large enterprises, government agencies, educational institutions, and local governments.
+              </p>
+            </div>
           </div>
-          <div className="flex items-start">
-            <div className="flex-shrink-0 mt-1 mr-4 text-blue-500">
-              <Trophy className="w-5 h-5" />
+
+          {/* Milestone 3 */}
+          <div className="flex">
+            <div className="flex-shrink-0 mr-4">
+              <div className="flex items-center justify-center w-10 h-10 rounded-full bg-[#03acff]/10 text-[#341bca]">
+                <Trophy className="w-5 h-5" />
+              </div>
             </div>
-            <p className="text-lg text-gray-600 leading-relaxed">
-              Hailed as one of the Best Software in Japan 2025, listed on the Section of the Tokyo Stock Exchange.
-            </p>
+            <div>
+              <h3 className="text-lg font-semibold text-gray-900 mb-1 tracking-tight">
+                Industry Recognition
+              </h3>
+              <p className="text-gray-600 leading-relaxed">
+                Hailed as one of the Best Software in Japan 2025, listed on the Section of the Tokyo Stock Exchange.
+              </p>
+            </div>
           </div>
         </div>
-      </section>
+      </div>
 
-      {/* Tailwind CSS + Font + Animations */}
-      <script src="https://cdn.tailwindcss.com"></script>
-      <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
-        .font-inter {
-          font-family: 'Inter', sans-serif;
-        }
-        @keyframes fadeIn {
-          from { opacity: 0; }
-          to { opacity: 1; }
-        }
-        @keyframes slideInTop {
-          from { transform: translateY(-50px); opacity: 0; }
-          to { transform: translateY(0); opacity: 1; }
-        }
-        @keyframes slideInLeft {
-          from { transform: translateX(-50px); opacity: 0; }
-          to { transform: translateX(0); opacity: 1; }
-        }
-        @keyframes slideInRight {
-          from { transform: translateX(50px); opacity: 0; }
-          to { transform: translateX(0); opacity: 1; }
-        }
-        .animate-fade-in {
-          animation: fadeIn 1s ease-out forwards;
-        }
-        .animate-slide-in-top {
-          animation: slideInTop 0.8s ease-out forwards;
-        }
-        .animate-slide-in-left {
-          animation: slideInLeft 0.8s ease-out forwards;
-        }
-        .animate-slide-in-right {
-          animation: slideInRight 0.8s ease-out forwards;
-        }
-        .delay-200 { animation-delay: 0.2s; }
-        .delay-500 { animation-delay: 0.5s; }
-      `}</style>
+      {/* CTA Section */}
+      <div className="w-full max-w-4xl bg-gradient-to-r from-[#03acff] to-[#341bca] rounded-xl p-8 text-center">
+        <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4 tracking-tight">
+          Join Our Growing Community
+        </h2>
+        <p className="text-white/80 mb-6 max-w-2xl mx-auto leading-relaxed tracking-wide">
+          Be part of the 5 million+ users transforming their workplace with Desknet's NEO.
+        </p>
+        <button className="bg-white text-[#341bca] font-medium px-6 py-3 rounded-lg hover:bg-gray-100 transition-colors duration-300 tracking-wide">
+          Request a Demo
+        </button>
+      </div>
     </div>
   );
 };
