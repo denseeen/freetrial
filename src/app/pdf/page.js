@@ -136,7 +136,7 @@ export default function PdfCardGrid() {
                   '--tw-ring-color': '#03acff', // Ring color for focus state
                 }}
               >
-                {/* Download Icon */}
+                {/* Download Wow icon */}
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4 mr-2">
                   <path fillRule="evenodd" d="M12 2.25a.75.75 0 0 1 .75.75v11.69l3.22-3.22a.75.75 0 1 1 1.06 1.06l-4.5 4.5a.75.75 0 0 1-1.06 0l-4.5-4.5a.75.75 0 1 1 1.06-1.06l3.22 3.22V3a.75.75 0 0 1 .75-.75Z" clipRule="evenodd" />
                   <path fillRule="evenodd" d="M12.75 15.75h3.75a.75.75 0 0 0 0-1.5H12.75a.75.75 0 0 0 0 1.5Z" clipRule="evenodd" />
