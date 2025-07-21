@@ -1,5 +1,5 @@
 import React from 'react';
-import Comp from "./components/Complimentary";
+// import Comp from "./components/Complimentary";
 import Hero from "./components/Hero"; 
 import About from "./components/About"; 
 import MissionVission from './components/MissionVission';
@@ -7,6 +7,8 @@ import CTA from './components/CTA';
 import Reward from './components/Reward'; // Import the MissionVision component
 import Why from './components/Why'; // Import the Why component
 import  Goal  from './components/Goal'; // Import the Goal component
+import Outstanding from './components/Outstanding'; // Import the Outstanding component
+import  Plan  from './components/Plan';
 
 export const metadata = {
   title: 'Welcome to Desknets NEO by Inspire',
@@ -30,8 +32,10 @@ export default function Home() { // Renamed to Home (standard React practice)
       <About/>
       <Reward/> {/* Render the Reward component */}
       <Goal/> {/* Render the Goal component */}
+      <Outstanding/> {/* Render the Outstanding component */}
+      <Plan/> {/* Render the Plan component */}
       <CTA/> {/* Render the CTA component */}
-      <Comp/>
+      {/* <Comp/> */}
       
     </div>
   );

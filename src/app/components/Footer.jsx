@@ -8,7 +8,11 @@ export default function Footer() {
           <div className="w-full md:w-1/3 mb-8 md:mb-0 text-center md:text-left">
             <div className="text-3xl font-bold text-white mb-4">desknet's NEO</div>
             <div className="text-gray-400 max-w-xs mx-auto md:mx-0 opacity-90">
-              Japanese innovation, meticulously tailored for dynamic Filipino workplaces. Empowering teams to achieve their full potential.
+              <ul className="space-y-3">
+                <li><a href="/faq" className="text-blue-200 hover:text-blue-400 transition text-sm">FAQS</a></li>
+                <li><a href="/case" className="text-blue-200 hover:text-blue-400 transition text-sm">Case Study</a></li>
+                <li><a href="#" className="text-blue-200 hover:text-blue-400 transition text-sm">Success Stories</a></li>
+              </ul>
             </div>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-8 sm:gap-12 w-full md:w-2/3">
