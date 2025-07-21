@@ -14,8 +14,8 @@ export default function WhyChooseUs() {
           Japan's Most Popular Collaboration Software
         </p>
 
-        {/* Features Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-16">
+        {/* Features Grid - Changed grid-cols-3 to grid-cols-4 */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-16">
           {/* Feature 1: Intuitive and User-friendly */}
           <div className="flex flex-col items-center">
             {/* Icon Circle - using primary color with white icon */}
@@ -70,7 +70,30 @@ export default function WhyChooseUs() {
             <h3 className="text-xl md:text-2xl text-[#341bca] font-semibold mb-2">
               Affordable and Accessible
             </h3>
-            <p className="text-gray-700">Cost-effective for businesses of all sizes</p>
+            <p className="text-gray-700">
+              Cost-effective for businesses of all sizes
+            </p>
+          </div>
+
+          {/* New Feature: Paperless Efficiency */}
+          <div className="flex flex-col items-center">
+            <div className="w-28 h-28 md:w-32 md:h-32 lg:w-36 lg:h-36 rounded-full bg-[#03acff] flex items-center justify-center mb-6 shadow-lg">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-16 w-16 md:h-20 md:w-20 text-white"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z" />
+              </svg>
+            </div>
+            <h3 className="text-xl md:text-2xl text-[#341bca] font-semibold mb-2">
+              Paperless Efficiency
+            </h3>
+            <p className="text-gray-700">
+              Streamline workflows and reduce waste with digital documents and
+              approvals.
+            </p>
           </div>
         </div>
       </div>

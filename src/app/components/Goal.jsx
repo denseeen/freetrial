@@ -91,67 +91,12 @@ const Partnership = () => {
         </div>
       </div>
 
-      {/* Detailed Partnership Section */}
-      <div className="w-full max-w-4xl bg-white rounded-xl shadow-lg p-8 mb-16">
-        <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-8 text-center tracking-tight">
-          Our Partnership in Action
-        </h2>
-        
-        <div className="space-y-8">
-          {/* Point 1 */}
-          <div className="flex">
-            <div className="flex-shrink-0 mr-4">
-              <div className="flex items-center justify-center w-10 h-10 rounded-full bg-[#03acff]/10 text-[#341bca]">
-                <Lightbulb className="w-5 h-5" />
-              </div>
-            </div>
-            <div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-1 tracking-tight">
-                Cultural Exchange Through Technology
-              </h3>
-              <p className="text-gray-600 leading-relaxed">
-                We're bridging Japanese efficiency with Filipino creativity, creating work solutions that respect both cultures while driving productivity.
-              </p>
-            </div>
-          </div>
-
-          {/* Point 2 */}
-          <div className="flex">
-            <div className="flex-shrink-0 mr-4">
-              <div className="flex items-center justify-center w-10 h-10 rounded-full bg-[#03acff]/10 text-[#341bca]">
-                <Globe className="w-5 h-5" />
-              </div>
-            </div>
-            <div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-1 tracking-tight">
-                Localized Global Solutions
-              </h3>
-              <p className="text-gray-600 leading-relaxed">
-                While Desknet's NEO brings Japanese innovation, Inspire Next Global ensures it's perfectly adapted to Filipino workplace needs and contexts.
-              </p>
-            </div>
-          </div>
-
-          {/* Point 3 */}
-          <div className="flex">
-            <div className="flex-shrink-0 mr-4">
-              <div className="flex items-center justify-center w-10 h-10 rounded-full bg-[#03acff]/10 text-[#341bca]">
-                <Target className="w-5 h-5" />
-              </div>
-            </div>
-            <div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-1 tracking-tight">
-                Future-Ready Workplaces
-              </h3>
-              <p className="text-gray-600 leading-relaxed">
-                Together, we're building digital workplaces that can adapt to tomorrow's challenges while solving today's productivity pain points.
-              </p>
-            </div>
-          </div>
-        </div>
+      {/* Concluding statement */}
+      <div className="w-full max-w-6xl text-center mt-12">
+        <p className="text-xl sm:text-2xl font-semibold text-gray-800 leading-relaxed">
+          Together, Inspire Next Global Inc. and Desknet’s NEO are creating a future where technology meets tradition, and where Filipino workplaces thrive with purpose.
+        </p>
       </div>
-
-    
     </div>
   );
 };
