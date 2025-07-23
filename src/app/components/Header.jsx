@@ -3,16 +3,29 @@ import React from 'react';
 export default function Header() {
   return (
     <header className="bg-white shadow-lg py-4">
-      <div className="max-w-screen-xl mx-auto px-6 flex justify-between items-center">
+      {/* Increased horizontal padding from px-6 to px-8 */}
+      <div className="max-w-screen-xl mx-auto px-8 flex justify-between items-center">
         {/* Logo on the left */}
         <div className="flex items-center space-x-2">
-          {/* Increased height to h-16 (example) */}
-          <img src="/images/logohehe.png" alt="Logo" className="h-16 w-auto" /> 
+          <img src="/images/logohehe.png" alt="Logo" className="h-16 w-auto" />
         </div>
+
+        {/* Navigation links in the center - using Option 1 for centering */}
+        <nav className="hidden md:flex flex-grow justify-center">
+          <a href="/Hero" className="text-gray-600 hover:text-[#3C8CDE] text-lg font-medium transition-colors duration-200 px-4">
+            Home
+          </a>
+          <a href="/About" className="text-gray-600 hover:text-[#3C8CDE] text-lg font-medium transition-colors duration-200 px-4">
+            About
+          </a>
+          <a href="/freetrial" className="text-gray-600 hover:text-[#3C8CDE] text-lg font-medium transition-colors duration-200 px-4">
+            Free Trial
+          </a>
+        </nav>
 
         {/* Subscribe button on the right */}
         <button
-          className="bg-[#3C8CDE] text-white font-medium px-5 py-2 rounded-lg 
+          className="bg-[#3C8CDE] text-white font-medium px-5 py-2 rounded-lg
                      hover:bg-gray-100 hover:scale-105 transition-all duration-200 shadow-md
                      focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-75"
         >
