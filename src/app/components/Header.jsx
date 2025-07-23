@@ -1,8 +1,16 @@
-import React from 'react';
+'use client';
 
+import React from 'react';
+import { useRouter } from 'next/navigation';
 export default function Header() {
+
+   const router = useRouter();
+
+   const handleSubscribe = () => {
+    router.push('/subscribtions'); // This should match your folder name inside /app
+  };
   return (
-    <header className="bg-white shadow-lg py-4">
+    <header className="bg-white py-4 border-b-2 border-black pb-2 shadow-xl">
       {/* Increased horizontal padding from px-6 to px-8 */}
       <div className="max-w-screen-xl mx-auto px-8 flex justify-between items-center">
         {/* Logo on the left */}
@@ -24,7 +32,8 @@ export default function Header() {
         </nav>
 
         {/* Subscribe button on the right */}
-        <button
+      <button
+          onClick={handleSubscribe}
           className="bg-[#3C8CDE] text-white font-medium px-5 py-2 rounded-lg
                      hover:bg-gray-100 hover:scale-105 transition-all duration-200 shadow-md
                      focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-75"
