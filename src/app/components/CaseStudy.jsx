@@ -1,10 +1,13 @@
-import React from 'react';
+"use client";
+import React, { useState, useEffect, useRef } from 'react';
+import { motion, AnimatePresence, useInView } from 'framer-motion';
+import { ChevronLeft, ChevronRight, Download } from 'lucide-react';
 
-// This is the component that will be imported as "CaseStudy" in your page.js
-export default function CaseStudy() { // Changed function name to CaseStudy
+export default function CaseStudy() {
   const industries = [
     {
       name: "Manufacturing Industry",
+      icon: "🏭",
       companies: [
         { name: "Philippines EDS Techno-Service, Inc.", users: "800 Users" },
         { name: "Pilot", users: "1,500 Users", subscription: "6 Months subscription" },
@@ -12,12 +15,14 @@ export default function CaseStudy() { // Changed function name to CaseStudy
     },
     {
       name: "Travel Industry",
+      icon: "✈️",
       companies: [
         { name: "H.I.S Travel Corporation", users: "36 Users", subscription: "3 Months subscription" },
       ]
     },
     {
       name: "Government Industry",
+      icon: "🏛️",
       companies: [
         { name: "Kobe City", users: "20,166 Users", subscription: "2 Years subscription" },
         { name: "Ohda City Hall", users: "570 Users" },
@@ -25,6 +30,7 @@ export default function CaseStudy() { // Changed function name to CaseStudy
     },
     {
       name: "Construction Industry",
+      icon: "🏗️",
       companies: [
         { name: "Sankei Construction Co., Ltd.", users: "300 Users", subscription: "3 Months subscription" },
         { name: "Mitsubishi Estate Home", users: "500 Users" },
@@ -32,6 +38,7 @@ export default function CaseStudy() { // Changed function name to CaseStudy
     },
     {
       name: "Retail Industry",
+      icon: "🛍️",
       companies: [
         { name: "Nakaniwa Tokei", users: "25 Users", subscription: "6 Months subscription" },
         { name: "Life Corporation", users: "6,000 Users", subscription: "20 Months subscription" },
@@ -39,6 +46,7 @@ export default function CaseStudy() { // Changed function name to CaseStudy
     },
     {
       name: "Logistics Industry",
+      icon: "🚚",
       companies: [
         { name: "Zero", users: "750 Users" },
         { name: "Morikuni", users: "70 Users", subscription: "3 Months subscription" },
@@ -46,6 +54,7 @@ export default function CaseStudy() { // Changed function name to CaseStudy
     },
     {
       name: "Healthcare Industry",
+      icon: "🏥",
       companies: [
         { name: "Seirei Welfare Corporation", users: "14,000 Users" },
         { name: "Eijukai Medical Corporation", users: "190 Users" },
@@ -53,6 +62,7 @@ export default function CaseStudy() { // Changed function name to CaseStudy
     },
     {
       name: "Restaurant Industry",
+      icon: "🍽️",
       companies: [
         { name: "Aleph", users: "600 Users" },
         { name: "Wins Japan", users: "70 Users", subscription: "6 Months" },
@@ -60,6 +70,7 @@ export default function CaseStudy() { // Changed function name to CaseStudy
     },
     {
       name: "University Industry",
+      icon: "🎓",
       companies: [
         { name: "Tokyo Healthcare University", users: "2,500 Users" },
         { name: "Musashino University", users: "1,345 Users", subscription: "10 Months" },
@@ -67,6 +78,7 @@ export default function CaseStudy() { // Changed function name to CaseStudy
     },
     {
       name: "IT Industry",
+      icon: "💻",
       companies: [
         { name: "Inet Corporation", users: "1,700 Users" },
         { name: "System Approach", users: "25 Users" },
@@ -74,81 +86,245 @@ export default function CaseStudy() { // Changed function name to CaseStudy
     },
     {
       name: "Non-Government Unit (NGO) Industry",
+      icon: "🤝",
       companies: [
         { name: "Osaka Water Comprehensive Service", users: "300 Users" },
       ]
     }
   ];
 
+  // More realistic case study images
+  const pdfPageImages = [
+    "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+    "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+    "https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+    "https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80",
+    "https://images.unsplash.com/photo-1573164713988-8665fc963095?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80",
+  ];
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [direction, setDirection] = useState(0);
+  const [isHovering, setIsHovering] = useState(false);
+
+  // Auto-play functionality with pause on hover
+  useEffect(() => {
+    if (isHovering) return;
+    
+    const interval = setInterval(() => {
+      setDirection(1);
+      setCurrentIndex((prevIndex) =>
+        prevIndex === pdfPageImages.length - 1 ? 0 : prevIndex + 1
+      );
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [pdfPageImages.length, isHovering]);
+
+  const handleNext = () => {
+    setDirection(1);
+    setCurrentIndex((prevIndex) =>
+      prevIndex === pdfPageImages.length - 1 ? 0 : prevIndex + 1
+    );
+  };
+
+  const handlePrev = () => {
+    setDirection(-1);
+    setCurrentIndex((prevIndex) =>
+      prevIndex === 0 ? pdfPageImages.length - 1 : prevIndex - 1
+    );
+  };
+
+  const slideVariants = {
+    enter: (direction) => ({
+      x: direction > 0 ? "100%" : "-100%",
+      opacity: 0,
+    }),
+    center: {
+      x: 0,
+      opacity: 1,
+    },
+    exit: (direction) => ({
+      x: direction < 0 ? "100%" : "-100%",
+      opacity: 0,
+    }),
+  };
+
+  const industryRefs = useRef([]);
+  industryRefs.current = [];
+
+  const addToRefs = (el) => {
+    if (el && !industryRefs.current.includes(el)) {
+      industryRefs.current.push(el);
+    }
+  };
+
+  const industryItemVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut",
+      },
+    },
+  };
+
   return (
-    <section className="py-16 px-4 bg-white dark:bg-gray-900 text-black dark:text-white min-h-screen">
-      <div className="max-w-4xl mx-auto">
-        <h1 className="text-4xl md:text-5xl font-extrabold text-center mb-6">CASE STUDIES</h1>
-
-        
-
-        <p className="text-lg mb-10 text-center text-gray-800 dark:text-gray-200">
-          These are some of the companies from different industries that use Desknet’s NEO:
-        </p>
-
-        <div className="space-y-12"> {/* Spacing between industry sections */}
-          {industries.map((industry, index) => (
-            <div key={index} className="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg shadow-md">
-              <h2
-                className="text-2xl font-bold mb-5 pb-2 border-b-2 border-current"
-                style={{ color: '#03acff' }} // Apply primary accent blue
-              >
-                {industry.name}
-              </h2>
-              <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4">
-                {industry.companies.map((company, compIndex) => (
-                  <li key={compIndex} className="p-3 bg-white dark:bg-gray-900 rounded-md shadow-sm">
-                    <h3 className="font-semibold text-lg text-gray-900 dark:text-white">
-                      {company.name}
-                    </h3>
-                    <p className="text-gray-700 dark:text-gray-300">
-                      Users: {company.users}
-                      {company.subscription && `, Subscription: ${company.subscription}`}
-                    </p>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+    <section className="py-16 px-4 bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 text-black dark:text-white min-h-screen font-[ubuntu]">
+      <div className="max-w-6xl mx-auto">
+        <div className="text-center mb-16">
+          <h1 className="text-4xl md:text-5xl font-extrabold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400 dark:from-blue-400 dark:to-blue-300">
+            CASE STUDIES
+          </h1>
+          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+            Discover how companies across various industries leverage Desknet's NEO to transform their operations
+          </p>
         </div>
 
-        {/* PDF Link */}
-        <div className="text-center mt-16">
+        {/* Carousel Section */}
+        <div 
+          className="relative w-full h-80 md:h-96 lg:h-[500px] overflow-hidden rounded-2xl shadow-2xl mb-16 bg-gray-200 flex items-center justify-center border-4 border-blue-500 dark:border-blue-400"
+          onMouseEnter={() => setIsHovering(true)}
+          onMouseLeave={() => setIsHovering(false)}
+        >
+          <AnimatePresence initial={false} custom={direction}>
+            <motion.div
+              key={currentIndex}
+              className="absolute w-full h-full"
+              variants={slideVariants}
+              initial="enter"
+              animate="center"
+              exit="exit"
+              custom={direction}
+              transition={{
+                x: { type: "spring", stiffness: 300, damping: 30 },
+                opacity: { duration: 0.2 },
+              }}
+            >
+              <img
+                src={pdfPageImages[currentIndex]}
+                alt={`Case Study Page ${currentIndex + 1}`}
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent flex items-end p-8">
+                <div className="text-white">
+                  <h3 className="text-2xl font-bold mb-2">Success Story #{currentIndex + 1}</h3>
+                  <p className="text-lg opacity-90">How we helped transform their business operations</p>
+                </div>
+              </div>
+            </motion.div>
+          </AnimatePresence>
+
+          {/* Navigation Buttons */}
+          <button
+            onClick={handlePrev}
+            className="absolute left-4 z-20 p-3 bg-white/20 backdrop-blur-md rounded-full shadow-lg hover:bg-white/30 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white/50 text-white"
+            aria-label="Previous slide"
+          >
+            <ChevronLeft size={28} />
+          </button>
+          <button
+            onClick={handleNext}
+            className="absolute right-4 z-20 p-3 bg-white/20 backdrop-blur-md rounded-full shadow-lg hover:bg-white/30 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white/50 text-white"
+            aria-label="Next slide"
+          >
+            <ChevronRight size={28} />
+          </button>
+
+          {/* Pagination Dots */}
+          <div className="absolute bottom-6 flex space-x-2 z-20">
+            {pdfPageImages.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => {
+                  setDirection(index > currentIndex ? 1 : -1);
+                  setCurrentIndex(index);
+                }}
+                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                  currentIndex === index ? 'bg-white scale-125' : 'bg-white/50 hover:bg-white/70'
+                }`}
+                aria-label={`Go to slide ${index + 1}`}
+              ></button>
+            ))}
+          </div>
+        </div>
+
+        <div className="mb-16 text-center">
+          <p className="text-lg text-gray-700 dark:text-gray-300 max-w-4xl mx-auto">
+            These are some of the companies from different industries that use Desknet's NEO to streamline their operations and enhance productivity.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+          {industries.map((industry, index) => {
+            const industryRef = useRef(null);
+            const isIndustryInView = useInView(industryRef, { once: true, amount: 0.1 });
+
+            return (
+              <motion.div
+                key={index}
+                ref={industryRef}
+                className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 dark:border-gray-700 hover:border-blue-400 dark:hover:border-blue-300"
+                variants={industryItemVariants}
+                initial="hidden"
+                animate={isIndustryInView ? "visible" : "hidden"}
+                transition={{ delay: index * 0.1 }}
+                whileHover={{ y: -5 }}
+              >
+                <div className="flex items-center mb-4">
+                  <span className="text-3xl mr-3">{industry.icon}</span>
+                  <h2 className="text-xl font-bold text-blue-600 dark:text-blue-400">
+                    {industry.name}
+                  </h2>
+                </div>
+                <ul className="space-y-3">
+                  {industry.companies.map((company, compIndex) => (
+                    <li 
+                      key={compIndex} 
+                      className="p-4 bg-gray-50 dark:bg-gray-700/50 rounded-lg transition-all duration-200 hover:bg-gray-100 dark:hover:bg-gray-700"
+                    >
+                      <h3 className="font-semibold text-gray-900 dark:text-white">
+                        {company.name}
+                      </h3>
+                      <div className="text-sm text-gray-600 dark:text-gray-300 mt-1 space-y-1">
+                        <p>👥 {company.users}</p>
+                        {company.subscription && <p>⏳ {company.subscription}</p>}
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+            );
+          })}
+        </div>
+
+        {/* CTA Section */}
+        <div className="bg-gradient-to-r from-blue-600 to-blue-500 dark:from-blue-700 dark:to-blue-600 rounded-2xl p-8 md:p-12 text-center shadow-xl mb-16">
+          <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">Ready to see how we can help your business?</h3>
+          <p className="text-blue-100 mb-6 max-w-3xl mx-auto">
+            Download our complete case study compilation to learn more about our success stories across industries.
+          </p>
           <a
             href="https://drive.google.com/drive/folders/1TUyKMHNY2K6H4EPxKSQMMTCgiJBsOeYT?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block px-8 py-4 text-white text-lg font-semibold rounded-full shadow-lg transition-colors duration-300 focus:outline-none focus:ring-4 focus:ring-opacity-50 hover:shadow-xl"
-            style={{
-              backgroundColor: '#03acff', // Primary accent color for button background
-              '--tw-ring-color': '#03acff', // Ring color for focus state
-            }}
+            className="inline-flex items-center px-6 py-3 bg-white text-blue-600 font-semibold rounded-lg shadow-md hover:bg-gray-100 hover:shadow-lg transition-all duration-300"
           >
-            <span className="flex items-center justify-center">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6 mr-2">
-                <path d="M11.25 11.25a.75.75 0 0 1 .75-.75h7.5a.75.75 0 0 1 .75.75v6.75a.75.75 0 0 1-.75.75h-7.5a.75.75 0 0 1-.75-.75v-6.75Z" />
-                <path fillRule="evenodd" d="M3.75 6.75a3 3 0 0 1 3-3h7.125c.708 0 1.395.208 1.987.584L21.75 9.75v5.25c0 1.654-1.346 3-3 3h-2.25a.75.75 0 0 0 0 1.5H18c2.485 0 4.5-2.015 4.5-4.5V9.477c0-.98-.363-1.917-1.026-2.624L15.378 3.62A2.25 2.25 0 0 0 13.625 3h-6.875a1.5 1.5 0 0 0-1.5 1.5v1.97l-.73-.219A.75.75 0 0 0 3 6.75v1.5c0 .207.168.375.375.375H7.5a.75.75 0 0 1 0 1.5H3.375A.375.375 0 0 1 3 10.5v1.5c0 .207.168.375.375.375H7.5a.75.75 0 0 1 0 1.5H3.375A.375.375 0 0 1 3 13.5v1.5c0 .207.168.375.375.375H7.5a.75.75 0 0 1 0 1.5H3.375A.375.375 0 0 1 3 16.5V18a3 3 0 0 0 3 3h1.5a.75.75 0 0 0 0-1.5H6a1.5 1.5 0 0 1-1.5-1.5V6.75ZM6.75 7.5h.008v.008H6.75V7.5ZM6.75 10.5h.008v.008H6.75V10.5ZM6.75 13.5h.008v.008H6.75V13.5ZM6.75 16.5h.008v.008H6.75V16.5Z" clipRule="evenodd" />
-              </svg>
-              Compilation of Case Studies in PDF Format
-            </span>
+            <Download className="mr-2" size={20} />
+            Download Case Studies (PDF)
           </a>
         </div>
 
         {/* Citation Note */}
-        <div className="text-sm italic text-gray-600 mt-5 dark:text-gray-400 text-center mb-8 bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
-          <p className="font-semibold text-sm">
+        <div className="text-sm text-gray-600 dark:text-gray-400 text-center">
+          <p>
             NEOPhilippine Tech Inc. Case Studies.{" "}
             <a
               href="https://www.dneoph.com/case-study"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-blue-600 hover:underline transition-colors duration-200"
-              style={{ color: '#03acff' }} // Apply specific accent blue
+              className="text-blue-500 hover:underline dark:text-blue-400"
             >
               https://www.dneoph.com/case-study
             </a>
