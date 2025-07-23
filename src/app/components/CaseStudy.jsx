@@ -1,13 +1,13 @@
 "use client";
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence, useInView } from 'framer-motion';
-import { ChevronLeft, ChevronRight, Download } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Download, FileText } from 'lucide-react'; // Added FileText icon
 
 export default function CaseStudy() {
   const industries = [
     {
       name: "Manufacturing Industry",
-      icon: "🏭",
+      icon: "🏭", // Added icon
       companies: [
         { name: "Philippines EDS Techno-Service, Inc.", users: "800 Users" },
         { name: "Pilot", users: "1,500 Users", subscription: "6 Months subscription" },
@@ -15,14 +15,14 @@ export default function CaseStudy() {
     },
     {
       name: "Travel Industry",
-      icon: "✈️",
+      icon: "✈️", // Added icon
       companies: [
         { name: "H.I.S Travel Corporation", users: "36 Users", subscription: "3 Months subscription" },
       ]
     },
     {
       name: "Government Industry",
-      icon: "🏛️",
+      icon: "🏛️", // Added icon
       companies: [
         { name: "Kobe City", users: "20,166 Users", subscription: "2 Years subscription" },
         { name: "Ohda City Hall", users: "570 Users" },
@@ -30,7 +30,7 @@ export default function CaseStudy() {
     },
     {
       name: "Construction Industry",
-      icon: "🏗️",
+      icon: "🏗️", // Added icon
       companies: [
         { name: "Sankei Construction Co., Ltd.", users: "300 Users", subscription: "3 Months subscription" },
         { name: "Mitsubishi Estate Home", users: "500 Users" },
@@ -38,7 +38,7 @@ export default function CaseStudy() {
     },
     {
       name: "Retail Industry",
-      icon: "🛍️",
+      icon: "🛍️", // Added icon
       companies: [
         { name: "Nakaniwa Tokei", users: "25 Users", subscription: "6 Months subscription" },
         { name: "Life Corporation", users: "6,000 Users", subscription: "20 Months subscription" },
@@ -46,7 +46,7 @@ export default function CaseStudy() {
     },
     {
       name: "Logistics Industry",
-      icon: "🚚",
+      icon: "🚚", // Added icon
       companies: [
         { name: "Zero", users: "750 Users" },
         { name: "Morikuni", users: "70 Users", subscription: "3 Months subscription" },
@@ -54,7 +54,7 @@ export default function CaseStudy() {
     },
     {
       name: "Healthcare Industry",
-      icon: "🏥",
+      icon: "🏥", // Added icon
       companies: [
         { name: "Seirei Welfare Corporation", users: "14,000 Users" },
         { name: "Eijukai Medical Corporation", users: "190 Users" },
@@ -62,7 +62,7 @@ export default function CaseStudy() {
     },
     {
       name: "Restaurant Industry",
-      icon: "🍽️",
+      icon: "🍽️", // Added icon
       companies: [
         { name: "Aleph", users: "600 Users" },
         { name: "Wins Japan", users: "70 Users", subscription: "6 Months" },
@@ -70,7 +70,7 @@ export default function CaseStudy() {
     },
     {
       name: "University Industry",
-      icon: "🎓",
+      icon: "🎓", // Added icon
       companies: [
         { name: "Tokyo Healthcare University", users: "2,500 Users" },
         { name: "Musashino University", users: "1,345 Users", subscription: "10 Months" },
@@ -78,7 +78,7 @@ export default function CaseStudy() {
     },
     {
       name: "IT Industry",
-      icon: "💻",
+      icon: "💻", // Added icon
       companies: [
         { name: "Inet Corporation", users: "1,700 Users" },
         { name: "System Approach", users: "25 Users" },
@@ -86,51 +86,94 @@ export default function CaseStudy() {
     },
     {
       name: "Non-Government Unit (NGO) Industry",
-      icon: "🤝",
+      icon: "🤝", // Added icon
       companies: [
         { name: "Osaka Water Comprehensive Service", users: "300 Users" },
       ]
     }
   ];
 
-  // More realistic case study images
-  const pdfPageImages = [
-    "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-    "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-    "https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-    "https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80",
-    "https://images.unsplash.com/photo-1573164713988-8665fc963095?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80",
+  // Carousel items now include image, PDF URL, title, and description
+  const carouselItems = [
+    {
+      image: "/images/Advertising.png",
+      pdf: "/pdf/Advertising_and_Publishing.pdf", // Placeholder PDF URL 1
+      title: "Advertising and Publishing",
+      description: "By streamlining complicated tasks and communication, you can increase the amount of time available for creative idea generation."
+    },
+    {
+      image: "/images/Education.png",
+      pdf: "/pdf/Education.pdf", // Placeholder PDF URL 2
+      title: "Education",
+      description: "Groupware for promoting the computerization of school administration"
+    },
+    {
+      image: "/images/Finance.png",
+      pdf: "/pdf/financeusagedeskneten-US.pdf", // Placeholder PDF URL 3
+      title: "Finance",
+      description: "Modernizing public services with a secure and intuitive platform."
+    },
+    {
+      image: "/images/Thorough.png",
+      pdf: "/pdf/groupware_mynavicomparisonen-U.pdf", // Placeholder PDF URL 4
+      title: "Thorough Comparison",
+      description: "Functions and Costs"
+    },
+    {
+      image: "/images/solution.png",
+      pdf: "/pdf/manufacturingusageofdesknetneoen-US.pdf", // Placeholder PDF URL 5
+      title: "Solution",
+      description: "In other words, it is essential to use it in conjunction with domestic groupware"
+    },
+    {
+      image: "https://placehold.co/800x600/3C8CDE/ffffff?text=PDF+Case+Study+6",
+      pdf: "/pdf/ms365_neotogetheren-US.pdf", // Placeholder PDF URL 6
+      title: "Logistics Optimization",
+      description: "Streamlining supply chain and delivery processes."
+    },
+    {
+      image: "/images/Goverment.png",
+      pdf: "/NEOGovernmentCaseStudy.pdf", // Placeholder PDF URL 7
+      title: "Government Industry Case Study",
+      description: "Work hassle-free with Desknet’s NEO"
+    },
+    {
+      image: "/Manufacturing.png",
+      pdf: "/pdf/NEOManufacturingCaseStudy.pdf", // Placeholder PDF URL 8
+      title: "Restaurant Operations Digitalization",
+      description: "Improving order management and staff coordination for restaurants."
+    },
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(0);
-  const [isHovering, setIsHovering] = useState(false);
+  const [isHovering, setIsHovering] = useState(false); // State for carousel hover
 
   // Auto-play functionality with pause on hover
   useEffect(() => {
-    if (isHovering) return;
-    
+    if (isHovering) return; // Pause if hovering over carousel
+
     const interval = setInterval(() => {
       setDirection(1);
       setCurrentIndex((prevIndex) =>
-        prevIndex === pdfPageImages.length - 1 ? 0 : prevIndex + 1
+        prevIndex === carouselItems.length - 1 ? 0 : prevIndex + 1
       );
-    }, 5000);
+    }, 5000); // Change image every 5 seconds
 
-    return () => clearInterval(interval);
-  }, [pdfPageImages.length, isHovering]);
+    return () => clearInterval(interval); // Clean up the interval on component unmount
+  }, [carouselItems.length, isHovering]); // Dependency on isHovering
 
   const handleNext = () => {
     setDirection(1);
     setCurrentIndex((prevIndex) =>
-      prevIndex === pdfPageImages.length - 1 ? 0 : prevIndex + 1
+      prevIndex === carouselItems.length - 1 ? 0 : prevIndex + 1
     );
   };
 
   const handlePrev = () => {
     setDirection(-1);
     setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? pdfPageImages.length - 1 : prevIndex - 1
+      prevIndex === 0 ? carouselItems.length - 1 : prevIndex - 1
     );
   };
 
@@ -149,9 +192,11 @@ export default function CaseStudy() {
     }),
   };
 
+  // Refs and animations for industry sections
   const industryRefs = useRef([]);
-  industryRefs.current = [];
+  industryRefs.current = []; // Clear refs on re-render
 
+  // Helper function to add elements to the refs list
   const addToRefs = (el) => {
     if (el && !industryRefs.current.includes(el)) {
       industryRefs.current.push(el);
@@ -172,8 +217,8 @@ export default function CaseStudy() {
 
   return (
     <section className="py-16 px-4 bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 text-black dark:text-white min-h-screen font-[ubuntu]">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
+      <div className="max-w-6xl mx-auto"> {/* Increased max-width */}
+        <div className="text-center mb-16"> {/* Increased bottom margin */}
           <h1 className="text-4xl md:text-5xl font-extrabold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400 dark:from-blue-400 dark:to-blue-300">
             CASE STUDIES
           </h1>
@@ -183,10 +228,10 @@ export default function CaseStudy() {
         </div>
 
         {/* Carousel Section */}
-        <div 
+        <div
           className="relative w-full h-80 md:h-96 lg:h-[500px] overflow-hidden rounded-2xl shadow-2xl mb-16 bg-gray-200 flex items-center justify-center border-4 border-blue-500 dark:border-blue-400"
-          onMouseEnter={() => setIsHovering(true)}
-          onMouseLeave={() => setIsHovering(false)}
+          onMouseEnter={() => setIsHovering(true)} // Pause auto-play on hover
+          onMouseLeave={() => setIsHovering(false)} // Resume auto-play on mouse leave
         >
           <AnimatePresence initial={false} custom={direction}>
             <motion.div
@@ -203,15 +248,26 @@ export default function CaseStudy() {
               }}
             >
               <img
-                src={pdfPageImages[currentIndex]}
+                src={carouselItems[currentIndex].image} // Use image from carouselItems
                 alt={`Case Study Page ${currentIndex + 1}`}
                 className="w-full h-full object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent flex items-end p-8">
+              {/* Text Overlay on Carousel Image */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent flex flex-col justify-end p-8"> {/* Changed to flex-col justify-end */}
                 <div className="text-white">
-                  <h3 className="text-2xl font-bold mb-2">Success Story #{currentIndex + 1}</h3>
-                  <p className="text-lg opacity-90">How we helped transform their business operations</p>
+                  <h3 className="text-2xl font-bold mb-2">{carouselItems[currentIndex].title}</h3> {/* Dynamic title */}
+                  <p className="text-lg opacity-90">{carouselItems[currentIndex].description}</p> {/* Dynamic description */}
                 </div>
+                {/* View PDF Button */}
+                <a
+                  href={carouselItems[currentIndex].pdf} // Link to dynamic PDF URL
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 transition-all duration-300 mt-4 self-start" // Added self-start
+                >
+                  <FileText className="mr-2" size={20} />
+                  View PDF
+                </a>
               </div>
             </motion.div>
           </AnimatePresence>
@@ -222,19 +278,19 @@ export default function CaseStudy() {
             className="absolute left-4 z-20 p-3 bg-white/20 backdrop-blur-md rounded-full shadow-lg hover:bg-white/30 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white/50 text-white"
             aria-label="Previous slide"
           >
-            <ChevronLeft size={28} />
+            <ChevronLeft size={28} /> {/* Smaller icon size */}
           </button>
           <button
             onClick={handleNext}
             className="absolute right-4 z-20 p-3 bg-white/20 backdrop-blur-md rounded-full shadow-lg hover:bg-white/30 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white/50 text-white"
             aria-label="Next slide"
           >
-            <ChevronRight size={28} />
+            <ChevronRight size={28} /> {/* Smaller icon size */}
           </button>
 
           {/* Pagination Dots */}
-          <div className="absolute bottom-6 flex space-x-2 z-20">
-            {pdfPageImages.map((_, index) => (
+          <div className="absolute bottom-6 flex space-x-2 z-20"> {/* Adjusted bottom spacing */}
+            {carouselItems.map((_, index) => (
               <button
                 key={index}
                 onClick={() => {
@@ -249,17 +305,19 @@ export default function CaseStudy() {
             ))}
           </div>
         </div>
+        {/* End Carousel Section */}
 
-        <div className="mb-16 text-center">
+        <div className="mb-16 text-center"> {/* Consolidated paragraph and added margin */}
           <p className="text-lg text-gray-700 dark:text-gray-300 max-w-4xl mx-auto">
             These are some of the companies from different industries that use Desknet's NEO to streamline their operations and enhance productivity.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+        {/* Industry Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16"> {/* Adjusted grid and margin */}
           {industries.map((industry, index) => {
             const industryRef = useRef(null);
-            const isIndustryInView = useInView(industryRef, { once: true, amount: 0.1 });
+            const isIndustryInView = useInView(industryRef, { once: true, amount: 0.1 }); // Animate once on scroll
 
             return (
               <motion.div
@@ -270,26 +328,26 @@ export default function CaseStudy() {
                 initial="hidden"
                 animate={isIndustryInView ? "visible" : "hidden"}
                 transition={{ delay: index * 0.1 }}
-                whileHover={{ y: -5 }}
+                whileHover={{ y: -5 }} /* Added subtle lift on hover */
               >
                 <div className="flex items-center mb-4">
-                  <span className="text-3xl mr-3">{industry.icon}</span>
+                  <span className="text-3xl mr-3">{industry.icon}</span> {/* Display industry icon */}
                   <h2 className="text-xl font-bold text-blue-600 dark:text-blue-400">
                     {industry.name}
                   </h2>
                 </div>
-                <ul className="space-y-3">
+                <ul className="space-y-3"> {/* Added space between list items */}
                   {industry.companies.map((company, compIndex) => (
-                    <li 
-                      key={compIndex} 
+                    <li
+                      key={compIndex}
                       className="p-4 bg-gray-50 dark:bg-gray-700/50 rounded-lg transition-all duration-200 hover:bg-gray-100 dark:hover:bg-gray-700"
                     >
                       <h3 className="font-semibold text-gray-900 dark:text-white">
                         {company.name}
                       </h3>
-                      <div className="text-sm text-gray-600 dark:text-gray-300 mt-1 space-y-1">
-                        <p>👥 {company.users}</p>
-                        {company.subscription && <p>⏳ {company.subscription}</p>}
+                      <div className="text-sm text-gray-600 dark:text-gray-300 mt-1 space-y-1"> {/* Added space-y-1 */}
+                        <p>👥 {company.users}</p> {/* Added user icon */}
+                        {company.subscription && <p>⏳ {company.subscription}</p>} {/* Added clock icon */}
                       </div>
                     </li>
                   ))}
@@ -299,22 +357,8 @@ export default function CaseStudy() {
           })}
         </div>
 
-        {/* CTA Section */}
-        <div className="bg-gradient-to-r from-blue-600 to-blue-500 dark:from-blue-700 dark:to-blue-600 rounded-2xl p-8 md:p-12 text-center shadow-xl mb-16">
-          <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">Ready to see how we can help your business?</h3>
-          <p className="text-blue-100 mb-6 max-w-3xl mx-auto">
-            Download our complete case study compilation to learn more about our success stories across industries.
-          </p>
-          <a
-            href="https://drive.google.com/drive/folders/1TUyKMHNY2K6H4EPxKSQMMTCgiJBsOeYT?usp=sharing"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center px-6 py-3 bg-white text-blue-600 font-semibold rounded-lg shadow-md hover:bg-gray-100 hover:shadow-lg transition-all duration-300"
-          >
-            <Download className="mr-2" size={20} />
-            Download Case Studies (PDF)
-          </a>
-        </div>
+        {/* CTA Section (Replaced old PDF Link) */}
+     
 
         {/* Citation Note */}
         <div className="text-sm text-gray-600 dark:text-gray-400 text-center">
