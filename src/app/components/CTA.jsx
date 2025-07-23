@@ -1,16 +1,16 @@
 "use client";
 
-import React from 'react'; // Corrected import to 'React'
+import React from 'react';
 
 export default function CTA() {
   return (
     // Outer div to control the full screen background and centering
-    <div className="flex items-center justify-center bg-white font-[ubuntu]">
-      <section className="w-full max-w-4xl mx-auto my-5"> {/* Added mx-auto for horizontal centering */}
-        <div className="bg-blue-50 rounded-2xl shadow-xl overflow-hidden border border-blue-200">
+    <div className="flex items-center justify-center dark:bg-gray-900 font-[ubuntu] py-16 px-4 sm:px-6 lg:px-8"> {/* Made outer background even darker */}
+      <section className="w-full max-w-4xl mx-auto">
+        <div className="bg-blue-900 rounded-2xl shadow-2xl overflow-hidden border border-blue-700"> {/* Darker blue background for the card */}
           <div className="p-12 text-center">
-            <h2 className="text-3xl sm:text-4xl font-bold text-blue-900 mb-6">Ready to Transform Your Workplace?</h2>
-            <p className="text-xl text-blue-800 mb-10 max-w-2xl mx-auto opacity-90">
+            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6">Ready to Transform Your Workplace?</h2> {/* White text for contrast */}
+            <p className="text-xl text-blue-200 mb-10 max-w-2xl mx-auto opacity-90"> {/* Lighter blue text for readability */}
               Join the growing number of forward-thinking Philippine businesses already harnessing the power of desknet's NEO.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
