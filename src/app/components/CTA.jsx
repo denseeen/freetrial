@@ -5,7 +5,7 @@ import React from 'react';
 export default function CTA() {
   return (
     // Outer div to control the full screen background and centering
-    <div className="flex items-center justify-center dark:bg-gray-900 font-[ubuntu] py-16 px-4 sm:px-6 lg:px-8"> {/* Made outer background even darker */}
+    <div className="flex items-center justify-center bg-gray-300 font-[ubuntu] py-16 px-4 sm:px-6 lg:px-8"> {/* Made outer background even darker */}
       <section className="w-full max-w-4xl mx-auto">
         <div className="bg-blue-900 rounded-2xl shadow-2xl overflow-hidden border border-blue-700"> {/* Darker blue background for the card */}
           <div className="p-12 text-center">

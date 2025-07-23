@@ -9,7 +9,7 @@ const About = () => {
   const youtubeEmbedUrl = `https://www.youtube.com/embed/${youtubeVideoId}`;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-blue-100 font-inter text-gray-800 flex flex-col items-center py-16 px-4 sm:px-6 lg:px-8">
+    <div id="about" className="w-full min-mid-screen bg-gradient-to-br from-blue-50 to-blue-100 font-inter text-gray-800 flex flex-col items-center py-16 px-4 sm:px-6 lg:px-8">
       {/* Header Section */}
       <header className="w-full max-w-6xl text-center mb-12">
         <h1 className="text-5xl font-extrabold text-[#3C8CDE] leading-tight mb-4 drop-shadow-md">
@@ -21,9 +21,9 @@ const About = () => {
       </header>
 
       {/* Main Content Section with YouTube Video First */}
-      <main className="w-full max-w-6xl bg-white shadow-1xl rounded-2xl p-8 md:p-12 mb-16">
+      <main className="w-full max-w-7xl bg-white shadow-1xl rounded-2xl p-8 md:p-12 ">
         {/* YouTube Video Section - Now at the top */}
-        <section className="w-full flex flex-col items-center justify-center mb-12">
+        <section className="w-full flex flex-col items-center justify-center mb-10">
           <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center border-b-2 border-[#3C8CDE] pb-2 rounded-lg w-full">
             Discover Desknet's NEO
           </h2>
