@@ -21,7 +21,7 @@ export default function MissionVision() {
 
   return (
     // Main container for the section
-    <div className="w-full max-w-7xl mx-auto mt-5 items-center justify-center grid grid-cols-1 lg:grid-cols-2 gap-8 mb-5 bg-[#3C8CDE] p-6 rounded-2xl font-[ubuntu]">
+    <div className="w-full max-w-7xl mt-5 items-center justify-center grid grid-cols-1 lg:grid-cols-2 gap-5 mb-5 bg-[#3C8CDE] rounded-2xl font-[ubuntu]">
       {/* Mission Card */}
       <motion.div
         ref={missionCardRef}
