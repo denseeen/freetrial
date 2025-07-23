@@ -77,6 +77,12 @@ export default function PlanningPage() {
         <h1 className="text-4xl md:text-5xl font-extrabold text-center mb-12 ">
           Choose Your <span style={{ color: '#03acff' }}>Perfect Plan</span>
         </h1>
+         <div className="text-center mt-12 text-black mb-10">
+          <p>
+            You could enjoy up to 2 Months free-trial with Desknet’s NEO By Inspire
+            if you subscribed or signed a contract with us for 1 year!
+          </p>
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 ">
             
@@ -124,12 +130,7 @@ export default function PlanningPage() {
         </div>
 
         {/* Free Trial Note */}
-        <div className="text-center mt-12 text-black">
-          <p>
-            You could enjoy up to 2 Months free-trial with Desknet’s NEO By Inspire
-            if you subscribed or signed a contract with us for 1 year!
-          </p>
-        </div>
+       
       </div>
     </section>
   );

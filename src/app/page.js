@@ -34,7 +34,7 @@ export default function Home() { // Renamed to Home (standard React practice)
       <Goal/> {/* Render the Goal component */}
       <Outstanding/> {/* Render the Outstanding component */}
       <Plan/> {/* Render the Plan component */}
-      <CTA/> {/* Render the CTA component */}
+      {/* <CTA/>  */}
       {/* <Comp/> */}
       
     </div>

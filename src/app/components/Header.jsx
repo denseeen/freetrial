@@ -20,13 +20,13 @@ export default function Header() {
 
         {/* Navigation links in the center - using Option 1 for centering */}
         <nav className="hidden md:flex flex-grow justify-center">
-          <a href="/Hero" className="text-gray-600 hover:text-[#3C8CDE] text-lg font-medium transition-colors duration-200 px-4">
+          <a href="/." className="text-gray-600 hover:text-[#3C8CDE] text-lg font-medium transition-colors duration-200 px-4">
             Home
           </a>
-          <a href="/About" className="text-gray-600 hover:text-[#3C8CDE] text-lg font-medium transition-colors duration-200 px-4">
+          <a href="#about" className="text-gray-600 hover:text-[#3C8CDE] text-lg font-medium transition-colors duration-200 px-4">
             About
           </a>
-          <a href="/freetrial" className="text-gray-600 hover:text-[#3C8CDE] text-lg font-medium transition-colors duration-200 px-4">
+          <a href="/form" className="text-gray-600 hover:text-[#3C8CDE] text-lg font-medium transition-colors duration-200 px-4">
             Free Trial
           </a>
         </nav>

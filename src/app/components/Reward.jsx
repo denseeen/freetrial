@@ -28,7 +28,7 @@ const App = () => {
       </header>
 
       {/* Featured Achievement - Hero Card */}
-      <div className="w-full max-w-6xl mb-16">
+      <div className="w-full max-w-7xl mb-16">
         <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100 hover:shadow-2xl transition-all duration-300">
           <div className="md:flex">
             <div className="md:w-1/3 bg-gradient-to-br from-[#03acff] to-[#341bca] p-8 flex flex-col items-center justify-center">
@@ -60,7 +60,7 @@ const App = () => {
       </div>
 
       {/* Achievement Cards Grid */}
-      <div className="w-full max-w-6xl grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+      <div className="w-full max-w-7xl grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
         {/* Customer Satisfaction */}
         <div className="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100 hover:shadow-xl transition-all duration-300">
           <div className="p-6">
@@ -111,7 +111,7 @@ const App = () => {
       </div>
 
       {/* Milestones Section */}
-      <div className="w-full max-w-4xl bg-white rounded-xl shadow-lg p-8 mb-16">
+      <div className="w-full max-w-7xl bg-white rounded-xl shadow-lg p-8 mb-16">
         <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-8 text-center tracking-tight">
           Our Journey to Excellence
         </h2>
@@ -171,7 +171,7 @@ const App = () => {
       </div>
 
       {/* CTA Section */}
-      <div className="w-full max-w-4xl bg-gradient-to-r from-[#03acff] to-[#341bca] rounded-xl p-8 text-center">
+      <div className="w-full max-w-7xl bg-gradient-to-r from-[#03acff] to-[#341bca] rounded-xl p-8 text-center">
         <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4 tracking-tight">
           Join Our Growing Community
         </h2>

@@ -36,7 +36,7 @@ export default function Outstanding() {
 
   return (
     <section className="py-16 px-4 bg-#03acff"> {/* Section background: white in light mode, dark gray in dark mode */}
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-7xl mx-auto">
         <h1 className="text-4xl md:text-5xl font-extrabold text-center mb-12 text-black dark:text-white leading-tight"> {/* Main text color: black in light mode, white in dark mode */}
           Discover Our <span>Outstanding Features</span> {/* Removed inline style - now inherits parent's text color */}
         </h1>
