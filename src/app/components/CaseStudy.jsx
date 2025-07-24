@@ -250,24 +250,24 @@ export default function CaseStudy() {
               <img
                 src={carouselItems[currentIndex].image} // Use image from carouselItems
                 alt={`Case Study Page ${currentIndex + 1}`}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover rounded-2xl"
               />
-              {/* Text Overlay on Carousel Image */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent flex flex-col justify-end p-8"> {/* Changed to flex-col justify-end */}
-                <div className="text-white">
-                  <h3 className="text-2xl font-bold mb-2">{carouselItems[currentIndex].title}</h3> {/* Dynamic title */}
-                  <p className="text-lg opacity-90">{carouselItems[currentIndex].description}</p> {/* Dynamic description */}
+              {/* Improved Glassy Text Overlay */}
+              <div className="absolute inset-0 flex items-end p-8">
+                <div className="bg-white/70 backdrop-blur-md rounded-2xl shadow-xl p-6 max-w-lg w-full">
+                  <div className="w-10 h-1 bg-[#3C8CDE] rounded-full mb-3"></div>
+                  <h3 className="text-2xl font-bold text-[#3C8CDE] mb-2">{carouselItems[currentIndex].title}</h3>
+                  <p className="text-lg text-gray-700 mb-4">{carouselItems[currentIndex].description}</p>
+                  <a
+                    href={carouselItems[currentIndex].pdf}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center px-6 py-3 bg-[#3C8CDE] text-white font-semibold rounded-full shadow-lg hover:bg-blue-700 transition-all duration-300"
+                  >
+                    <Download className="mr-2" size={20} />
+                    View PDF
+                  </a>
                 </div>
-                {/* View PDF Button */}
-                <a
-                  href={carouselItems[currentIndex].pdf} // Link to dynamic PDF URL
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 transition-all duration-300 mt-4 self-start" // Added self-start
-                >
-                  <FileText className="mr-2" size={20} />
-                  View PDF
-                </a>
               </div>
             </motion.div>
           </AnimatePresence>
@@ -275,21 +275,21 @@ export default function CaseStudy() {
           {/* Navigation Buttons */}
           <button
             onClick={handlePrev}
-            className="absolute left-4 z-20 p-3 bg-white/20 backdrop-blur-md rounded-full shadow-lg hover:bg-white/30 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white/50 text-white"
+            className="absolute left-4 z-20 p-4 bg-white text-[#3C8CDE] rounded-full shadow-lg hover:bg-[#3C8CDE] hover:text-white transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#3C8CDE]"
             aria-label="Previous slide"
           >
-            <ChevronLeft size={28} /> {/* Smaller icon size */}
+            <ChevronLeft size={32} />
           </button>
           <button
             onClick={handleNext}
-            className="absolute right-4 z-20 p-3 bg-white/20 backdrop-blur-md rounded-full shadow-lg hover:bg-white/30 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white/50 text-white"
+            className="absolute right-4 z-20 p-4 bg-white text-[#3C8CDE] rounded-full shadow-lg hover:bg-[#3C8CDE] hover:text-white transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#3C8CDE]"
             aria-label="Next slide"
           >
-            <ChevronRight size={28} /> {/* Smaller icon size */}
+            <ChevronRight size={32} />
           </button>
 
           {/* Pagination Dots */}
-          <div className="absolute bottom-6 flex space-x-2 z-20"> {/* Adjusted bottom spacing */}
+          <div className="absolute bottom-6 flex space-x-2 z-20">
             {carouselItems.map((_, index) => (
               <button
                 key={index}
@@ -297,8 +297,8 @@ export default function CaseStudy() {
                   setDirection(index > currentIndex ? 1 : -1);
                   setCurrentIndex(index);
                 }}
-                className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                  currentIndex === index ? 'bg-white scale-125' : 'bg-white/50 hover:bg-white/70'
+                className={`w-4 h-4 rounded-full transition-all duration-300 shadow-md border-2 border-white ${
+                  currentIndex === index ? 'bg-[#3C8CDE] scale-125' : 'bg-white/60 hover:bg-[#3C8CDE]/60'
                 }`}
                 aria-label={`Go to slide ${index + 1}`}
               ></button>

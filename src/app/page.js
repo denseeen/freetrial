@@ -9,6 +9,7 @@ import Why from './components/Why'; // Import the Why component
 import  Goal  from './components/Goal'; // Import the Goal component
 import Outstanding from './components/Outstanding'; // Import the Outstanding component
 import  Plan  from './components/Plan';
+import  Contact  from './components/Contact';
 
 export const metadata = {
   title: 'Welcome to Desknets NEO by Inspire',
@@ -34,6 +35,7 @@ export default function Home() { // Renamed to Home (standard React practice)
       <Goal/> {/* Render the Goal component */}
       <Outstanding/> {/* Render the Outstanding component */}
       <Plan/> {/* Render the Plan component */}
+      <Contact/>
       {/* <CTA/>  */}
       {/* <Comp/> */}
       
