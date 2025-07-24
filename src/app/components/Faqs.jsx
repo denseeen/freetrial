@@ -54,15 +54,15 @@ Want to schedule an introduction or on-boarding discussion? You can send your av
     if (answerText.includes('sales@inspirenextglobal.com')) {
       return (
         <>
-          For self-taught access of Desknet’s NEO By Inspire tools and functions, you can access the prepared User Manual in this website, you can also watch our ready-made videos on YouTube:{" "}
+          For self-taught access of Desknet’s NEO By Inspire tools and functions, you can access the prepared User Manual in this website, you can also watch our ready-made videos on YouTube:{' '}
           <a href="https://www.youtube.com/@InspireNextGlobalInc" target="_blank" rel="noopener noreferrer" className="hover:underline" style={{ color: '#03acff' }}>Inspire Next Global Inc.</a>
-          <br /><br /> {/* Double line break for paragraph separation */}
-          You can keep in-touch with us or send us your inquiries through our email{" "}
-          <a href="mailto:sales@inspirenextglobal.com" className="hover:underline" style={{ color: '#03acff' }}>sales@inspirenextglobal.com</a> or dial through{" "}
-          <a href="tel:+639202260942" className="hover:underline" style={{ color: '#03acff' }}>09202260942</a> /{" "}
+          <br /><br />
+          You can keep in-touch with us or send us your inquiries through our email{' '}
+          <a href="mailto:sales@inspirenextglobal.com" className="hover:underline" style={{ color: '#03acff' }}>sales@inspirenextglobal.com</a> or dial through{' '}
+          <a href="tel:+639202260942" className="hover:underline" style={{ color: '#03acff' }}>09202260942</a> /{' '}
           <a href="tel:+639992232797" className="hover:underline" style={{ color: '#03acff' }}>09992232797</a>.
           <br /><br />
-          Want to schedule an introduction or on-boarding discussion? You can send your available schedule and location of your site/company through{" "}
+          Want to schedule an introduction or on-boarding discussion? You can send your available schedule and location of your site/company through{' '}
           <a href="mailto:sales@inspirenextglobal.com" className="hover:underline" style={{ color: '#03acff' }}>sales@inspirenextglobal.com</a>.
         </>
       );
@@ -76,30 +76,34 @@ Want to schedule an introduction or on-boarding discussion? You can send your av
   };
 
   return (
-    <section className="py-16 px-4 bg-white dark:bg-gray-900 text-black dark:text-white min-h-screen">
-      <div className="max-w-3xl mx-auto">
-        <h1 className="text-4xl md:text-5xl font-extrabold text-center mb-12">
-          Frequently Asked Questions
-        </h1>
-
-        <div className="space-y-4">
+    <section className="py-16 px-4 bg-[#F3F8FE] min-h-screen flex items-center justify-center">
+      <div className="max-w-3xl w-full mx-auto  p-8 md:p-12">
+        <div className="text-center mb-10">
+          <h1 className="text-4xl md:text-5xl font-extrabold text-[#3C8CDE] mb-2">Frequently Asked Questions</h1>
+          <div className="w-16 h-1 bg-[#3C8CDE] rounded-full mx-auto mb-4"></div>
+        </div>
+        <div className="space-y-5">
           {faqs.map((faq, index) => (
-            <div key={index} className="bg-gray-50 dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
+            <div
+              key={index}
+              className={`bg-white rounded-xl shadow-md border transition-all duration-300 overflow-hidden ${
+                openIndex === index ? 'border-[#3C8CDE] shadow-lg' : 'border-gray-200'
+              } hover:shadow-lg`}
+            >
               <button
                 onClick={() => toggleFAQ(index)}
-                className="w-full text-left p-5 flex justify-between items-center text-lg font-semibold cursor-pointer transition-colors duration-200"
+                className="w-full text-left p-6 flex justify-between items-center text-lg font-semibold cursor-pointer transition-colors duration-200 focus:outline-none"
               >
-                <h2
+                <span
                   className={`text-xl font-bold transition-colors duration-200 ${
-                    openIndex === index ? 'text-current' : 'text-black dark:text-white'
+                    openIndex === index ? 'text-[#3C8CDE]' : 'text-gray-900'
                   }`}
-                  style={{ color: openIndex === index ? '#03acff' : undefined }} // Apply accent color when open
                 >
                   {faq.question}
-                </h2>
+                </span>
                 <svg
-                  className={`w-6 h-6 transform transition-transform duration-200 ${
-                    openIndex === index ? 'rotate-180' : ''
+                  className={`w-7 h-7 transform transition-transform duration-300 ${
+                    openIndex === index ? 'rotate-180 text-[#3C8CDE]' : 'text-gray-400'
                   }`}
                   fill="none"
                   stroke="currentColor"
@@ -109,11 +113,13 @@ Want to schedule an introduction or on-boarding discussion? You can send your av
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
                 </svg>
               </button>
-              {openIndex === index && (
-                <div className="px-5 pb-5 pt-2 text-gray-700 dark:text-gray-300 border-t border-gray-200 dark:border-gray-700 animate-fade-in">
-                  {renderRichAnswer(faq.answer)}
-                </div>
-              )}
+              <div
+                className={`px-6 pb-6 pt-2 text-gray-700 transition-all duration-300 border-t border-gray-100 ${
+                  openIndex === index ? 'block animate-fade-in' : 'hidden'
+                }`}
+              >
+                {renderRichAnswer(faq.answer)}
+              </div>
             </div>
           ))}
         </div>
