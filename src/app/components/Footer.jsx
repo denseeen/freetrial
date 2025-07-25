@@ -33,10 +33,8 @@ export default function Footer() {
             <div className="text-center md:text-left">
               <h4 className="font-semibold text-white mb-4 text-lg">Connect</h4>
               <ul className="space-y-3">
-                <li><a href="#" className="text-blue-200 hover:text-blue-400 transition text-base">Contact Us</a></li>
-                <li><a href="#" className="text-blue-200 hover:text-blue-400 transition text-base">Support</a></li>
+                <li><a href="#" className="text-blue-200 hover:text-blue-400 transition text-base">Youtube</a></li>
                 <li><a href="#" className="text-blue-200 hover:text-blue-400 transition text-base">Facebook</a></li>
-                <li><a href="#" className="text-blue-200 hover:text-blue-400 transition text-base">LinkedIn</a></li>
               </ul>
             </div>
           </div>
