@@ -7,15 +7,27 @@ export default function Header() {
   const router = useRouter();
   const pathname = usePathname();
 
-  const handleSubscribe = () => {
-    router.push('/subscribtions'); // This should match your folder name inside /app
-  };
-
-  // Check if we are on homepage
   const isHomePage = pathname === '/' || pathname === '/.';
 
+  const handleSubscribe = () => {
+    router.push('/subscribtions');
+  };
+
+  const handleHomeClick = () => {
+    if (isHomePage) {
+      // Smooth scroll to top
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      router.push('/');
+    }
+  };
+
   return (
-    <header className="bg-white py-4 border-b-2 pb-2 shadow-xl">
+    <header
+      className={`${
+        isHomePage ? 'sticky top-0 z-50' : ''
+      } bg-white py-4 border-b-2 pb-2 shadow-xl`}
+    >
       <div className="max-w-screen-xl mx-auto px-8 flex justify-between items-center">
         {/* Logo */}
         <div className="flex items-center space-x-2">
@@ -24,24 +36,24 @@ export default function Header() {
 
         {/* Navigation Links */}
         <nav className="hidden md:flex flex-grow justify-center">
-          <a
-            href="/"
-            className="text-gray-600 hover:text-[#3C8CDE] text-lg font-medium transition-colors duration-200 px-4"
+          <button
+            onClick={handleHomeClick}
+            className="text-gray-600 hover:text-[#2f6cb3] text-lg font-medium transition-colors duration-200 px-4"
           >
             Home
-          </a>
+          </button>
 
           {isHomePage && (
             <>
               <a
                 href="#about"
-                className="text-gray-600 hover:text-[#3C8CDE] text-lg font-medium transition-colors duration-200 px-4"
+                className="text-gray-600 hover:text-[#2f6cb3] text-lg font-medium transition-colors duration-200 px-4"
               >
                 About
               </a>
               <a
                 href="/form"
-                className="text-gray-600 hover:text-[#3C8CDE] text-lg font-medium transition-colors duration-200 px-4"
+                className="text-gray-600 hover:text-[#2f6cb3] text-lg font-medium transition-colors duration-200 px-4"
               >
                 Free Trial
               </a>
@@ -53,12 +65,11 @@ export default function Header() {
         <button
           onClick={handleSubscribe}
           className="bg-[#3C8CDE] text-white font-medium px-5 py-2 rounded-lg
-                    hover:bg-[#2f6cb3] hover:scale-105 transition-all duration-200 shadow-md
-                    focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-75"
+                     hover:bg-[#2f6cb3] hover:scale-105 transition-all duration-200 shadow-md
+                     focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-75"
         >
           Subscribe
         </button>
-
       </div>
     </header>
   );
