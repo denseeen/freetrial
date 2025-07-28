@@ -15,30 +15,32 @@ export default function Outstanding() {
     {
       title: "Highly Regarded",
       description: "A popular choice with customers, our solution is trusted for its reliability and excellent reputation.",
-      image: "path/to/highly-regarded-image.png"
+      image: "/images/user.png"
     },
     {
       title: "Dependable Security",
       description: "Tailor log-in methods to fit your security policy. Robust access log management detects unauthorized access and prevents data leaks.",
-      image: "path/to/dependable-security-image.png"
+      image: "/images/secure.png"
     },
     {
       title: "Simple Customization",
       description: "The agile, responsive management system allows setting access privileges and other functions to be easily adjusted for companies of any scale.",
-      image: "path/to/simple-customization-image.png"
+      image: "/images/peps.png"
     },
     {
       title: "Free to Update",
       description: "Enjoy continuous improvements and new features with free updates, ensuring you always have the latest version.",
-      image: "path/to/free-to-update-image.png"
+      image: "/images/update.png"
     }
   ];
 
   return (
-    <section className="py-16 px-4 bg-#03acff"> {/* Section background: white in light mode, dark gray in dark mode */}
+    // Changed background to bg-white. Removed dark mode background as it's meant to be consistently white.
+    <section className="bg-white py-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
-        <h1 className="text-4xl md:text-5xl font-extrabold text-center mb-12 text-black dark:text-white leading-tight"> {/* Main text color: black in light mode, white in dark mode */}
-          Discover Our <span>Outstanding Features</span> {/* Removed inline style - now inherits parent's text color */}
+        {/* Main heading: text-gray-900 ensures readability on white. Removed dark:text-white. */}
+        <h1 className="text-4xl md:text-5xl font-extrabold text-center mb-12 text-gray-900 leading-tight">
+          Discover Our <span className="text-blue-600">Outstanding Features</span> {/* Added a consistent highlight color */}
         </h1>
 
         <div className="space-y-16">
@@ -55,10 +57,12 @@ export default function Outstanding() {
                 />
               </div>
               <div className="md:w-1/2 text-center md:text-left">
-                <h2 className="text-3xl font-bold mb-3 text-black dark:text-white"> {/* Feature title: black in light mode, white in dark mode */}
+                {/* Feature title: text-gray-900 for readability on white. Removed dark:text-white. */}
+                <h2 className="text-3xl font-bold mb-3 text-gray-900">
                   {feature.title}
                 </h2>
-                <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed"> {/* Description: slightly darker gray in light mode, light gray in dark mode */}
+                {/* Description: text-gray-700 for readability on white. Removed dark:text-gray-300. */}
+                <p className="text-lg text-gray-700 leading-relaxed">
                   {feature.description}
                 </p>
               </div>
