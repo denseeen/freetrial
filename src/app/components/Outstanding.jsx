@@ -35,13 +35,14 @@ export default function Outstanding() {
   ];
 
   return (
-    // Changed background to bg-white. Removed dark mode background as it's meant to be consistently white.
-    <section className="bg-white py-16 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
-        {/* Main heading: text-gray-900 ensures readability on white. Removed dark:text-white. */}
-        <h1 className="text-4xl md:text-5xl font-extrabold text-center mb-12 text-gray-900 leading-tight">
-          Discover Our <span className="text-blue-600">Outstanding Features</span> {/* Added a consistent highlight color */}
-        </h1>
+    <section className="py-16 px-4 bg-[#F3F8FE] min-h-screen flex items-center justify-center">
+      <div className="max-w-7xl w-full mx-auto bg-white rounded-3xl shadow-2xl p-8 md:p-12">
+        <div className="text-center mb-10">
+          <h1 className="text-4xl md:text-5xl font-extrabold text-[#3C8CDE] mb-2">
+            Discover Our <span className="text-[#3C8CDE]">Outstanding Features</span>
+          </h1>
+          <div className="w-16 h-1 bg-[#3C8CDE] rounded-full mx-auto mb-6"></div>
+        </div>
 
         <div className="space-y-16">
           {features.map((feature, index) => (
@@ -53,15 +54,13 @@ export default function Outstanding() {
                 <img
                   src={feature.image}
                   alt={feature.title}
-                  className="w-full max-w-sm md:max-w-md rounded-lg shadow-lg transform transition-transform duration-300 hover:scale-105"
+                  className="w-full max-w-sm md:max-w-md rounded-xl shadow-lg transform transition-transform duration-300 hover:scale-105"
                 />
               </div>
               <div className="md:w-1/2 text-center md:text-left">
-                {/* Feature title: text-gray-900 for readability on white. Removed dark:text-white. */}
                 <h2 className="text-3xl font-bold mb-3 text-gray-900">
                   {feature.title}
                 </h2>
-                {/* Description: text-gray-700 for readability on white. Removed dark:text-gray-300. */}
                 <p className="text-lg text-gray-700 leading-relaxed">
                   {feature.description}
                 </p>

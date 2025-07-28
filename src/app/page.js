@@ -1,4 +1,7 @@
-import React from 'react';
+'use client';
+
+import React, { useState, useEffect } from 'react';
+import { ArrowUp } from 'lucide-react';
 // import Comp from "./components/Complimentary";
 import Hero from "./components/Hero"; 
 import About from "./components/About"; 
@@ -12,24 +15,35 @@ import  Plan  from './components/Plan';
 import  Contact  from './components/Contact';
 import { Summary } from './components/Summary';
 
-export const metadata = {
-  title: 'Welcome to Desknets NEO by Inspire',
-};
-
 export default function Home() { // Renamed to Home (standard React practice)
+  const [showScrollTop, setShowScrollTop] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 300);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
+
   return (
     <div className="bg-[#3C8CDE] min-h-screen"> {/* This is the single parent div */}
-
-
       <Hero/>
       <Why/> {/* Render the Why component */}
 
       {/* Section for Mission and Vision */}
       <section className="bg-[#3C8CDE] py-10">
-
         <div className="max-w-7xl mx-auto px-4">
-      <MissionVission/> 
-      </div>
+          <MissionVission/> 
+        </div>
       </section>
       <About/>
       <Reward/> {/* Render the Reward component */}
@@ -40,7 +54,17 @@ export default function Home() { // Renamed to Home (standard React practice)
       <Contact/>
       {/* <CTA/>  */}
       {/* <Comp/> */}
-      
+
+      {/* Scroll to Top Button */}
+      {showScrollTop && (
+        <button
+          onClick={scrollToTop}
+          className="fixed bottom-8 right-8 bg-[#03acff] text-white p-3 rounded-full shadow-lg hover:bg-blue-600 transition-all duration-300 z-50 hover:scale-110"
+          aria-label="Scroll to top"
+        >
+          <ArrowUp size={24} />
+        </button>
+      )}
     </div>
   );
 }
