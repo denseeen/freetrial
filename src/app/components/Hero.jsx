@@ -105,28 +105,36 @@ export default function Hero() {
 
       {/* Subtle floating particles */}
       <div className="absolute inset-0 overflow-hidden z-1">
-        {[...Array(15)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute rounded-full bg-white/10"
-            style={{
-              width: `${1 + Math.random() * 3}px`,
-              height: `${1 + Math.random() * 3}px`,
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-            }}
-            animate={{
-              y: [0, -10, 0],
-              x: [0, 5, 0],
-              opacity: [0.1, 0.3, 0.1],
-            }}
-            transition={{
-              duration: 15 + Math.random() * 30,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-          />
-        ))}
+        {[...Array(15)].map((_, i) => {
+          // Use deterministic values based on index to avoid hydration mismatch
+          const size = 1 + (i * 0.2) % 3;
+          const left = (i * 7.3) % 100;
+          const top = (i * 5.7) % 100;
+          const duration = 15 + (i * 2) % 30;
+          
+          return (
+            <motion.div
+              key={i}
+              className="absolute rounded-full bg-white/10"
+              style={{
+                width: `${size}px`,
+                height: `${size}px`,
+                left: `${left}%`,
+                top: `${top}%`,
+              }}
+              animate={{
+                y: [0, -10, 0],
+                x: [0, 5, 0],
+                opacity: [0.1, 0.3, 0.1],
+              }}
+              transition={{
+                duration: duration,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            />
+          );
+        })}
       </div>
 
       {/* Main content with scroll-triggered animations */}

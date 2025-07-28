@@ -169,19 +169,6 @@ const App = () => {
           </div>
         </div>
       </div>
-
-      {/* CTA Section */}
-      <div className="w-full max-w-7xl bg-gradient-to-r from-[#03acff] to-[#341bca] rounded-xl p-8 text-center">
-        <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4 tracking-tight">
-          Join Our Growing Community
-        </h2>
-        <p className="text-white/80 mb-6 max-w-2xl mx-auto leading-relaxed tracking-wide">
-          Be part of the 5 million+ users transforming their workplace with Desknet's NEO.
-        </p>
-        <button className="bg-white text-[#341bca] font-medium px-6 py-3 rounded-lg hover:bg-gray-100 transition-colors duration-300 tracking-wide">
-          Request a Demo
-        </button>
-      </div>
     </div>
   );
 };
