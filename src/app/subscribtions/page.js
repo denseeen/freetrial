@@ -21,7 +21,7 @@ export default function PlanningPage() {
       buttonText: "Start Free Trial",
       buttonColor: '#03acff',
       isTrial: true,
-      redirectTo: '/free-trial',
+      redirectTo: '/form',
     },
     {
       type: "BASIC ACCOUNT",
