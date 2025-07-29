@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 
 export default function Footer() {
@@ -19,7 +20,6 @@ export default function Footer() {
               <ul className="space-y-3">
                 <li><a href="#" className="text-blue-200 hover:text-blue-400 transition text-base">Features Overview</a></li>
                 <li><a href="subscribtions" className="text-blue-200 hover:text-blue-400 transition text-base">Pricing & Plans</a></li>
-                <li><a href="#" className="text-blue-200 hover:text-blue-400 transition text-base">Success Stories</a></li>
               </ul>
             </div>
             <div className="text-center md:text-left">
@@ -27,15 +27,15 @@ export default function Footer() {
               <ul className="space-y-3">
                 <li><a href="/faq" className="text-blue-200 hover:text-blue-400 transition text-base">FAQs</a></li>
                 <li><a href="/case" className="text-blue-200 hover:text-blue-400 transition text-base">Case Studies</a></li>
-                <li><a href="#" className="text-blue-200 hover:text-blue-400 transition text-base">Success Stories</a></li>
-                <li><a href="#" className="text-blue-200 hover:text-blue-400 transition text-base">Testimonials</a></li>
+                <li><a href="#" onClick={(e) => { e.preventDefault(); const aboutSection = document.querySelector('[data-section="about"]'); if (aboutSection) { aboutSection.scrollIntoView({ behavior: 'smooth', block: 'start' }); } }} className="text-blue-200 hover:text-blue-400 transition text-base">Success Stories</a></li>
+                <li><a href="/testimonies" className="text-blue-200 hover:text-blue-400 transition text-base">Testimonials</a></li>
               </ul>
             </div>
             <div className="text-center md:text-left">
               <h4 className="font-semibold text-white mb-4 text-lg">Connect</h4>
               <ul className="space-y-3">
-                <li><a href="#" className="text-blue-200 hover:text-blue-400 transition text-base">Youtube</a></li>
-                <li><a href="#" className="text-blue-200 hover:text-blue-400 transition text-base">Facebook</a></li>
+                <li><a href="https://www.youtube.com/channel/UCUGE-qPvLqYmZhQ25aLXm6A" className="text-blue-200 hover:text-blue-400 transition text-base">Youtube</a></li>
+                <li><a href="https://web.facebook.com/inspirenextglobalinc" className="text-blue-200 hover:text-blue-400 transition text-base">Facebook</a></li>
               </ul>
             </div>
           </div>

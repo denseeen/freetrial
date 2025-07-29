@@ -7,7 +7,7 @@ const About = () => {
   const youtubeEmbedUrl = `https://www.youtube.com/embed/${youtubeVideoId}`;
 
   return (
-    <section className="py-16 px-4 bg-[#F3F8FE] min-h-screen flex items-center justify-center">
+    <section className="py-16 px-4 bg-[#F3F8FE] min-h-screen flex items-center justify-center" data-section="about">
       <div className="max-w-7xl w-full mx-auto bg-white rounded-3xl shadow-2xl p-8 md:p-12">
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-extrabold text-[#03acff] mb-2">
@@ -27,7 +27,7 @@ const About = () => {
           <div className="relative w-full rounded-2xl shadow-xl overflow-hidden" style={{ paddingBottom: '56.25%' }}>
             <iframe
               className="absolute top-0 left-0 w-full h-full"
-              src={`${youtubeEmbedUrl}?autoplay=1&mute=0&enablejsapi=1&rel=0&showinfo=0`}
+              src={`${youtubeEmbedUrl}?autoplay=1&mute=1&enablejsapi=1&rel=0&showinfo=0&controls=1&modestbranding=1`}
               title="Desknet's NEO by Inspire Next Global Inc."
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -36,6 +36,10 @@ const About = () => {
           </div>
           <p className="text-center text-gray-600 mt-6 text-lg">
             Watch this video to get a deeper insight into how Desknet's NEO can transform your workplace.
+            <br />
+            <span className="text-sm text-gray-500 mt-2 block">
+              🔊 Video autoplays muted. Click the unmute button to hear the audio and capture your attention!
+            </span>
           </p>
         </div>
 
