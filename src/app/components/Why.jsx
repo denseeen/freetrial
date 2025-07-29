@@ -51,7 +51,7 @@ export default function WhyChooseUs() {
 
   return (
     // Section container with a very light gray background for subtle contrast
-    <section className="bg-gray-50 py-16 md:py-20 lg:py-24 font-['Ubuntu']">
+    <section className="bg-gray-50 py-16 md:py-20 lg:py-24 font-['Ubuntu']" data-section="why">
       <div className="max-w-screen-xl mx-auto px-6 text-center">
         {/* Section Title - Using the primary deep blue */}
         <motion.h2

@@ -81,6 +81,17 @@ export default function Hero() {
     }
   };
 
+  // Function to scroll to Why component
+  const scrollToWhy = () => {
+    const whySection = document.querySelector('[data-section="why"]');
+    if (whySection) {
+      whySection.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  };
+
   return (
     <div className="relative w-full h-screen flex items-center justify-center text-white overflow-hidden">
       {/* High-quality background with layered approach */}
@@ -178,6 +189,39 @@ export default function Hero() {
 
         
       </motion.div>
+
+      {/* Scroll down arrow */}
+      <motion.button
+        onClick={scrollToWhy}
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 text-white hover:text-[#03acff] transition-colors duration-300 cursor-pointer"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 2, duration: 0.8 }}
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.95 }}
+      >
+        <motion.div
+          className="flex flex-col items-center"
+          animate={{ y: [0, 10, 0] }}
+          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+        >
+          <svg
+            className="w-8 h-8 md:w-10 md:h-10"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M19 14l-7 7m0 0l-7-7m7 7V3"
+            />
+          </svg>
+          <span className="text-sm mt-2 font-medium">Scroll to learn more</span>
+        </motion.div>
+      </motion.button>
 
       {/* Subtle floating shapes for background interest */}
       <motion.div
