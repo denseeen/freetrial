@@ -35,7 +35,7 @@ export default function Footer() {
               <h4 className="font-semibold text-white mb-4 text-lg">Connect</h4>
               <ul className="space-y-3">
                 <li><a href="https://www.youtube.com/channel/UCUGE-qPvLqYmZhQ25aLXm6A" className="text-blue-200 hover:text-blue-400 transition text-base">Youtube</a></li>
-                <li><a href="https://web.facebook.com/inspirenextglobalinc" className="text-blue-200 hover:text-blue-400 transition text-base">Facebook</a></li>
+                <li><a href="https://web.facebook.com/profile.php?id=61577731001288" className="text-blue-200 hover:text-blue-400 transition text-base">Facebook</a></li>
               </ul>
             </div>
           </div>

@@ -77,11 +77,11 @@ export default function PlanningPage() {
   ];
 
           return (
-      <section className="py-16 px-4 bg-[#341bca] min-h-screen flex items-center justify-center">
+      <section className="py-16 px-4 bg-[#F3F8FE] min-h-screen flex items-center justify-center">
                 <div className="max-w-7xl w-full mx-auto p-8 md:p-12">
           <div className="text-center mb-10">
-            <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-2">
-              Choose Your <span className="text-white">Perfect Plan</span>
+            <h1 className="text-4xl md:text-5xl font-extrabold text-black mb-2">
+              Choose Your <span className="text-black">Perfect Plan</span>
             </h1>
             <div className="w-16 h-1 bg-white rounded-full mx-auto mb-6"></div>
           </div>
@@ -90,7 +90,7 @@ export default function PlanningPage() {
           {plans.map((plan, index) => (
             <div
               key={index}
-              className={`relative bg-gray-50 rounded-xl shadow-lg p-8 flex flex-col items-center text-center transition-all duration-300 transform hover:scale-105 ${
+              className={`relative bg-[#03acff] rounded-xl shadow-lg p-8 flex flex-col items-center text-center transition-all duration-300 transform hover:scale-105 ${
                 plan.isPremium ? 'border-2 border-solid' : ''
               }`}
               style={plan.isPremium ? { borderColor: '#03acff' } : {}}
@@ -113,7 +113,7 @@ export default function PlanningPage() {
               <ul className="text-left w-full space-y-2 mb-8">
                 {plan.features.map((feature, i) => (
                   <li key={i} className="flex items-start text-sm text-gray-700">
-                    <Check className="text-[#22c55e] w-4 h-4 mr-2 flex-shrink-0" />
+                    <Check className="text-[#0b5727] w-4 h-4 mr-2 flex-shrink-0" />
                     {feature}
                   </li>
                 ))}
@@ -121,8 +121,8 @@ export default function PlanningPage() {
 
               <button
                 onClick={() => router.push(plan.redirectTo)}
-                className="mt-auto px-8 py-3 text-white text-lg font-semibold rounded-full shadow-lg w-full transition-colors duration-300"
-                style={{ backgroundColor: plan.buttonColor }}
+                className="mt-auto px-8 py-3 text-black text-lg font-semibold rounded-full bg-white hover:bg-blue-600 shadow-lg w-full transition-colors duration-300"
+               
               >
                 {plan.buttonText}
               </button>
@@ -141,7 +141,7 @@ export default function PlanningPage() {
         </div>
 
         {/* Free Trial Note */}
-        <div className="text-center mt-8 text-white">
+        <div className="text-center mt-8 text-black">
           <p>
             You could enjoy up to 2 Months free-trial with Desknet's NEO By Inspire
             if you subscribed or signed a contract with us for 1 year!
