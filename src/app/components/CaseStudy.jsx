@@ -216,22 +216,22 @@ export default function CaseStudy() {
   };
 
   return (
-    <section className="py-16 px-4 bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 text-black dark:text-white min-h-screen font-[ubuntu]">
+    <section className="py-16 px-4 bg-gradient-to-b from-blue-50 to-white min-h-screen font-[ubuntu]">
       <div className="max-w-6xl mx-auto"> {/* Increased max-width */}
         <div className="text-center mb-16"> {/* Increased bottom margin */}
-          <h1 className="text-4xl md:text-5xl font-extrabold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400 dark:from-blue-400 dark:to-blue-300">
+          <h1 className="text-4xl md:text-5xl font-extrabold mb-4 text-[#03acff]">
             CASE STUDIES
           </h1>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Discover how companies across various industries leverage Desknet's NEO to transform their operations
           </p>
         </div>
 
         {/* Carousel Section */}
         <div
-          className="relative w-full h-80 md:h-96 lg:h-[500px] overflow-hidden rounded-2xl shadow-2xl mb-16 bg-gray-200 flex items-center justify-center border-4 border-blue-500 dark:border-blue-400"
-          onMouseEnter={() => setIsHovering(true)} // Pause auto-play on hover
-          onMouseLeave={() => setIsHovering(false)} // Resume auto-play on mouse leave
+          className="relative w-full h-80 md:h-96 lg:h-[500px] overflow-hidden rounded-2xl shadow-lg mb-16 bg-gray-100 flex items-center justify-center border-2 border-[#03acff]/30"
+          onMouseEnter={() => setIsHovering(true)}
+          onMouseLeave={() => setIsHovering(false)}
         >
           <AnimatePresence initial={false} custom={direction}>
             <motion.div
@@ -252,17 +252,17 @@ export default function CaseStudy() {
                 alt={`Case Study Page ${currentIndex + 1}`}
                 className="w-full h-full object-cover rounded-2xl"
               />
-              {/* Improved Glassy Text Overlay */}
+              {/* Light Glassy Text Overlay */}
               <div className="absolute inset-0 flex items-end p-8">
-                <div className="bg-white/70 backdrop-blur-md rounded-2xl shadow-xl p-6 max-w-lg w-full">
-                  <div className="w-10 h-1 bg-[#3C8CDE] rounded-full mb-3"></div>
-                  <h3 className="text-2xl font-bold text-[#3C8CDE] mb-2">{carouselItems[currentIndex].title}</h3>
+                <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg p-6 max-w-lg w-full border border-gray-200">
+                  <div className="w-10 h-1 bg-[#03acff] rounded-full mb-3"></div>
+                  <h3 className="text-2xl font-bold text-[#03acff] mb-2">{carouselItems[currentIndex].title}</h3>
                   <p className="text-lg text-gray-700 mb-4">{carouselItems[currentIndex].description}</p>
                   <a
                     href={carouselItems[currentIndex].pdf}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center px-6 py-3 bg-[#3C8CDE] text-white font-semibold rounded-full shadow-lg hover:bg-blue-700 transition-all duration-300"
+                    className="inline-flex items-center px-6 py-3 bg-[#03acff] text-white font-semibold rounded-full shadow-md hover:bg-[#341bca] transition-all duration-300"
                   >
                     <Download className="mr-2" size={20} />
                     View PDF
@@ -275,14 +275,14 @@ export default function CaseStudy() {
           {/* Navigation Buttons */}
           <button
             onClick={handlePrev}
-            className="absolute left-4 z-20 p-4 bg-white text-[#3C8CDE] rounded-full shadow-lg hover:bg-[#3C8CDE] hover:text-white transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#3C8CDE]"
+            className="absolute left-4 z-20 p-4 bg-white/90 text-[#03acff] rounded-full shadow-lg hover:bg-[#03acff] hover:text-white transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#03acff] border border-gray-200"
             aria-label="Previous slide"
           >
             <ChevronLeft size={32} />
           </button>
           <button
             onClick={handleNext}
-            className="absolute right-4 z-20 p-4 bg-white text-[#3C8CDE] rounded-full shadow-lg hover:bg-[#3C8CDE] hover:text-white transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#3C8CDE]"
+            className="absolute right-4 z-20 p-4 bg-white/90 text-[#03acff] rounded-full shadow-lg hover:bg-[#03acff] hover:text-white transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#03acff] border border-gray-200"
             aria-label="Next slide"
           >
             <ChevronRight size={32} />
@@ -298,7 +298,7 @@ export default function CaseStudy() {
                   setCurrentIndex(index);
                 }}
                 className={`w-4 h-4 rounded-full transition-all duration-300 shadow-md border-2 border-white ${
-                  currentIndex === index ? 'bg-[#3C8CDE] scale-125' : 'bg-white/60 hover:bg-[#3C8CDE]/60'
+                  currentIndex === index ? 'bg-[#03acff] scale-125' : 'bg-white/80 hover:bg-[#03acff]/60'
                 }`}
                 aria-label={`Go to slide ${index + 1}`}
               ></button>
@@ -307,8 +307,8 @@ export default function CaseStudy() {
         </div>
         {/* End Carousel Section */}
 
-        <div className="mb-16 text-center"> {/* Consolidated paragraph and added margin */}
-          <p className="text-lg text-gray-700 dark:text-gray-300 max-w-4xl mx-auto">
+        <div className="mb-16 text-center">
+          <p className="text-lg text-gray-600 max-w-4xl mx-auto">
             These are some of the companies from different industries that use Desknet's NEO to streamline their operations and enhance productivity.
           </p>
         </div>
@@ -323,16 +323,16 @@ export default function CaseStudy() {
               <motion.div
                 key={index}
                 ref={industryRef}
-                className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 dark:border-gray-700 hover:border-blue-400 dark:hover:border-blue-300"
+                className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100 hover:border-[#03acff]/30 hover:bg-blue-50/30"
                 variants={industryItemVariants}
                 initial="hidden"
                 animate={isIndustryInView ? "visible" : "hidden"}
                 transition={{ delay: index * 0.1 }}
-                whileHover={{ y: -5 }} /* Added subtle lift on hover */
+                whileHover={{ y: -5 }}
               >
                 <div className="flex items-center mb-4">
                   <span className="text-3xl mr-3">{industry.icon}</span> {/* Display industry icon */}
-                  <h2 className="text-xl font-bold text-blue-600 dark:text-blue-400">
+                  <h2 className="text-xl font-bold text-[#03acff]">
                     {industry.name}
                   </h2>
                 </div>
@@ -340,14 +340,14 @@ export default function CaseStudy() {
                   {industry.companies.map((company, compIndex) => (
                     <li
                       key={compIndex}
-                      className="p-4 bg-gray-50 dark:bg-gray-700/50 rounded-lg transition-all duration-200 hover:bg-gray-100 dark:hover:bg-gray-700"
+                      className="p-4 bg-gray-50 rounded-lg transition-all duration-200 hover:bg-blue-50/50 border border-gray-100"
                     >
-                      <h3 className="font-semibold text-gray-900 dark:text-white">
+                      <h3 className="font-semibold text-gray-800">
                         {company.name}
                       </h3>
-                      <div className="text-sm text-gray-600 dark:text-gray-300 mt-1 space-y-1"> {/* Added space-y-1 */}
-                        <p>👥 {company.users}</p> {/* Added user icon */}
-                        {company.subscription && <p>⏳ {company.subscription}</p>} {/* Added clock icon */}
+                      <div className="text-sm text-gray-600 mt-1 space-y-1">
+                        <p>👥 {company.users}</p>
+                        {company.subscription && <p>⏳ {company.subscription}</p>}
                       </div>
                     </li>
                   ))}
@@ -361,14 +361,14 @@ export default function CaseStudy() {
      
 
         {/* Citation Note */}
-        <div className="text-sm text-gray-600 dark:text-gray-400 text-center">
+        <div className="text-sm text-gray-500 text-center">
           <p>
             NEOPhilippine Tech Inc. Case Studies.{" "}
             <a
               href="https://www.dneoph.com/case-study"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-blue-500 hover:underline dark:text-blue-400"
+              className="text-[#03acff] hover:underline"
             >
               https://www.dneoph.com/case-study
             </a>
