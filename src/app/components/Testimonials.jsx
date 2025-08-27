@@ -8,7 +8,7 @@ export default function Testimonials() {
     {
       quote: "With Desknet's NEO, our teams now operate with greater coordination. From leave requests to internal memos, we've reduced delays and miscommunication across departments. It's an all-in-one tool that replaced at least three systems we were previously using.",
       author: "Ms. Melody Reyes",
-      position: "President at Inspire Holdings Inc."
+      position: "President at Inspire Holdings Inc, Inspire Next Global Inc."
     },
     {
       quote: "We use Desknet's NEO not just for communication but also to manage HR-related functions. New hires can quickly access company documents, request leaves, and see announcements without needing to ask around.",
@@ -16,9 +16,9 @@ export default function Testimonials() {
       position: "Chief Administrative Officer at Inspire Next Global Inc."
     },
     {
-      quote: "As Marketing President, I need visibility across campaigns, approvals, and team coordination. Desknet's NEO helps us streamline requests, track project progress, and centralize communication. It eliminates silos and keeps everyone—from creatives to executives—on the same page. It's not just a tool; it's now part of our workflow culture.",
+      quote: "As Executive Director, I need visibility across campaigns, approvals, and team coordination. Desknet's NEO helps us streamline requests, track project progress, and centralize communication. It eliminates silos and keeps everyone—from creatives to executives—on the same page. It's not just a tool; it's now part of our workflow culture.",
       author: "Ms. Rhia Alberto",
-      position: "Marketing President at Inspire Next Global Inc."
+      position: "Executive Director at Inspire Alliance Fund Group."
     }
   ];
 
