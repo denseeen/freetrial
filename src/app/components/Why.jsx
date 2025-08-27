@@ -50,9 +50,8 @@ export default function WhyChooseUs() {
   };
 
   return (
-    // Section container with a very light gray background for subtle contrast
-    <section className="bg-gray-50 py-16 md:py-20 lg:py-24 font-['Ubuntu']" data-section="why">
-      <div className="max-w-screen-xl mx-auto px-6 text-center">
+    <section className="py-8 px-4 min-h-screen flex items-center justify-center font-['Ubuntu']" data-section="why">
+      <div className="max-w-7xl w-full mx-auto bg-white rounded-3xl shadow-2xl p-6 md:p-8">
         {/* Section Title - Using the primary deep blue */}
         <motion.h2
           ref={titleRef}
@@ -67,7 +66,7 @@ export default function WhyChooseUs() {
         {/* Subtitle - Using a dark gray for better readability on light background */}
         <motion.p
           ref={subtitleRef}
-          className="text-lg md:text-xl text-gray-700 mb-12"
+          className="text-lg md:text-xl text-gray-700 mb-8"
           variants={fadeInAnimation}
           initial="initial"
           animate={isSubtitleInView ? "animate" : "initial"}
