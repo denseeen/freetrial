@@ -1,4 +1,4 @@
-// src/app/components/Summary.jsx
+
 "use client";
 
 import React from 'react';
@@ -6,12 +6,12 @@ import { FaIndustry, FaHandshake, FaBuilding } from 'react-icons/fa';
 
 export const Summary = () => {
   return (
-    <section className="py-16 px-4  min-h-screen flex items-center justify-center">
-      <div className="max-w-7xl w-full mx-auto bg-white rounded-3xl shadow-2xl p-8 md:p-12">
-        <div className="text-center mb-10">
+    <section className="py-8 px-4 min-h-screen flex items-center justify-center">
+      <div className="max-w-7xl w-full mx-auto bg-white rounded-3xl shadow-2xl p-6 md:p-8">
+        <div className="text-center mb-8">
           <h2 className="text-4xl md:text-5xl font-extrabold text-[#3C8CDE] mb-2">CASE STUDIES SUMMARY</h2>
-          <div className="w-16 h-1 bg-[#3C8CDE] rounded-full mx-auto mb-6"></div>
-          <p className="text-lg text-gray-700 mb-12 max-w-3xl mx-auto">
+          <div className="w-16 h-1 bg-[#3C8CDE] rounded-full mx-auto mb-4"></div>
+          <p className="text-lg text-gray-700 mb-8 max-w-3xl mx-auto">
             A diverse range of organizations—from government offices and businesses to schools and
             local councils—use our easy-to-use collaboration software and have expressed their
             satisfaction with it. Here's what some of them had to say:
