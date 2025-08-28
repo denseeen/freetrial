@@ -6,17 +6,17 @@ import { Quote } from 'lucide-react';
 export default function Testimonials() {
   const testimonials = [
     {
-      quote: "With Desknet's NEO, our teams now operate with greater coordination. From leave requests to internal memos, we've reduced delays and miscommunication across departments. It's an all-in-one tool that replaced at least three systems we were previously using.",
+        quote: "With desknet's NEO, our teams now operate with greater coordination. From leave requests to internal memos, we've reduced delays and miscommunication across departments. It's an all-in-one tool that replaced at least three systems we were previously using.",
       author: "Ms. Melody Reyes",
       position: "President at Inspire Holdings Inc, Inspire Next Global Inc."
     },
     {
-      quote: "We use Desknet's NEO not just for communication but also to manage HR-related functions. New hires can quickly access company documents, request leaves, and see announcements without needing to ask around.",
+              quote: "We use desknet's NEO not just for communication but also to manage HR-related functions. New hires can quickly access company documents, request leaves, and see announcements without needing to ask around.",
       author: "Ms. Gerlie De Asis",
       position: "Chief Administrative Officer at Inspire Next Global Inc."
     },
     {
-      quote: "As Executive Director, I need visibility across campaigns, approvals, and team coordination. Desknet's NEO helps us streamline requests, track project progress, and centralize communication. It eliminates silos and keeps everyone—from creatives to executives—on the same page. It's not just a tool; it's now part of our workflow culture.",
+        quote: "As Executive Director, I need visibility across campaigns, approvals, and team coordination. desknet's NEO helps us streamline requests, track project progress, and centralize communication. It eliminates silos and keeps everyone—from creatives to executives—on the same page. It's not just a tool; it's now part of our workflow culture.",
       author: "Ms. Rhia Alberto",
       position: "Executive Director at Inspire Alliance Fund Group."
     }
@@ -31,7 +31,7 @@ export default function Testimonials() {
           </h1>
           <div className="w-16 h-1 bg-[#03acff] rounded-full mx-auto mb-6"></div>
           <p className="text-lg text-gray-700 max-w-2xl mx-auto">
-            Discover how Desknet's NEO has transformed the way organizations work and collaborate
+            Discover how desknet's NEO has transformed the way organizations work and collaborate
           </p>
         </div>
 
@@ -64,7 +64,7 @@ export default function Testimonials() {
 
         <div className="text-center mt-12">
           <p className="text-gray-600 text-lg">
-            Join hundreds of organizations that trust Desknet's NEO for their business operations
+            Join hundreds of organizations that trust desknet's NEO for their business operations
           </p>
         </div>
       </div>

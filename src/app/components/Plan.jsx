@@ -75,7 +75,7 @@ export default function PlanningPage() {
           Choose Your Perfect Plan
         </h1>
           <p>
-            You could enjoy up to 2 Months free-trial with Desknet's NEO By Inspire
+            You could enjoy up to 2 Months free-trial with desknet's NEO by Inspire
             if you subscribed or signed a contract with us for 1 year!
           </p>
         </div>

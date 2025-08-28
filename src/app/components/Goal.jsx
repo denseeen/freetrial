@@ -40,7 +40,7 @@ const Partnership = () => {
               More Than Just a Business Alliance
             </h2>
             <p className="text-gray-600 mb-6 leading-relaxed">
-              The collaboration between Desknet's NEO and Inspire Next Global Inc. is a shared mission to reshape how Filipino teams work, collaborate, and grow. By blending trusted Japanese innovations with Filipino ingenuity, we're opening doors to smarter, more meaningful work experiences.
+              The collaboration between desknet's NEO and Inspire Next Global Inc. is a shared mission to reshape how Filipino teams work, collaborate, and grow. By blending trusted Japanese innovations with Filipino ingenuity, we're opening doors to smarter, more meaningful work experiences.
             </p>
             <div className="text-[#03acff] font-medium flex items-center">
               <span>Our Shared Goals</span>
@@ -59,7 +59,7 @@ const Partnership = () => {
             </div>
             <h3 className="text-xl font-bold text-gray-900 mb-2 tracking-tight">Japanese Work Culture</h3>
             <p className="text-gray-600 mb-4 leading-relaxed">
-              Bringing Japan's renowned work ethic - structure, discipline, and continuous improvement - to Filipino teams through Desknet's NEO.
+              Bringing Japan's renowned work ethic - structure, discipline, and continuous improvement - to Filipino teams through desknet's NEO.
             </p>
           </div>
         </div>
