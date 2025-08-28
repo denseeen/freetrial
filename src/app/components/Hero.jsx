@@ -168,7 +168,7 @@ export default function Hero() {
           variants={scrollVariants}
           style={{ fontFamily: "Ubuntu, sans-serif" }}
         >
-          Desknet Neo <span className="text-[#03acff]">By Inspire</span>
+          Desknet NEO <span className="text-[#03acff]">By Inspire</span>
           <br />
           <motion.span 
             className="text-white inline-block relative pr-1 mt-4 text-3xl md:text-4xl"
@@ -184,7 +184,7 @@ export default function Hero() {
           variants={scrollVariants}
           style={{ fontFamily: "Ubuntu, sans-serif" }}
         >
-          Experience the future of workplace management with desknet's Neo.
+          Experience the future of workplace management with desknet's NEO by Inspire.
         </motion.p>
 
         

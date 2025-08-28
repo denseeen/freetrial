@@ -6,7 +6,7 @@ export default function PdfCardGrid() {
     {
       id: 1,
       title: "Case Study: Retail Sector",
-      description: "How Desknet's NEO empowered a leading retail chain.",
+              description: "How desknet's NEO by Inspire empowered a leading retail chain.",
       pdfUrl: "https://drive.google.com/drive/folders/1TUyKMHNY2K6H4EPxKSQMMTCgiJBsOeYT?usp=sharing"
     },
     {

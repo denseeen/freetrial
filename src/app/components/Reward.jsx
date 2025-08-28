@@ -41,7 +41,7 @@ const App = () => {
                 Recognized as a Leading Innovator
               </h2>
               <p className="text-gray-600 mb-6 leading-relaxed">
-                Desknet's NEO has been selected as one of the top 100 business software solutions for 2025, recognized for our innovative approach to workplace productivity and collaboration.
+                desknet's NEO has been selected as one of the top 100 business software solutions for 2025, recognized for our innovative approach to workplace productivity and collaboration.
               </p>
               <div className="flex flex-wrap gap-2">
                 <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-[#03acff]/10 text-[#341bca] tracking-wide">

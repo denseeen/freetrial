@@ -61,7 +61,7 @@ export default function WhyChooseUs() {
           animate={isTitleInView ? "animate" : "initial"}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          Why Choose desknet's NEO?
+          Why Choose desknet's NEO by Inspire?
         </motion.h2>
         {/* Subtitle - Using a dark gray for better readability on light background */}
         <motion.p
