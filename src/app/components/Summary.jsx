@@ -2,7 +2,7 @@
 "use client";
 
 import React from 'react';
-import { FaIndustry, FaHandshake, FaBuilding } from 'react-icons/fa';
+import { FaIndustry, FaHandshake, FaBuilding, FaArrowRight } from 'react-icons/fa';
 
 export const Summary = () => {
   return (
@@ -18,7 +18,7 @@ export const Summary = () => {
           </p>
         </div>
 
-        <div className="flex flex-col md:flex-row justify-center items-stretch gap-8">
+        <div className="flex flex-col md:flex-row justify-center items-stretch gap-8 mb-12">
           {/* Manufacturing Business Card */}
           <div className="bg-gray-50 p-8 rounded-xl shadow-lg flex flex-col items-center text-center flex-1 transition-transform duration-300 hover:scale-105 hover:shadow-xl">
             <div className="w-28 h-28 bg-[#3C8CDE] rounded-full flex items-center justify-center mb-6">
@@ -57,6 +57,20 @@ export const Summary = () => {
               viewing large volumes of information easy.
             </p>
           </div>
+        </div>
+
+        {/* Navigation Button */}
+        <div className="text-center">
+          <a
+            href="/case"
+            className="inline-flex items-center px-8 py-4 bg-[#3C8CDE] text-white font-bold text-lg rounded-full shadow-lg hover:bg-[#2A6BB8] transition-all duration-300 transform hover:scale-105 hover:shadow-xl"
+          >
+            View All Case Studies
+            <FaArrowRight className="ml-3 text-xl" />
+          </a>
+          <p className="text-gray-600 text-sm mt-3">
+            Discover detailed success stories from various industries
+          </p>
         </div>
       </div>
     </section>

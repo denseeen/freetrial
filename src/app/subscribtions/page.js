@@ -11,7 +11,7 @@ export default function PlanningPage() {
     {
       type: "FREE TRIAL",
       price: "Free",
-      description: "Experience Desknet's NEO By Inspire for a limited time.",
+              description: "Experience desknet's NEO by Inspire for a limited time.",
       features: [
         "1 Month Free Trial (No bank details required!)",
         "Enjoy up to 5 core applications",

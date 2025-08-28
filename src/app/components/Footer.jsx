@@ -10,7 +10,7 @@ export default function Footer() {
             {/* Logo size significantly increased again */}
             <img
               src="/images/white.png"
-              alt="desknet's NEO Logo"
+              alt="desknet's NEO by Inspire Logo"
               className="h-20 sm:h-24 md:h-32 lg:h-40 mb-8 mx-auto md:mx-0" // Even larger heights
             />
           </div>

@@ -25,7 +25,7 @@ export default function Contact() {
           </h1>
           <div className="w-32 h-1 bg-[#03acff] rounded-full mx-auto mb-8"></div>
           <p className="text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
-            Ready to transform your business with Desknet's NEO? Our expert team is here to help you every step of the way.
+            Ready to transform your business with desknet's NEO by Inspire? Our expert team is here to help you every step of the way.
           </p>
         </div>
 
