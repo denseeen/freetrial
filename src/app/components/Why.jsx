@@ -50,7 +50,7 @@ export default function WhyChooseUs() {
   };
 
   return (
-    <section className="py-8 px-4 min-h-screen flex items-center justify-center font-['Ubuntu']" data-section="why">
+    <section className="py-8 px-4 min-h-fit flex items-center justify-center font-['Ubuntu']" data-section="why">
       <div className="max-w-7xl w-full mx-auto bg-white rounded-3xl shadow-2xl p-6 md:p-8">
         {/* Section Title - Using the primary deep blue */}
         <motion.h2
@@ -80,7 +80,6 @@ export default function WhyChooseUs() {
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-16"
           variants={staggerContainer}
           initial="hidden"
-          // The `animate` prop will now re-trigger when any feature is in view
           animate={isFeature1InView || isFeature2InView || isFeature3InView || isFeature4InView ? "visible" : "hidden"}
         >
           {/* Feature 1: Intuitive and User-friendly - Blue Icon */}
@@ -101,7 +100,7 @@ export default function WhyChooseUs() {
             <p className="text-gray-600">Easy-to-use interface for all users</p>
           </motion.div>
 
-          {/* Feature 2: Trustworthy Security - TEAL Icon */}
+          {/* Feature 2: Trustworthy Security - Teal Icon */}
           <motion.div ref={feature2Ref} className="flex flex-col items-center" variants={featureItem}>
             <div className="w-28 h-28 md:w-32 md:h-32 lg:w-36 lg:h-36 rounded-full bg-teal-500 flex items-center justify-center mb-6 shadow-md">
               <svg
@@ -119,9 +118,9 @@ export default function WhyChooseUs() {
             <p className="text-gray-600">Enterprise-grade protection</p>
           </motion.div>
 
-          {/* Feature 3: Affordable and Accessible - Blue Icon */}
+          {/* Feature 3: Affordable and Accessible - Purple Icon */}
           <motion.div ref={feature3Ref} className="flex flex-col items-center" variants={featureItem}>
-            <div className="w-28 h-28 md:w-32 md:h-32 lg:w-36 lg:h-36 rounded-full bg-blue-600 flex items-center justify-center mb-6 shadow-md">
+            <div className="w-28 h-28 md:w-32 md:h-32 lg:w-36 lg:h-36 rounded-full bg-purple-600 flex items-center justify-center mb-6 shadow-md">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-16 w-16 md:h-20 md:w-20 text-white"
@@ -139,9 +138,9 @@ export default function WhyChooseUs() {
             </p>
           </motion.div>
 
-          {/* New Feature: Paperless Efficiency - TEAL Icon */}
+          {/* Feature 4: Paperless Efficiency - Orange Icon */}
           <motion.div ref={feature4Ref} className="flex flex-col items-center" variants={featureItem}>
-            <div className="w-28 h-28 md:w-32 md:h-32 lg:w-36 lg:h-36 rounded-full bg-teal-500 flex items-center justify-center mb-6 shadow-md">
+            <div className="w-28 h-28 md:w-32 md:h-32 lg:w-36 lg:h-36 rounded-full bg-orange-500 flex items-center justify-center mb-6 shadow-md">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-16 w-16 md:h-20 md:w-20 text-white"

@@ -39,12 +39,9 @@ export default function Home() { // Renamed to Home (standard React practice)
       <Hero/>
       <section className="bg-[#3C8CDE] py-10">
         <div className="max-w-7xl mx-auto px-4">
-          <Why/> 
+        <Why/> 
         </div>
       </section>
-      <Why/> {/* Render the Why component */}
-
-      
       <About/>
       {/* Section for Mission and Vision */}
       <section className="bg-[#3C8CDE] py-10">
