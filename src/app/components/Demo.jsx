@@ -175,7 +175,7 @@ export default function Demo() {
 
         {/* Form Container */}
         <motion.div
-          className="bg-white rounded-3xl shadow-2xl p-8 md:p-12"
+          className="bg-white shadow-2xl p-8 md:p-12 ml-0"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
@@ -212,7 +212,7 @@ export default function Demo() {
                     value={formData.firstName}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                    className="w-full px-4 py-3 border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-gray-900 placeholder-gray-500"
                     placeholder="Enter your first name"
                   />
                 </div>
@@ -227,7 +227,7 @@ export default function Demo() {
                     value={formData.lastName}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                    className="w-full px-4 py-3 border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-gray-900 placeholder-gray-500"
                     placeholder="Enter your last name"
                   />
                 </div>
@@ -246,7 +246,7 @@ export default function Demo() {
                     value={formData.company}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                    className="w-full px-4 py-3 border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-gray-900 placeholder-gray-500"
                     placeholder="Enter your company name"
                   />
                 </div>
@@ -261,7 +261,7 @@ export default function Demo() {
                     value={formData.position}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                    className="w-full px-4 py-3 border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-gray-900 placeholder-gray-500"
                     placeholder="e.g., Manager, Director, CEO"
                   />
                 </div>
@@ -278,7 +278,7 @@ export default function Demo() {
                   value={formData.profile}
                   onChange={handleInputChange}
                   required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-gray-900"
                 >
                   <option value="">Select your company profile</option>
                   <option value="startup">Startup (1-50 employees)</option>
@@ -305,7 +305,7 @@ export default function Demo() {
                     value={formData.email}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                    className="w-full px-4 py-3 border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-gray-900 placeholder-gray-500"
                     placeholder="Enter your email address"
                   />
                 </div>
@@ -319,7 +319,7 @@ export default function Demo() {
                     name="phone"
                     value={formData.phone}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                    className="w-full px-4 py-3 border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-gray-900 placeholder-gray-500"
                     placeholder="Enter your phone number"
                   />
                 </div>
@@ -335,7 +335,7 @@ export default function Demo() {
                   {meetingPlatforms.map((platform) => (
                     <label
                       key={platform.id}
-                      className={`relative cursor-pointer border-2 rounded-xl p-4 transition-all duration-200 ${
+                      className={`relative cursor-pointer border-2 p-4 transition-all duration-200 ${
                         formData.meetingPlatform === platform.id
                           ? 'border-blue-500 bg-blue-50'
                           : 'border-gray-200 hover:border-gray-300'
@@ -380,7 +380,7 @@ export default function Demo() {
                     onChange={handleInputChange}
                     required
                     min={new Date().toISOString().split('T')[0]}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-gray-900"
                   />
                 </div>
                 <div>
@@ -393,7 +393,7 @@ export default function Demo() {
                     value={formData.preferredTime}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-gray-900"
                   >
                     <option value="">Select preferred time</option>
                     {timeSlots.map((time) => (
@@ -413,7 +413,7 @@ export default function Demo() {
                   value={formData.additionalNotes}
                   onChange={handleInputChange}
                   rows={4}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                                      className="w-full px-4 py-3 border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-gray-900 placeholder-gray-500"
                   placeholder="Tell us about your specific needs, questions, or any other information you'd like to share..."
                 />
               </div>

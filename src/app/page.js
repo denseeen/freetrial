@@ -14,6 +14,7 @@ import Outstanding from './components/Outstanding'; // Import the Outstanding co
 import  Plan  from './components/Plan';
 import  Contact  from './components/Contact';
 import { Summary } from './components/Summary';
+import Trusted from './components/Trusted';
 
 export default function Home() { // Renamed to Home (standard React practice)
   const [showScrollTop, setShowScrollTop] = useState(false);
@@ -50,6 +51,7 @@ export default function Home() { // Renamed to Home (standard React practice)
         </div>
       </section>
       <Reward/> {/* Render the Reward component */}
+      <Trusted/>
       <Goal/> {/* Render the Goal component */}
       
       <Summary/>
