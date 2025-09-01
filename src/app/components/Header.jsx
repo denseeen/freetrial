@@ -168,9 +168,9 @@ export default function Header() {
               {!isDemoPage && (
                 <button
                   onClick={handleRequestDemo}
-                  className="block w-full bg-white text-[#3C8CDE] font-medium px-5 py-3 rounded-lg border-2 border-[#3C8CDE]
-                           hover:bg-[#3C8CDE] hover:text-white transition-all duration-200 shadow-md
-                           focus:outline-none focus:ring-2 focus:ring-[#3C8CDE] focus:ring-opacity-75"
+                                  className="block w-full bg-white text-[#3C8CDE] font-medium px-5 py-3 rounded-lg border-2 border-[#3C8CDE]
+                         hover:bg-[#3C8CDE] hover:text-white transition-all duration-200 shadow-md
+                         focus:outline-none focus:ring-2 focus:ring-[#3C8CDE] focus:ring-opacity-75"
                 >
                   Request Demo
                 </button>
