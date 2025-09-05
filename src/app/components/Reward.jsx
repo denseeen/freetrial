@@ -1,176 +1,152 @@
 "use client";
+import React from "react";
+import { motion } from "framer-motion";
+import { Star, Award, Users, Trophy, Heart, Globe } from "lucide-react";
 
-import React from 'react';
-import { Star, Award, Users, Trophy, Heart, Globe } from 'lucide-react';
-import { Ubuntu } from "next/font/google";
-
-const ubuntu = Ubuntu({
-  weight: ["300", "400", "500", "700"],
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-ubuntu",
-});
-
-const App = () => {
+export default function Reward() {
   return (
-    <div className={`min-h-screen bg-gradient-to-br from-[#F8FAFC] to-[#EFF6FF] ${ubuntu.variable} font-sans text-gray-900 flex flex-col items-center py-16 px-4 sm:px-8`}>
-      {/* Header */}
-      <header className="w-full max-w-6xl text-center mb-16">
-        <div className="inline-flex items-center justify-center px-4 py-2 bg-[#03acff]/10 rounded-full mb-6">
-          <span className="text-sm font-medium text-[#341bca] tracking-wider">OUR ACHIEVEMENTS</span>
-        </div>
-        <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-4 leading-tight">
-          Recognized <span className="text-[#03acff]">Excellence</span> in Innovation
-        </h1>
-        <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-          Celebrating the milestones and recognition that drive our commitment to delivering exceptional business solutions.
-        </p>
-      </header>
+    <section className="w-full min-h-screen bg-white flex items-center justify-center px-4 md:px-0">
+      <div className="w-full max-w-7xl mx-auto py-24">
+        {/* Heading */}
+        <motion.h1
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="text-4xl md:text-6xl font-extrabold mb-6 text-center"
+          style={{ color: "#03acff" }}
+        >
+          Recognized Excellence in Innovation
+        </motion.h1>
+        {/* Subheading */}
+        <motion.p
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="mt-2 text-lg md:text-2xl mb-14 text-center"
+          style={{ color: "#000000", opacity: 0.85, maxWidth: 750, margin: "0 auto" }}
+        >
+          Celebrating milestones and recognition that drive our commitment to delivering exceptional business solutions.
+        </motion.p>
 
-      {/* Featured Achievement - Hero Card */}
-      <div className="w-full max-w-7xl mb-16">
-        <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100 hover:shadow-2xl transition-all duration-300">
-          <div className="md:flex">
-            <div className="md:w-1/3 bg-gradient-to-br from-[#03acff] to-[#341bca] p-8 flex flex-col items-center justify-center">
-              <Trophy className="w-12 h-12 text-white mb-4" />
-              <h3 className="text-white text-xl font-medium mb-2 tracking-wide">Top 100</h3>
-              <p className="text-white text-center tracking-wider">BestSoftware 2025</p>
-            </div>
-            <div className="md:w-2/3 p-8">
-              <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4 tracking-tight">
-                Recognized as a Leading Innovator
-              </h2>
-              <p className="text-gray-600 mb-6 leading-relaxed">
-                desknet's NEO has been selected as one of the top 100 business software solutions for 2025, recognized for our innovative approach to workplace productivity and collaboration.
-              </p>
-              <div className="flex flex-wrap gap-2">
-                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-[#03acff]/10 text-[#341bca] tracking-wide">
-                  Enterprise Software
-                </span>
-                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-[#03acff]/10 text-[#341bca] tracking-wide">
-                  Groupware Solutions
-                </span>
-                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-[#03acff]/10 text-[#341bca] tracking-wide">
-                  Business Innovation
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Achievement Cards Grid */}
-      <div className="w-full max-w-7xl grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-        {/* Customer Satisfaction */}
-        <div className="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100 hover:shadow-xl transition-all duration-300">
-          <div className="p-6">
-            <div className="w-12 h-12 bg-[#03acff]/10 rounded-lg flex items-center justify-center mb-4">
-              <Heart className="w-6 h-6 text-[#341bca]" />
-            </div>
-            <h3 className="text-xl font-bold text-gray-900 mb-2 tracking-tight">Rank No.1</h3>
-            <p className="text-gray-600 mb-4 leading-relaxed">
-              in Customer Satisfaction in the groupware and business chat category (2018-2023)
+        {/* Featured Achievement Card */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="mx-auto mb-20 w-full max-w-4xl rounded-2xl border border-[#03acff] flex flex-col md:flex-row overflow-hidden bg-white"
+        >
+          <div className="md:w-1/3 flex flex-col items-center justify-center py-12 px-8 border-b md:border-b-0 md:border-r border-[#03acff] bg-white">
+            <Trophy className="w-16 h-16 mb-4" color="#03acff" />
+            <h3 className="text-2xl font-bold mb-2" style={{ color: "#03acff" }}>
+              Top 100
+            </h3>
+            <p className="text-lg font-medium" style={{ color: "#000" }}>
+              BestSoftware 2025
             </p>
-            <div className="text-sm font-medium text-[#03acff] flex items-center tracking-wide">
-              <span>Nikkei Computer</span>
+          </div>
+          <div className="md:w-2/3 py-12 px-8 flex flex-col justify-center bg-white">
+            <h2 className="text-xl md:text-2xl font-bold mb-3" style={{ color: "#03acff" }}>
+              Leading Innovator
+            </h2>
+            <p className="text-[#000000] mb-6 text-lg">
+              desknet's NEO selected as a top 100 business software solution for 2025, recognized for innovation in workplace productivity and collaboration.
+            </p>
+            <div className="flex flex-wrap gap-3">
+              {["Enterprise Software", "Groupware Solutions", "Business Innovation"].map(tag => (
+                <span
+                  key={tag}
+                  className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium"
+                  style={{
+                    backgroundColor: "#03acff1a",
+                    color: "#03acff",
+                    border: "1px solid #03acff33"
+                  }}
+                >
+                  {tag}
+                </span>
+              ))}
             </div>
           </div>
-        </div>
+        </motion.div>
 
-        {/* Global Users */}
-        <div className="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100 hover:shadow-xl transition-all duration-300">
-          <div className="p-6">
-            <div className="w-12 h-12 bg-[#03acff]/10 rounded-lg flex items-center justify-center mb-4">
-              <Users className="w-6 h-6 text-[#341bca]" />
-            </div>
-            <h3 className="text-xl font-bold text-gray-900 mb-2 tracking-tight">5 Million+ Users</h3>
-            <p className="text-gray-600 mb-4 leading-relaxed">
+        {/* Achievement Cards Grid */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+          className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-20 w-full"
+        >
+          {/* Customer Satisfaction */}
+          <div className="rounded-xl border border-[#03acff] p-10 flex flex-col items-center bg-white">
+            <Heart className="w-10 h-10 mb-3" color="#03acff" />
+            <h3 className="text-lg font-bold mb-2" style={{ color: "#03acff" }}>
+              Rank No.1
+            </h3>
+            <p className="text-[#000] mb-2 text-center text-base">
+              Customer Satisfaction in groupware & business chat (2018-2023)
+            </p>
+            <span className="text-sm font-medium" style={{ color: "#03acff" }}>
+              Nikkei Computer
+            </span>
+          </div>
+          {/* Global Users */}
+          <div className="rounded-xl border border-[#03acff] p-10 flex flex-col items-center bg-white">
+            <Users className="w-10 h-10 mb-3" color="#03acff" />
+            <h3 className="text-lg font-bold mb-2" style={{ color: "#03acff" }}>
+              5 Million+ Users
+            </h3>
+            <p className="text-[#000] mb-2 text-center text-base">
               Worldwide adoption across SMEs, enterprises, and government agencies
             </p>
-            <div className="text-sm font-medium text-[#03acff] flex items-center tracking-wide">
-              <span>Global Reach</span>
-            </div>
+            <span className="text-sm font-medium" style={{ color: "#03acff" }}>
+              Global Reach
+            </span>
           </div>
-        </div>
-
-        {/* Best in Japan */}
-        <div className="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100 hover:shadow-xl transition-all duration-300">
-          <div className="p-6">
-            <div className="w-12 h-12 bg-[#03acff]/10 rounded-lg flex items-center justify-center mb-4">
-              <Award className="w-6 h-6 text-[#341bca]" />
-            </div>
-            <h3 className="text-xl font-bold text-gray-900 mb-2 tracking-tight">Best in Japan 2025</h3>
-            <p className="text-gray-600 mb-4 leading-relaxed">
-              Recognized as top business software with excellence in innovation
+          {/* Best in Japan */}
+          <div className="rounded-xl border border-[#03acff] p-10 flex flex-col items-center bg-white">
+            <Award className="w-10 h-10 mb-3" color="#03acff" />
+            <h3 className="text-lg font-bold mb-2" style={{ color: "#03acff" }}>
+              Best in Japan 2025
+            </h3>
+            <p className="text-[#000] mb-2 text-center text-base">
+              Recognized as top business software for innovation
             </p>
-            <div className="text-sm font-medium text-[#03acff] flex items-center tracking-wide">
-              <span>Tokyo Stock Exchange</span>
-            </div>
+            <span className="text-sm font-medium" style={{ color: "#03acff" }}>
+              Tokyo Stock Exchange
+            </span>
           </div>
-        </div>
+        </motion.div>
+
+        {/* Trust Indicators */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.5 }}
+          className="grid grid-cols-1 sm:grid-cols-3 gap-10 max-w-3xl mx-auto"
+        >
+          <div className="text-center flex flex-col items-center">
+            <Star size={40} className="mb-2" color="#03acff" />
+            <div className="text-2xl font-bold" style={{ color: "#03acff" }}>
+              6 Years
+            </div>
+            <div className="text-sm text-[#00000099] mt-1">Consecutive Awards</div>
+          </div>
+          <div className="text-center flex flex-col items-center">
+            <Globe size={40} className="mb-2" color="#03acff" />
+            <div className="text-2xl font-bold" style={{ color: "#03acff" }}>
+              5M+
+            </div>
+            <div className="text-sm text-[#00000099] mt-1">Global Users</div>
+          </div>
+          <div className="text-center flex flex-col items-center">
+            <Trophy size={40} className="mb-2" color="#03acff" />
+            <div className="text-2xl font-bold" style={{ color: "#03acff" }}>
+              Top 100
+            </div>
+            <div className="text-sm text-[#00000099] mt-1">Best Software 2025</div>
+          </div>
+        </motion.div>
       </div>
-
-      {/* Milestones Section */}
-      <div className="w-full max-w-7xl bg-white rounded-xl shadow-lg p-8 mb-16">
-        <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-8 text-center tracking-tight">
-          Our Journey to Excellence
-        </h2>
-        
-        <div className="space-y-8">
-          {/* Milestone 1 */}
-          <div className="flex">
-            <div className="flex-shrink-0 mr-4">
-              <div className="flex items-center justify-center w-10 h-10 rounded-full bg-[#03acff]/10 text-[#341bca]">
-                <Star className="w-5 h-5" />
-              </div>
-            </div>
-            <div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-1 tracking-tight">
-                Customer Satisfaction Leader
-              </h3>
-              <p className="text-gray-600 leading-relaxed">
-                Ranked No. 1 in Customer Satisfaction in the groupware and business chat category by Nikkei Computer for six consecutive years (2018–2023).
-              </p>
-            </div>
-          </div>
-
-          {/* Milestone 2 */}
-          <div className="flex">
-            <div className="flex-shrink-0 mr-4">
-              <div className="flex items-center justify-center w-10 h-10 rounded-full bg-[#03acff]/10 text-[#341bca]">
-                <Globe className="w-5 h-5" />
-              </div>
-            </div>
-            <div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-1 tracking-tight">
-                Global Adoption
-              </h3>
-              <p className="text-gray-600 leading-relaxed">
-                Over 5 million users worldwide as of May 2025, spanning SMEs, large enterprises, government agencies, educational institutions, and local governments.
-              </p>
-            </div>
-          </div>
-
-          {/* Milestone 3 */}
-          <div className="flex">
-            <div className="flex-shrink-0 mr-4">
-              <div className="flex items-center justify-center w-10 h-10 rounded-full bg-[#03acff]/10 text-[#341bca]">
-                <Trophy className="w-5 h-5" />
-              </div>
-            </div>
-            <div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-1 tracking-tight">
-                Industry Recognition
-              </h3>
-              <p className="text-gray-600 leading-relaxed">
-                Hailed as one of the Best Software in Japan 2025, listed on the Section of the Tokyo Stock Exchange.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    </section>
   );
-};
-
-export default App;
+}

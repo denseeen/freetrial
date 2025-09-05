@@ -52,7 +52,7 @@ export default function Header() {
     <header
       className={`${
         isHomePage ? 'sticky top-0 z-50' : ''
-      } bg-white py-4 border-b-2 pb-2 shadow-xl`}
+      } bg-white py-4 border-b-2 pb-2`}
     >
       <div className="max-w-screen-xl mx-auto px-8 flex justify-between items-center">
         {/* Left Side - Logo and Navigation */}
@@ -115,7 +115,7 @@ export default function Header() {
           <button
             onClick={toggleMobileMenu}
             className="md:hidden flex flex-col justify-center items-center w-10 h-10 rounded-lg hover:bg-gray-100 transition-colors duration-200"
-            aria-label="Toggle mobile menu"
+            aria-label="toggle menu"
           >
             <span
               className={`block w-6 h-0.5 bg-gray-600 transition-all duration-300 ${
@@ -138,7 +138,7 @@ export default function Header() {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden bg-white border-t border-gray-200 shadow-lg">
+        <div className="md:hidden bg-white border-t border-gray-200 ">
           <div className="px-8 py-4 space-y-4">
             <button
               onClick={handleHomeClick}
@@ -168,9 +168,9 @@ export default function Header() {
               {!isDemoPage && (
                 <button
                   onClick={handleRequestDemo}
-                                  className="block w-full bg-white text-[#3C8CDE] font-medium px-5 py-3 rounded-lg border-2 border-[#3C8CDE]
-                         hover:bg-[#3C8CDE] hover:text-white transition-all duration-200 shadow-md
-                         focus:outline-none focus:ring-2 focus:ring-[#3C8CDE] focus:ring-opacity-75"
+                  className="block w-full bg-white text-[#3C8CDE] font-medium px-5 py-3 rounded-lg border-2 border-[#3C8CDE]
+                           hover:bg-[#3C8CDE] hover:text-white transition-all duration-200 shadow-md
+                           focus:outline-none focus:ring-2 focus:ring-[#3C8CDE] focus:ring-opacity-75"
                 >
                   Request Demo
                 </button>

@@ -251,7 +251,7 @@ export default function CaseStudy() {
                   href={carouselItems[currentIndex].pdf}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center px-6 py-3 bg-[#03acff] text-white font-semibold rounded-full shadow-lg hover:bg-[#341bca] transition-all duration-300 transform hover:scale-105"
+                  className="inline-flex items-center px-6 py-3 bg-[#03acff] text-white font-semibold rounded-full shadow-lg hover:bg-[#03acff] transition-all duration-300 transform hover:scale-105"
                 >
                   <Download className="mr-2" size={20} />
                   View PDF
