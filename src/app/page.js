@@ -38,22 +38,16 @@ export default function Home() { // Renamed to Home (standard React practice)
   return (
     <div className="bg-[#3C8CDE] min-h-screen"> {/* This is the single parent div */}
       <Hero/>
-      <section className="bg-[#3C8CDE] py-10">
-        <div className="max-w-7xl mx-auto px-4">
+      <Trusted/>
         <Why/> 
-        </div>
-      </section>
+
       <About/>
       {/* Section for Mission and Vision */}
-      <section className="bg-[#3C8CDE] py-10">
-        <div className="max-w-7xl mx-auto px-4">
+      <section className="bg-white py-10"> 
           <MissionVission/> 
-        </div>
       </section>
       <Reward/> {/* Render the Reward component */}
-      <Trusted/>
       <Goal/> {/* Render the Goal component */}
-      
       <Summary/>
       <Outstanding/> {/* Render the Outstanding component */}
       <Plan/> {/* Render the Plan component */}
