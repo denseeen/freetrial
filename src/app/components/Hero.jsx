@@ -229,26 +229,6 @@ export default function Hero() {
             </div>
           </motion.div>
 
-          {/* Trust Indicators */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-            className="flex flex-wrap justify-center items-center gap-6 text-sm text-gray-600"
-          >
-            <div className="flex items-center gap-2">
-              <CheckCircle className="text-green-500 text-lg" />
-              <span>Trusted by 1000+ companies</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Star className="text-yellow-500 text-lg" />
-              <span>4.9/5 Rating</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Headset className="text-[#03acff] text-lg" />
-              <span>24/7 Support</span>
-            </div>
-          </motion.div>
 
           {/* Call to Action Buttons */}
           <motion.div

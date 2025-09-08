@@ -181,16 +181,16 @@ export const Summary = () => {
             <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-200 hover:border-[#03acff]/30">
               <div className="w-20 h-20 bg-[#03acff] rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-[#03acff]/30">
                 <FaIndustry className="text-white text-3xl" />
-              </div>
+            </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-[#03acff] transition-colors duration-300">
                 Manufacturing Business
               </h3>
               <p className="text-[#03acff] text-base mb-4 font-medium">60 users</p>
               <p className="text-gray-600 leading-relaxed">
-                We are pleased with the cost and usability. The improvement in internal
-                information sharing has led to an increase in efficiency.
-              </p>
-            </div>
+              We are pleased with the cost and usability. The improvement in internal
+              information sharing has led to an increase in efficiency.
+            </p>
+          </div>
           </motion.div>
 
           {/* Service Industry Business Card */}
@@ -203,16 +203,16 @@ export const Summary = () => {
             <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-200 hover:border-[#03acff]/30">
               <div className="w-20 h-20 bg-[#03acff] rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-[#03acff]/30">
                 <FaHandshake className="text-white text-3xl" />
-              </div>
+            </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-[#03acff] transition-colors duration-300">
                 Service Industry Business
               </h3>
               <p className="text-[#03acff] text-base mb-4 font-medium">160 users</p>
               <p className="text-gray-600 leading-relaxed">
-                It has strengthened coordination between sales and management and has
-                proven instrumental in our expansion overseas.
-              </p>
-            </div>
+              It has strengthened coordination between sales and management and has
+              proven instrumental in our expansion overseas.
+            </p>
+          </div>
           </motion.div>
 
           {/* Government Agency Card */}
@@ -225,16 +225,16 @@ export const Summary = () => {
             <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-200 hover:border-[#03acff]/30">
               <div className="w-20 h-20 bg-[#03acff] rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-[#03acff]/30">
                 <FaBuilding className="text-white text-3xl" />
-              </div>
+            </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-[#03acff] transition-colors duration-300">
                 Government Agency
               </h3>
               <p className="text-[#03acff] text-base mb-4 font-medium">7,000 users</p>
               <p className="text-gray-600 leading-relaxed">
-                Usability was the key factor for us. We wanted an accessible tool that makes
-                viewing large volumes of information easy.
-              </p>
-            </div>
+              Usability was the key factor for us. We wanted an accessible tool that makes
+              viewing large volumes of information easy.
+            </p>
+          </div>
           </motion.div>
         </motion.div>
 

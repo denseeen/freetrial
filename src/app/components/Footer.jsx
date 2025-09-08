@@ -36,6 +36,7 @@ export default function Footer() {
               <ul className="space-y-3">
                 <li><a href="https://www.youtube.com/channel/UCUGE-qPvLqYmZhQ25aLXm6A" className="text-blue-200 hover:text-blue-400 transition text-base">Youtube</a></li>
                 <li><a href="https://web.facebook.com/profile.php?id=61577731001288" className="text-blue-200 hover:text-blue-400 transition text-base">Facebook</a></li>
+                <li><a href="https://www.linkedin.com/in/desknets-neo-by-inspire-next-global-inc-590465382/" className="text-blue-200 hover:text-blue-400 transition text-base">Linkedin</a></li>
               </ul>
             </div>
           </div>

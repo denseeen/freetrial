@@ -5,7 +5,7 @@ import { Building, Globe, Headset, Zap, Users, Calendar, Package, Mail, Clock, B
 
 export default function Trusted() {
     return (
-        <section className="relative w-full py-24 bg-white flex flex-col items-center justify-center text-black overflow-hidden">
+        <section className="relative w-full py-16 sm:py-20 lg:py-24 bg-white flex flex-col items-center justify-center text-black overflow-hidden">
             {/* Background shapes for a dynamic feel - Matching Hero */}
             <div className="absolute top-1/4 -left-20 w-80 h-80 bg-[#03acff] rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-blob"></div>
             <div className="absolute bottom-1/4 -right-20 w-80 h-80 bg-[#03acff] rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-blob animation-delay-2000"></div>
@@ -335,26 +335,7 @@ export default function Trusted() {
                     </div>
                 </motion.div>
 
-                {/* Trust Indicators - Matching Hero Style */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 0.8 }}
-                    className="flex flex-wrap justify-center items-center gap-6 text-sm text-gray-600"
-                >
-                    <div className="flex items-center gap-2 bg-white/80 backdrop-blur-sm rounded-full px-4 py-2 shadow-lg">
-                        <CheckCircle className="text-green-500 text-lg" />
-                        <span className="font-medium">Enterprise Security</span>
-                    </div>
-                    <div className="flex items-center gap-2 bg-white/80 backdrop-blur-sm rounded-full px-4 py-2 shadow-lg">
-                        <Star className="text-yellow-500 text-lg" />
-                        <span className="font-medium">Award-Winning Platform</span>
-                    </div>
-                    <div className="flex items-center gap-2 bg-white/80 backdrop-blur-sm rounded-full px-4 py-2 shadow-lg">
-                        <Headset className="text-[#03acff] text-lg" />
-                        <span className="font-medium">24/7 Global Support</span>
-                    </div>
-                </motion.div>
+                
             </div>
         </section>
     );
