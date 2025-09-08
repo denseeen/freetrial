@@ -1,15 +1,42 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 
 export default function Header() {
   const router = useRouter();
   const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isInHeroSection, setIsInHeroSection] = useState(false);
 
   const isHomePage = pathname === '/' || pathname === '/.';
   const isDemoPage = pathname === '/demo';
+
+  // Scroll detection to hide/show buttons when in Hero section
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!isHomePage) return;
+      
+      const heroSection = document.querySelector('section');
+      if (heroSection) {
+        const heroRect = heroSection.getBoundingClientRect();
+        const heroBottom = heroRect.bottom;
+        
+        // Hide buttons when Hero section is visible (bottom of hero is above viewport)
+        setIsInHeroSection(heroBottom > 0);
+      }
+    };
+
+    // Initial check
+    handleScroll();
+    
+    // Add scroll listener
+    window.addEventListener('scroll', handleScroll);
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [isHomePage]);
 
   const handleSubscribe = () => {
     router.push('/subscribtions');
@@ -92,7 +119,7 @@ export default function Header() {
 
         {/* Right Side - Action Buttons */}
         <div className="flex items-center space-x-4">
-          {!isDemoPage && (
+          {!isDemoPage && !isInHeroSection && (
             <button
               onClick={handleRequestDemo}
               className="bg-white text-[#3C8CDE] font-medium px-5 py-2 rounded-lg border-2 border-[#3C8CDE]
@@ -102,14 +129,16 @@ export default function Header() {
               Request Demo
             </button>
           )}
-          <button
-            onClick={handleSubscribe}
-            className="bg-[#3C8CDE] text-white font-medium px-5 py-2 rounded-lg
-                     hover:bg-[#2f6cb3] hover:scale-105 transition-all duration-200 shadow-md
-                     focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-75"
-          >
-            Subscribe
-          </button>
+          {!isInHeroSection && (
+            <button
+              onClick={handleSubscribe}
+              className="bg-[#3C8CDE] text-white font-medium px-5 py-2 rounded-lg
+                       hover:bg-[#2f6cb3] hover:scale-105 transition-all duration-200 shadow-md
+                       focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-75"
+            >
+              Subscribe
+            </button>
+          )}
 
           {/* Mobile Menu Button */}
           <button
@@ -165,7 +194,7 @@ export default function Header() {
             )}
 
             <div className="space-y-3 pt-4">
-              {!isDemoPage && (
+              {!isDemoPage && !isInHeroSection && (
                 <button
                   onClick={handleRequestDemo}
                   className="block w-full bg-white text-[#3C8CDE] font-medium px-5 py-3 rounded-lg border-2 border-[#3C8CDE]
@@ -175,14 +204,16 @@ export default function Header() {
                   Request Demo
                 </button>
               )}
-              <button
-                onClick={handleSubscribe}
-                className="block w-full bg-[#3C8CDE] text-white font-medium px-5 py-3 rounded-lg
-                         hover:bg-[#2f6cb3] transition-all duration-200 shadow-md
-                         focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-75"
-              >
-                Subscribe
-              </button>
+              {!isInHeroSection && (
+                <button
+                  onClick={handleSubscribe}
+                  className="block w-full bg-[#3C8CDE] text-white font-medium px-5 py-3 rounded-lg
+                           hover:bg-[#2f6cb3] transition-all duration-200 shadow-md
+                           focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-75"
+                >
+                  Subscribe
+                </button>
+              )}
             </div>
           </div>
         </div>
