@@ -5,7 +5,7 @@ import { Target, Eye, Users, Zap, Shield } from 'lucide-react';
 
 export default function MissionVision() {
   return (
-    <section className="relative w-full min-h-screen bg-white flex flex-col items-center justify-center text-black px-4 md:px-8 overflow-hidden py-16">
+    <section className="relative w-full  bg-white flex flex-col items-center justify-center text-black px-4 md:px-8 overflow-hidden py-16">
       <div className="relative z-10 text-center max-w-6xl mx-auto">
         {/* Section header */}
         <motion.div
@@ -86,6 +86,7 @@ export default function MissionVision() {
         </motion.div>
       </div>
     </div>
+
     </section>
   );
 }

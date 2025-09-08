@@ -27,7 +27,7 @@ export default function Goal() {
   ];
 
   return (
-    <section className="relative w-full py-24 bg-gradient-to-br from-gray-50 to-blue-50 flex flex-col items-center justify-center text-black px-4 md:px-8 overflow-hidden">
+    <section className="relative w-full py-16 sm:py-20 lg:py-24 bg-gradient-to-br from-gray-50 to-blue-50 flex flex-col items-center justify-center text-black px-4 md:px-8 overflow-hidden">
       {/* Background shapes for a dynamic feel - More subtle */}
       <div className="absolute top-1/4 -left-20 w-80 h-80 bg-gradient-to-r from-[#03acff] to-purple-400 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-blob"></div>
       <div className="absolute bottom-1/4 -right-20 w-80 h-80 bg-gradient-to-r from-[#03acff] to-teal-400 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-blob animation-delay-2000"></div>

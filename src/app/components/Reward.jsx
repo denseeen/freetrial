@@ -5,7 +5,7 @@ import { Star, Award, Users, Trophy, Heart, Globe } from "lucide-react";
 
 export default function Reward() {
   return (
-    <section className="w-full min-h-screen bg-white flex items-center justify-center px-4 md:px-0">
+    <section className="w-full  bg-white flex items-center mt-0 justify-center px-4 md:px-0">
       <div className="w-full max-w-7xl mx-auto py-24">
         {/* Heading */}
         <motion.h1
