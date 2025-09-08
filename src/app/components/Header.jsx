@@ -81,12 +81,16 @@ export default function Header() {
         isHomePage ? 'sticky top-0 z-50' : ''
       } bg-white py-4 border-b-2 pb-2`}
     >
-      <div className="max-w-screen-xl mx-auto px-8 flex justify-between items-center">
+      <div className="max-w-screen-xl mx-auto px-4 md:px-8 flex justify-between items-center">
         {/* Left Side - Logo and Navigation */}
-        <div className="flex items-center space-x-8">
-          {/* Logo */}
+        <div className="flex items-center space-x-4 md:space-x-8">
+          {/* Logo - Responsive sizing */}
           <div className="flex items-center space-x-2">
-            <img src="/images/logohehe.png" alt="Logo" className="h-16 w-auto" />
+            <img 
+              src="/images/logohehe.png" 
+              alt="Desknet NEO Logo" 
+              className="h-10 sm:h-12 md:h-16 w-auto" 
+            />
           </div>
 
           {/* Desktop Navigation Links */}
@@ -118,46 +122,49 @@ export default function Header() {
         </div>
 
         {/* Right Side - Action Buttons */}
-        <div className="flex items-center space-x-4">
-          {!isDemoPage && !isInHeroSection && (
-            <button
-              onClick={handleRequestDemo}
-              className="bg-white text-[#3C8CDE] font-medium px-5 py-2 rounded-lg border-2 border-[#3C8CDE]
-                       hover:bg-[#3C8CDE] hover:text-white hover:scale-105 transition-all duration-200 shadow-md
-                       focus:outline-none focus:ring-2 focus:ring-[#3C8CDE] focus:ring-opacity-75"
-            >
-              Request Demo
-            </button>
-          )}
-          {!isInHeroSection && (
-            <button
-              onClick={handleSubscribe}
-              className="bg-[#3C8CDE] text-white font-medium px-5 py-2 rounded-lg
-                       hover:bg-[#2f6cb3] hover:scale-105 transition-all duration-200 shadow-md
-                       focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-75"
-            >
-              Subscribe
-            </button>
-          )}
+        <div className="flex items-center space-x-2 md:space-x-4">
+          {/* Desktop buttons - hidden when in Hero section */}
+          <div className="hidden md:flex items-center space-x-4">
+            {!isDemoPage && !isInHeroSection && (
+              <button
+                onClick={handleRequestDemo}
+                className="bg-white text-[#3C8CDE] font-medium px-5 py-2 rounded-lg border-2 border-[#3C8CDE]
+                         hover:bg-[#3C8CDE] hover:text-white hover:scale-105 transition-all duration-200 shadow-md
+                         focus:outline-none focus:ring-2 focus:ring-[#3C8CDE] focus:ring-opacity-75"
+              >
+                Request Demo
+              </button>
+            )}
+            {!isInHeroSection && (
+              <button
+                onClick={handleSubscribe}
+                className="bg-[#3C8CDE] text-white font-medium px-5 py-2 rounded-lg
+                         hover:bg-[#2f6cb3] hover:scale-105 transition-all duration-200 shadow-md
+                         focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-75"
+              >
+                Subscribe
+              </button>
+            )}
+          </div>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Menu Button - Only visible on mobile */}
           <button
             onClick={toggleMobileMenu}
-            className="md:hidden flex flex-col justify-center items-center w-10 h-10 rounded-lg hover:bg-gray-100 transition-colors duration-200"
+            className="md:hidden flex flex-col justify-center items-center w-8 h-8 rounded-lg hover:bg-gray-100 transition-colors duration-200"
             aria-label="toggle menu"
           >
             <span
-              className={`block w-6 h-0.5 bg-gray-600 transition-all duration-300 ${
+              className={`block w-5 h-0.5 bg-gray-600 transition-all duration-300 ${
                 isMobileMenuOpen ? 'rotate-45 translate-y-1.5' : ''
               }`}
             ></span>
             <span
-              className={`block w-6 h-0.5 bg-gray-600 transition-all duration-300 mt-1 ${
+              className={`block w-5 h-0.5 bg-gray-600 transition-all duration-300 mt-1 ${
                 isMobileMenuOpen ? 'opacity-0' : ''
               }`}
             ></span>
             <span
-              className={`block w-6 h-0.5 bg-gray-600 transition-all duration-300 mt-1 ${
+              className={`block w-5 h-0.5 bg-gray-600 transition-all duration-300 mt-1 ${
                 isMobileMenuOpen ? '-rotate-45 -translate-y-1.5' : ''
               }`}
             ></span>
@@ -165,10 +172,10 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu - Only visible on mobile */}
       {isMobileMenuOpen && (
-        <div className="md:hidden bg-white border-t border-gray-200 ">
-          <div className="px-8 py-4 space-y-4">
+        <div className="md:hidden bg-white border-t border-gray-200">
+          <div className="px-4 py-4 space-y-4">
             <button
               onClick={handleHomeClick}
               className="block w-full text-left text-gray-600 hover:text-[#2f6cb3] text-lg font-medium transition-colors duration-200 py-3 border-b border-gray-100"
@@ -194,7 +201,7 @@ export default function Header() {
             )}
 
             <div className="space-y-3 pt-4">
-              {!isDemoPage && !isInHeroSection && (
+              {!isDemoPage && (
                 <button
                   onClick={handleRequestDemo}
                   className="block w-full bg-white text-[#3C8CDE] font-medium px-5 py-3 rounded-lg border-2 border-[#3C8CDE]
@@ -204,16 +211,14 @@ export default function Header() {
                   Request Demo
                 </button>
               )}
-              {!isInHeroSection && (
-                <button
-                  onClick={handleSubscribe}
-                  className="block w-full bg-[#3C8CDE] text-white font-medium px-5 py-3 rounded-lg
-                           hover:bg-[#2f6cb3] transition-all duration-200 shadow-md
-                           focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-75"
-                >
-                  Subscribe
-                </button>
-              )}
+              <button
+                onClick={handleSubscribe}
+                className="block w-full bg-[#3C8CDE] text-white font-medium px-5 py-3 rounded-lg
+                         hover:bg-[#2f6cb3] transition-all duration-200 shadow-md
+                         focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-75"
+              >
+                Subscribe
+              </button>
             </div>
           </div>
         </div>
