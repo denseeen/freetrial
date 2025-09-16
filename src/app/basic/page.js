@@ -348,7 +348,7 @@ useEffect(() => {
       basic_users: formData.basicUsers,
       premium_users: formData.premiumUsers,
       total_amount: `₱${totalAmount.toLocaleString()}`,
-      logo_url: "http://localhost:3000/images/ineo.png",
+      logo_url: "http://localhost:3000/images/logohehe.png",
     };
 
     emailjs
@@ -376,9 +376,7 @@ useEffect(() => {
       <div className="max-w-3xl mx-auto p-6 sm:p-8 bg-[#ffffff] border border-gray-200 rounded-2xl shadow-md">
         {/* Logo */}
         <div className="flex items-center justify-center mb-6 space-x-4">
-          <div className="flex-grow border-t border-[#d1d5db]"></div>
-          <img src="/images/i-neo.jpg" alt="Logo" className="h-16 sm:h-20" />
-          <div className="flex-grow border-t border-[#d1d5db]"></div>
+          <img src="/images/logohehe.png" alt="Logo" className="h-20 sm:h-24 md:h-28 lg:h-32" />
         </div>
 
         {/* Payment Status */}

@@ -83,21 +83,21 @@ export default function Header() {
     >
       <div className="max-w-screen-xl mx-auto px-4 md:px-8 flex justify-between items-center">
         {/* Left Side - Logo and Navigation */}
-        <div className="flex items-center space-x-4 md:space-x-8">
+        <div className="flex items-center space-x-8">
           {/* Logo - Responsive sizing */}
-          <div className="flex items-center space-x-2">
+          <div className="flex items-center">
             <img 
-              src="/images/logohehe.png" 
+              src="/images/only.jpg" 
               alt="Desknet NEO Logo" 
-              className="h-10 sm:h-12 md:h-16 w-auto" 
+              className="h-16 sm:h-18 mb-2 md:h-20 lg:h-24 w-auto" 
             />
           </div>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden md:flex items-center space-x-6">
+          <nav className="hidden md:flex items-center space-x-8">
             <button
               onClick={handleHomeClick}
-              className="text-gray-600 hover:text-[#2f6cb3] text-lg font-medium transition-colors duration-200"
+              className="text-gray-700 hover:text-[#2f6cb3] text-lg font-medium transition-colors duration-200 py-2 px-1"
             >
               Home
             </button>
@@ -106,13 +106,13 @@ export default function Header() {
               <>
                 <button
                   onClick={handleAboutClick}
-                  className="text-gray-600 hover:text-[#2f6cb3] text-lg font-medium transition-colors duration-200"
+                  className="text-gray-700 hover:text-[#2f6cb3] text-lg font-medium transition-colors duration-200 py-2 px-1"
                 >
                   About
                 </button>
                 <button
                   onClick={handleFreeTrialClick}
-                  className="text-gray-600 hover:text-[#2f6cb3] text-lg font-medium transition-colors duration-200"
+                  className="text-gray-700 hover:text-[#2f6cb3] text-lg font-medium transition-colors duration-200 py-2 px-1"
                 >
                   Free Trial
                 </button>

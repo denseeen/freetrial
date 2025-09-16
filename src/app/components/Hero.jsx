@@ -187,7 +187,7 @@ export default function Hero() {
             <Zap className="text-[#03acff] text-4xl sm:text-5xl md:text-6xl" />
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight">
               Experience the future of workplace management with{" "}
-              <span className="text-[#03acff]">Desknet NEO</span> by Inspire
+              <span className="text-[#03acff]">Desknet NEO</span> 
             </h1>
           </motion.div>
 
