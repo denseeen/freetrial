@@ -9,11 +9,11 @@ export default function Faqs() {
 
   const faqs = [
     {
-      question: "What is Desknet's NEO By Inspire?",
+      question: "What is Desknet's NEO ?",
       answer: "Desknet's NEO is a high-end Japanese Software Application which you can use as a business collaboration platform for your company. It was developed by NEOJapan Inc. in 1999 in Yokohama, Japan and was introduced in the Philippines in 2021.\n\nDesknet's NEO By Inspire is the branding of Desknet's NEO in the Philippines under its collaboration with the Inspire Next Global Inc. It started to be introduced in the Philippines Market in 2024."
     },
     {
-      question: "What are the main features included in Desknet's NEO By Inspire?",
+      question: "What are the main features included in Desknet's NEO ?",
       answer: "Schedule and Calendar Sharing – Keeping everyone synced.\nWebmail and Internal Chat – Making everyone connected.\nApproval Workflows – Lessen the paper cost/use of the company.\nAttendance and Time Tracking – Aside from being time accurate, it is also on-premises.\nShared Folders, Memos, and More!"
     },
     {
@@ -22,17 +22,17 @@ export default function Faqs() {
     },
     {
       question: "Is it available or accessible to any devices?",
-      answer: "Yes! Desknet's NEO By Inspire is available on any device that can be used to access the Internet. An application of Desknet's NEO By Inspire is also available to download on IOS' Google Appstore and Android's Google Playstore."
+      answer: "Yes! Desknet's NEO By  is available on any device that can be used to access the Internet. An application of Desknet's NEO By Inspire is also available to download on IOS' Google Appstore and Android's Google Playstore."
     },
     {
-      question: "I want to know more about Desknet's NEO By Inspire functions.",
-      answer: `For self-taught access of Desknet's NEO By Inspire tools and functions, you can access the prepared User Manual in this website, you can also watch our ready-made videos on YouTube: Inspire Next Global Inc.
+      question: "I want to know more about Desknet's NEO  functions.",
+      answer: `For self-taught access of Desknet's NEO  tools and functions, you can access the prepared User Manual in this website, you can also watch our ready-made videos on YouTube: Inspire Next Global Inc.
 You can keep in-touch with us or send us your inquiries through our email sales@inspirenextglobal.com or dial through 09202260942 / 09992232797.
 Want to schedule an introduction or on-boarding discussion? You can send your available schedule and location of your site/company through sales@inspirenextglobal.com.`
     },
     {
-      question: "Is Desknet's NEO By Inspire customizable?",
-      answer: "Yes! Desknet's NEO By Inspire offers extensive portal and UI customization options to match your organization's branding, workflows, and user preferences. You can easily integrate files, presentations, videos, and websites into your environment by converting their links into their embedded form. You can also manually adjust the size of your interface according to your needs."
+      question: "Is Desknet's NEO  customizable?",
+      answer: "Yes! Desknet's NEO  offers extensive portal and UI customization options to match your organization's branding, workflows, and user preferences. You can easily integrate files, presentations, videos, and websites into your environment by converting their links into their embedded form. You can also manually adjust the size of your interface according to your needs."
     },
     {
       question: "What is collaboration software?",
@@ -43,8 +43,8 @@ Want to schedule an introduction or on-boarding discussion? You can send your av
       answer: "You can pay your subscription fee via our authorized channel partners, making transactions easier, more secure, and accessible through your preferred local providers. You can choose whether you want to pay through BPI, UnionBank, Gcash, and or physical payment (through visiting our main office at 6F Alliance Global Tower, Uptown Mall in BGC, Taguig)."
     },
     {
-      question: "How many months is the free-trial that Desknet's NEO By Inspire offers?",
-      answer: "Desknet's NEO By Inspire is offering 1 Month free-trial. No bank details will be required during the on-boarding process of the free-trial, unlike the other software applications that require it.\n\nYou could enjoy up to 2 Months free-trial with Desknet's NEO By Inspire if you subscribed or signed a contract with us for 1 year!"
+      question: "How many months is the free-trial that Desknet's NEO  offers?",
+      answer: "Desknet's NEO  is offering 1 Month free-trial. No bank details will be required during the on-boarding process of the free-trial, unlike the other software applications that require it.\n\nYou could enjoy up to 2 Months free-trial with Desknet's NEO By Inspire if you subscribed or signed a contract with us for 1 year!"
     }
   ];
 

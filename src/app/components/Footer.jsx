@@ -8,21 +8,7 @@ export default function Footer() {
   const isInView = useInView(ref, { once: false, margin: "-100px" });
 
   return (
-    <footer ref={ref} className="relative w-full bg-gray-900 text-gray-400 py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
-      {/* Background shapes for a dynamic feel - Matching Hero */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={isInView ? { opacity: 0.1, scale: 1 } : { opacity: 0, scale: 0.8 }}
-        transition={{ duration: 1, delay: 0.2 }}
-        className="absolute top-1/4 -left-20 w-80 h-80 bg-[#03acff] rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-blob"
-      ></motion.div>
-      <motion.div
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={isInView ? { opacity: 0.1, scale: 1 } : { opacity: 0, scale: 0.8 }}
-        transition={{ duration: 1, delay: 0.4 }}
-        className="absolute bottom-1/4 -right-20 w-80 h-80 bg-[#03acff] rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-blob animation-delay-2000"
-      ></motion.div>
-
+    <footer ref={ref} className="relative w-full text-gray-600 py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 overflow-hidden" style={{backgroundColor: '#ffffff'}}>
       {/* Floating decorative icons - Matching Hero */}
       <motion.div
         initial={{ opacity: 0, scale: 0, y: 20 }}
@@ -151,16 +137,16 @@ export default function Footer() {
               className="mb-6"
             >
               <img
-                src="/images/white.png"
+                src="/images/only.jpg"
                 alt="desknet's NEO by Inspire Logo"
-                className="h-16 sm:h-20 md:h-24 lg:h-28 mx-auto lg:mx-0"
+                className="h-20 sm:h-24 md:h-28 lg:h-32 xl:h-36 mx-auto lg:mx-0"
               />
             </motion.div>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.6, delay: 0.7 }}
-              className="text-gray-300 text-lg leading-relaxed max-w-md mx-auto lg:mx-0"
+              className="text-gray-600 text-lg leading-relaxed max-w-md mx-auto lg:mx-0"
             >
               Empowering Filipino businesses with Japanese precision and innovation through comprehensive digital solutions.
             </motion.p>
@@ -178,7 +164,7 @@ export default function Footer() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                 transition={{ duration: 0.6, delay: 0.7 }}
-                className="font-semibold text-white mb-6 text-xl"
+                className="font-semibold text-gray-800 mb-6 text-xl"
               >
                 Product
               </motion.h4>
@@ -191,7 +177,7 @@ export default function Footer() {
                 <li>
                   <a 
                     href="subscribtions" 
-                    className="text-gray-300 hover:text-[#03acff] transition-colors duration-300 text-base flex items-center justify-center lg:justify-start gap-2 group"
+                    className="text-gray-600 hover:text-[#03acff] transition-colors duration-300 text-base flex items-center justify-center lg:justify-start gap-2 group"
                   >
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
                     Pricing & Plans
@@ -205,7 +191,7 @@ export default function Footer() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                 transition={{ duration: 0.6, delay: 0.8 }}
-                className="font-semibold text-white mb-6 text-xl"
+                className="font-semibold text-gray-800 mb-6 text-xl"
               >
                 Company
               </motion.h4>
@@ -218,7 +204,7 @@ export default function Footer() {
                 <li>
                   <a 
                     href="/faq" 
-                    className="text-gray-300 hover:text-[#03acff] transition-colors duration-300 text-base flex items-center justify-center lg:justify-start gap-2 group"
+                    className="text-gray-600 hover:text-[#03acff] transition-colors duration-300 text-base flex items-center justify-center lg:justify-start gap-2 group"
                   >
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
                     FAQs
@@ -227,7 +213,7 @@ export default function Footer() {
                 <li>
                   <a 
                     href="/case" 
-                    className="text-gray-300 hover:text-[#03acff] transition-colors duration-300 text-base flex items-center justify-center lg:justify-start gap-2 group"
+                    className="text-gray-600 hover:text-[#03acff] transition-colors duration-300 text-base flex items-center justify-center lg:justify-start gap-2 group"
                   >
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
                     Case Studies
@@ -236,7 +222,7 @@ export default function Footer() {
                 <li>
                   <a 
                     href="/testimonies" 
-                    className="text-gray-300 hover:text-[#03acff] transition-colors duration-300 text-base flex items-center justify-center lg:justify-start gap-2 group"
+                    className="text-gray-600 hover:text-[#03acff] transition-colors duration-300 text-base flex items-center justify-center lg:justify-start gap-2 group"
                   >
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
                     Testimonials
@@ -250,7 +236,7 @@ export default function Footer() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                 transition={{ duration: 0.6, delay: 0.9 }}
-                className="font-semibold text-white mb-6 text-xl"
+                className="font-semibold text-gray-800 mb-6 text-xl"
               >
                 Connect
               </motion.h4>
@@ -263,7 +249,7 @@ export default function Footer() {
                 <li>
                   <a 
                     href="https://www.youtube.com/channel/UCUGE-qPvLqYmZhQ25aLXm6A" 
-                    className="text-gray-300 hover:text-[#03acff] transition-colors duration-300 text-base flex items-center justify-center lg:justify-start gap-2 group"
+                    className="text-gray-600 hover:text-[#03acff] transition-colors duration-300 text-base flex items-center justify-center lg:justify-start gap-2 group"
                   >
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
                     YouTube
@@ -272,7 +258,7 @@ export default function Footer() {
                 <li>
                   <a 
                     href="https://web.facebook.com/profile.php?id=61577731001288" 
-                    className="text-gray-300 hover:text-[#03acff] transition-colors duration-300 text-base flex items-center justify-center lg:justify-start gap-2 group"
+                    className="text-gray-600 hover:text-[#03acff] transition-colors duration-300 text-base flex items-center justify-center lg:justify-start gap-2 group"
                   >
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
                     Facebook
@@ -281,7 +267,7 @@ export default function Footer() {
                 <li>
                   <a 
                     href="https://www.linkedin.com/in/desknets-neo-by-inspire-next-global-inc-590465382/" 
-                    className="text-gray-300 hover:text-[#03acff] transition-colors duration-300 text-base flex items-center justify-center lg:justify-start gap-2 group"
+                    className="text-gray-600 hover:text-[#03acff] transition-colors duration-300 text-base flex items-center justify-center lg:justify-start gap-2 group"
                   >
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
                     LinkedIn
@@ -297,13 +283,13 @@ export default function Footer() {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.8, delay: 1.3 }}
-          className="border-t border-gray-700 pt-8 text-center"
+          className="border-t border-gray-300 pt-8 text-center"
         >
           <div className="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
-            <p className="text-gray-400 text-sm">
-              © {new Date().getFullYear()} desknet's NEO by Inspire. All rights reserved.
+            <p className="text-gray-500 text-sm">
+              © {new Date().getFullYear()} desknet's NEO. All rights reserved.
             </p>
-            <div className="flex items-center gap-2 text-gray-400 text-sm">
+            <div className="flex items-center gap-2 text-gray-500 text-sm">
               <span></span>
               <motion.div
                 animate={{ scale: [1, 1.2, 1] }}

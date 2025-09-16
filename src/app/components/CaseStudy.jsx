@@ -329,7 +329,7 @@ export default function CaseStudy() {
             className="text-xl md:text-2xl text-gray-700 leading-relaxed max-w-4xl mx-auto"
           >
             Discover how companies across various industries leverage{" "}
-            <span className="font-semibold text-[#03acff]">desknet's NEO by Inspire</span>{" "}
+            <span className="font-semibold text-[#03acff]">desknet's NEO</span>{" "}
             to transform their operations and achieve success.
           </motion.p>
         </motion.div>
@@ -452,7 +452,7 @@ export default function CaseStudy() {
             className="text-lg md:text-xl text-gray-700 leading-relaxed max-w-4xl mx-auto"
           >
             These are some of the companies from different industries that use{" "}
-            <span className="font-semibold text-[#03acff]">desknet's NEO by Inspire</span>{" "}
+            <span className="font-semibold text-[#03acff]">desknet's NEO</span>{" "}
             to streamline their operations and enhance productivity.
           </motion.p>
         </motion.div>
