@@ -44,10 +44,10 @@ const About = () => {
         <div className="mt-16 pt-8 border-t border-gray-200">
           <div className="space-y-6 text-gray-700 text-lg leading-relaxed max-w-5xl mx-auto">
             <h2 className="text-2xl md:text-3xl font-bold text-[#03acff] mb-6 text-center">
-              Our Journey with Desknet's NEO by Inspire
+              Our Journey with Desknet's NEO 
             </h2>
             <p>
-              <span className="font-semibold text-[#03acff]">desknet's NEO by Inspire</span> is more than just a software application focusing on business tools; it's a reflection of the Inspire Next Global Inc.'s passion for bringing the best of Japan to the Philippines. For years, Inspire has been dedicated to introducing high-quality Japanese products to the local market, and desknet's NEO is a shining example of that commitment.
+              <span className="font-semibold text-[#03acff]">desknet's NEO </span> is more than just a software application focusing on business tools; it's a reflection of the Inspire Next Global Inc.'s passion for bringing the best of Japan to the Philippines. For years, Inspire has been dedicated to introducing high-quality Japanese products to the local market, and desknet's NEO is a shining example of that commitment.
             </p>
             <p>
               With over <span className="font-semibold text-[#03acff]">21 built-in tools</span>, from scheduling and task tracking to document sharing and approval workflows, everything you need is just a few clicks away.

@@ -16,7 +16,7 @@ export default function WhyChooseUs() {
             className="text-4xl font-semibold text-gray-800 lg:text-5xl xl:text-6xl leading-tight"
           >
             Why Choose{" "}
-            <span className="text-[#03acff]">Desknet NEO</span> by Inspire?
+            <span className="text-[#03acff]">Desknet NEO</span> 
           </motion.h1>
 
           <motion.p

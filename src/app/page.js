@@ -3,19 +3,19 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowUp } from 'lucide-react';
 // import Comp from "./components/Complimentary";
-// import Hero from "./components/Hero"; 
-// import About from "./components/About"; 
-// import MissionVission from './components/MissionVission';
+import Hero from "./components/Hero"; 
+import About from "./components/About"; 
+import MissionVission from './components/MissionVission';
 // import CTA from './components/CTA';
-// import Reward from './components/Reward'; // Import the MissionVision component
-// import Why from './components/Why'; // Import the Why component
-// import  Goal  from './components/Goal'; // Import the Goal component
-// import Outstanding from './components/Outstanding'; // Import the Outstanding component
-// import  Plan  from './components/Plan';
-// import  Contact  from './components/Contact';
-// import { Summary } from './components/Summary';
-// import Trusted from './components/Trusted';
-import Error from './components/Error';
+import Reward from './components/Reward'; // Import the MissionVision component
+import Why from './components/Why'; // Import the Why component
+import  Goal  from './components/Goal'; // Import the Goal component
+import Outstanding from './components/Outstanding'; // Import the Outstanding component
+import  Plan  from './components/Plan';
+import  Contact  from './components/Contact';
+import { Summary } from './components/Summary';
+import Trusted from './components/Trusted';
+// import Error from './components/Error';
 
 export default function Home() { // Renamed to Home (standard React practice)
   const [showScrollTop, setShowScrollTop] = useState(false);
@@ -40,24 +40,24 @@ export default function Home() { // Renamed to Home (standard React practice)
 
     // Take down muna huhuhu
     <div className="bg-white"> {/* Parent wrapper */}
-    <Error/>
-      {/* <Hero/>
+    {/* <Error/> */}
+      <Hero/>
       <Trusted/>
         <Why/> 
 
-      <About/> */}
-      {/* Section for Mission and Vision */}
-      {/* <section className="bg-white py-4 md:py-6"> 
+      <About/>
+     
+      <section className="bg-white py-4 md:py-6"> 
           <MissionVission/> 
       </section>
-      <Reward/> {/* Render the Reward component */}
-      {/* <Goal/> {/* Render the Goal component */}
-      {/* <Summary/> */}
-      {/* <Outstanding/> Render the Outstanding component */}
-      {/* <Plan/> Render the Plan component
-      <Contact/> */}
-      {/* <CTA/>  */}
-      {/* <Comp/>  */}
+      <Reward/> 
+      <Goal/> 
+      <Summary/>
+       <Outstanding/> 
+       <Plan/> 
+      <Contact/>
+      {/* <CTA/>   */}
+       {/* <Comp/>  */}
 
       {/* Scroll to Top Button */}
       {showScrollTop && (
