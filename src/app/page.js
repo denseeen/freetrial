@@ -1,3 +1,33 @@
+  // {/* <Hero/>
+      // <Trusted/>
+      //   <Why/> 
+
+      // <About/>
+     
+      // <section className="bg-white py-4 md:py-6"> 
+      //     <MissionVission/> 
+      // </section>
+      // <Reward/> 
+      // <Goal/> 
+      // <Summary/>
+      //  <Outstanding/> 
+      //  <Plan/> 
+      // <Contact/> */}
+      // {/* <CTA/>   */}
+      //  {/* <Comp/>  */}
+
+      // {/* Scroll to Top Button */}
+      // {showScrollTop && (
+      //   <button
+      //     onClick={scrollToTop}
+      //     className="fixed bottom-8 right-8 bg-[#03acff] text-white p-3 rounded-full shadow-lg hover:bg-blue-600 transition-all duration-300 z-50 hover:scale-110"
+      //     aria-label="Scroll to top"
+      //   >
+      //     <ArrowUp size={24} />
+      //   </button>
+      // )}
+
+
 'use client';
 
 import React, { useState, useEffect } from 'react';
@@ -18,57 +48,30 @@ import { ArrowUp } from 'lucide-react';
 import Error from './components/Error';
 
 export default function Home() { // Renamed to Home (standard React practice)
-  const [showScrollTop, setShowScrollTop] = useState(false);
+  // const [showScrollTop, setShowScrollTop] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setShowScrollTop(window.scrollY > 300);
-    };
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     setShowScrollTop(window.scrollY > 300);
+  //   };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  //   window.addEventListener('scroll', handleScroll);
+  //   return () => window.removeEventListener('scroll', handleScroll);
+  // }, []);
 
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-  };
+  // const scrollToTop = () => {
+  //   window.scrollTo({
+  //     top: 0,
+  //     behavior: 'smooth'
+  //   });
+  // };
 
   return (
 
     // Take down muna huhuhu
     <div className="bg-white"> {/* Parent wrapper */}
     <Error/>
-      {/* <Hero/>
-      <Trusted/>
-        <Why/> 
-
-      <About/>
-     
-      <section className="bg-white py-4 md:py-6"> 
-          <MissionVission/> 
-      </section>
-      <Reward/> 
-      <Goal/> 
-      <Summary/>
-       <Outstanding/> 
-       <Plan/> 
-      <Contact/> */}
-      {/* <CTA/>   */}
-       {/* <Comp/>  */}
-
-      {/* Scroll to Top Button */}
-      {showScrollTop && (
-        <button
-          onClick={scrollToTop}
-          className="fixed bottom-8 right-8 bg-[#03acff] text-white p-3 rounded-full shadow-lg hover:bg-blue-600 transition-all duration-300 z-50 hover:scale-110"
-          aria-label="Scroll to top"
-        >
-          <ArrowUp size={24} />
-        </button>
-      )}
+    
     </div>
   );
 }
